@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admin PPDB — SDN 37/II</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --g9:#0a3d2e;--g8:#0d5c42;--g7:#116a4b;--g6:#1a8a62;--g5:#22a878;
+  --gr9:#111714;--gr5:#7a9088;--gr4:#a0b5ae;--gr2:#e4eee9;--gr0:#f8fbf9;
+  --white:#fff;--r5:#ef4444;--rmd:12px;--rlg:16px;--rxl:20px;
+}
+body{font-family:'DM Sans',sans-serif;background:#f2f7f4;color:var(--gr9);padding:20px;margin:0}
+
+/* LOCK SCREEN */
+#lock-screen{position:fixed;inset:0;background:linear-gradient(160deg,var(--g9) 0%,#0d4a38 100%);z-index:500;display:flex;align-items:center;justify-content:center}
+.lock-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:36px;max-width:360px;width:100%;text-align:center;backdrop-filter:blur(20px)}
+.lock-input{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:var(--rmd);padding:12px;font-size:14px;color:#fff;text-align:center;outline:none}
+.lock-btn{margin-top:14px;width:100%;background:linear-gradient(135deg,var(--g7),var(--g5));color:#fff;border:none;border-radius:var(--rmd);padding:13px;font-weight:700;cursor:pointer}
+
+/* ADMIN PANEL */
+.admin-card{background:var(--white);border:1px solid var(--gr2);border-radius:var(--rxl);padding:20px;box-shadow:0 4px 12px rgba(10,63,46,0.05);margin-top:20px}
+table{width:100%;border-collapse:collapse;margin-top:15px;font-size:13px}
+th,td{padding:12px;text-align:left;border-bottom:1px solid var(--gr2)}
+th{background:var(--gr0);color:var(--g7)}
+.btn{padding:8px 14px;border-radius:8px;border:none;cursor:pointer;font-weight:700;font-size:12px}
+.btn-main{background:var(--g7);color:#white}
+.btn-danger{background:#fef2f2;color:var(--r5)}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock-screen">
+  <div class="lock-box">
+    <h2 style="color:#white;font-family:'DM Serif Display';margin-bottom:6px">Portal PPDB Admin</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:12px;margin-bottom:20px">Masukkan kata sandi panitia untuk melihat data pendaftar.</p>
+    <input type="password" class="lock-input" id="lock-pass" placeholder="Kata sandi">
+    <button class="lock-btn" onclick="doUnlock()">Masuk Admin</button>
+    <div id="lock-err" style="color:#f87171;font-size:12px;margin-top:10px;display:none">Kata sandi salah!</div>
+  </div>
+</div>
+
+<!-- CONTENT PANEL -->
+<div id="admin-content" style="display:none; max-width:1000px; margin:0 auto;">
+  <div style="display:flex; justify-content:space-between; align-items:center">
+    <h2>Data Pendaftar PPDB 2026/2027</h2>
+    <div>
+      <button class="btn btn-main" onclick="exportCSV()"><i class="fa-solid fa-file-csv"></i> Unduh CSV Excel</button>
+      <button class="btn" onclick="fetchData()"><i class="fa-solid fa-arrows-rotate"></i> Segarkan</button>
+    </div>
+  </div>
+
+  <div class="admin-card">
+    <table id="tbl-data">
+      <thead>
+        <tr>
+          <th>No. Daftar</th>
+          <th>Nama Siswa</th>
+          <th>NIK</th>
+          <th>Gender</th>
+          <th>No. WA Wali</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="data-list"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+const SHEET_API = 'https://sheetdb.io/api/v1/7mf16prngcydq';
+const ADMIN_PASS = 'sdn37admin2026';
+let listSiswa = [];
+
+function doUnlock() {
+  if (document.getElementById('lock-pass').value === ADMIN_PASS) {
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'block';
+    fetchData();
+  } else {
+    document.getElementById('lock-err').style.display = 'block';
+  }
+}
+
+function fetchData() {
+  fetch(SHEET_API)
+    .then(r => r.json())
+    .then(data => {
+      if(Array.isArray(data)){
+        listSiswa = data;
+        const tbody = document.getElementById('data-list');
+        tbody.innerHTML = data.map(item => `
+          <tr>
+            <td><b>${item.id}</b></td>
+            <td>${item.nama}</td>
+            <td>${item.nik}</td>
+            <td>${item.gender}</td>
+            <td>${item.telp}</td>
+            <td><span style="color:var(--g7)">${item.status || 'Terdaftar'}</span></td>
+            <td>
+              <button class="btn btn-danger" onclick="hapusData('${item.id}')">Hapus</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    });
+}
+
+function hapusData(id) {
+  if(confirm(`Hapus permanen nomor daftar ${id}?`)){
+    fetch(`${SHEET_API}/id/${encodeURIComponent(id)}`, { method: 'DELETE' })
+      .then(() => { alert('Berhasil dihapus'); fetchData(); });
+  }
+}
+
+function exportCSV() {
+  if (!listSiswa.length) return;
+  const headers = ['No.Daftar','Nama','NIK','Gender','No WA','Waktu'];
+  const csvRows = listSiswa.map(s => [s.id, s.nama, s.nik, s.gender, s.telp, s.timestamp].join(','));
+  const blob = new Blob(['\uFEFF' + [headers.join(','), ...csvRows].join('\n')], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Data_PPDB_SDN37.csv';
+  a.click();
+}
+</script>
+</body>
+</html>
