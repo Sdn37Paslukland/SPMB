@@ -42,7 +42,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .nav-btn .nbadge{background:var(--g1);color:var(--g8);font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;border:1px solid rgba(34,168,120,.2)}
 
 /* ===== LOCK SCREEN ===== */
-#lock-screen{position:fixed;inset:0;background:linear-gradient(160deg,var(--g9) 0%,#0d4a38 100%);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px}
+#lock-screen{position:fixed;inset:0;background:linear-gradient(160deg,var(--g9) 0%,#0d4a38 100%);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
 .lock-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r2xl);padding:36px 32px;max-width:360px;width:100%;text-align:center;backdrop-filter:blur(20px)}
 .lock-icon{width:64px;height:64px;border-radius:50%;background:rgba(52,201,149,.15);border:2px solid rgba(52,201,149,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:26px;color:var(--g3)}
 .lock-title{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;margin-bottom:6px}
@@ -817,25 +817,35 @@ function updateQuota() {
    TAB SWITCH
 =================================== */
 function switchTab(tab) {
-  if (tab === 'responses' && !checkAdmin()) return;
   const form = document.getElementById('section-form');
   const resp = document.getElementById('section-responses');
   const hero = document.getElementById('hero-section');
   const bf = document.getElementById('btn-tab-form');
   const br = document.getElementById('btn-tab-responses');
+
   if (tab === 'form') {
+    // Sembunyikan layar kunci jika orang tua kembali klik tab Formulir
+    document.getElementById('lock-screen').style.display = 'none'; 
     form.classList.remove('section-hidden');
     resp.classList.add('section-hidden');
     hero.style.display = '';
-    bf.classList.add('active'); br.classList.remove('active');
+    bf.classList.add('active'); 
+    br.classList.remove('active');
   } else {
+    // Jika mencoba akses tab Pendaftar (Admin), cek status login
+    if (!adminUnlocked) {
+      document.getElementById('lock-screen').style.display = 'flex';
+      return;
+    }
     form.classList.add('section-hidden');
     resp.classList.remove('section-hidden');
     hero.style.display = 'none';
-    bf.classList.remove('active'); br.classList.add('active');
+    bf.classList.remove('active'); 
+    br.classList.add('active');
     fetchDataFromSheets(false);
   }
 }
+
 
 /* ===================================
    STEP NAVIGATION
