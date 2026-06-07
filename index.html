@@ -183,7 +183,7 @@ textarea{resize:none;line-height:1.6}
         <span class="quota-bar-val" id="quota-text">— / 60 kursi</span>
       </div>
       <div class="quota-bar-track"><div class="quota-bar-fill" id="quota-fill" style="width:0%"></div></div>
-      <div class="quota-countdown"><i class="fa-solid fa-clock"></i> <span id="countdown-text">Memuat...</span></div>
+      <div class="quota-countdown"><i class="fa-solid fa-clock"></i> <span id="countdown-text">Sinkronisasi Database...</span></div>
     </div>
   </div>
 </div>
@@ -202,6 +202,7 @@ textarea{resize:none;line-height:1.6}
   </div>
 
   <form id="spmb-form" onsubmit="handleFormSubmit(event)" autocomplete="off">
+    <!-- STEP 1: DATA SISWA -->
     <div id="step-1" class="fade-in">
       <div class="notice notice-green">
         <i class="fa-solid fa-circle-info"></i>
@@ -217,7 +218,8 @@ textarea{resize:none;line-height:1.6}
           <div class="g2">
             <div class="fg">
               <label class="fl"><span>NIK (16 Digit) <span class="req">*</span></span><span class="fcnt" id="nik-cnt">0/16</span></label>
-              <input type="text" id="siswa-nik" required maxlength="16" placeholder="Sesuai Kartu Keluarga" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('nik-cnt').textContent=this.value.length+'/16'">
+              <input type="text" id="siswa-nik" required maxlength="16" placeholder="Sesuai Kartu Keluarga" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('nik-cnt').textContent=this.value.length+'/16'; checkNikDuplicate(this.value)">
+              <div class="field-hint" id="nik-hint" style="display:none"></div>
             </div>
             <div class="fg">
               <label class="fl"><span>NISN <span class="opt">(Jika ada)</span></span></label>
@@ -261,6 +263,7 @@ textarea{resize:none;line-height:1.6}
       </div>
     </div>
 
+    <!-- STEP 2: DATA ORANG TUA -->
     <div id="step-2" class="fade-in" style="display:none">
       <div class="card">
         <div class="card-header"><div class="card-hi"><i class="fa-solid fa-people-roof"></i></div><div class="card-ht">Data Orang Tua / Wali</div></div>
@@ -275,25 +278,56 @@ textarea{resize:none;line-height:1.6}
               <input type="text" id="ortu-ibu" required placeholder="NAMA IBU" oninput="this.value=this.value.toUpperCase()">
             </div>
           </div>
-          <div class="fg">
-            <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span><span class="fcnt" id="telp-cnt">0/13</span></label>
-            <div class="inp-pre">
-              <span class="inp-pre-txt">+62</span>
-              <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('telp-cnt').textContent=this.value.length+'/13'; checkTelpValid(this.value)">
-            </div>
-            <div class="field-hint" id="telp-hint" style="display:none"></div>
-          </div>
+          
           <div class="g2">
+            <!-- Pekerjaan Ayah -->
             <div class="fg">
               <label class="fl"><span>Pekerjaan Ayah <span class="req">*</span></span></label>
-              <input type="text" id="ortu-kerja-ayah" required placeholder="Pekerjaan">
+              <select id="ortu-kerja-ayah-sel" required onchange="toggleKerjaManual('ayah')">
+                <option value="" disabled selected>Pilih Pekerjaan Ayah</option>
+                <option value="PETANI">Petani / Pekebun</option>
+                <option value="BURUH">Buruh Harian Lepas</option>
+                <option value="PNS">PNS / ASN</option>
+                <option value="TNI/POLRI">TNI / POLRI</option>
+                <option value="KARYAWAN">Karyawan Swasta</option>
+                <option value="WIRASWASTA">Wiraswasta / Pedagang</option>
+                <option value="LAINNYA">Lainnya (Ketik Sendiri)</option>
+              </select>
+              <input type="text" id="ortu-kerja-ayah-manual" placeholder="Ketik pekerjaan ayah di sini" style="display:none; margin-top:8px;" oninput="this.value=this.value.toUpperCase()">
+            </div>
+            
+            <!-- Pekerjaan Ibu -->
+            <div class="fg">
+              <label class="fl"><span>Pekerjaan Ibu <span class="req">*</span></span></label>
+              <select id="ortu-kerja-ibu-sel" required onchange="toggleKerjaManual('ibu')">
+                <option value="" disabled selected>Pilih Pekerjaan Ibu</option>
+                <option value="IBU RUMAH TANGGA">Ibu Rumah Tangga (IRT)</option>
+                <option value="PETANI">Petani / Pekebun</option>
+                <option value="BURUH">Buruh Harian Lepas</option>
+                <option value="PNS">PNS / ASN</option>
+                <option value="KARYAWAN">Karyawan Swasta</option>
+                <option value="WIRASWASTA">Wiraswasta / Pedagang</option>
+                <option value="LAINNYA">Lainnya (Ketik Sendiri)</option>
+              </select>
+              <input type="text" id="ortu-kerja-ibu-manual" placeholder="Ketik pekerjaan ibu di sini" style="display:none; margin-top:8px;" oninput="this.value=this.value.toUpperCase()">
+            </div>
+          </div>
+
+          <div class="g2">
+            <div class="fg">
+              <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span><span class="fcnt" id="telp-cnt">0/13</span></label>
+              <div class="inp-pre">
+                <span class="inp-pre-txt">+62</span>
+                <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('telp-cnt').textContent=this.value.length+'/13'; checkTelpValid(this.value)">
+              </div>
+              <div class="field-hint" id="telp-hint" style="display:none"></div>
             </div>
             <div class="fg">
               <label class="fl"><span>Anak ke- / Dari <span class="req">*</span></span></label>
               <div style="display:flex; gap:5px; align-items:center">
-                <input type="text" id="anak-ke" required placeholder="Anak Ke" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
+                <input type="text" id="anak-ke" required placeholder="Ke" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
                 <span>dari</span>
-                <input type="text" id="jml-saudara" required placeholder="Bersaudara" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
+                <input type="text" id="jml-saudara" required placeholder="Sdr" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
               </div>
             </div>
           </div>
@@ -305,6 +339,7 @@ textarea{resize:none;line-height:1.6}
       </div>
     </div>
 
+    <!-- STEP 3: DOKUMEN -->
     <div id="step-3" class="fade-in" style="display:none">
       <div class="card">
         <div class="card-header"><div class="card-hi"><i class="fa-solid fa-file-image"></i></div><div class="card-ht">Upload Berkas Pendukung (Max 3MB)</div></div>
@@ -333,6 +368,7 @@ textarea{resize:none;line-height:1.6}
       </div>
     </div>
 
+    <!-- STEP 4: KONFIRMASI -->
     <div id="step-4" class="fade-in" style="display:none">
       <div class="card">
         <div class="card-header"><div class="card-hi"><i class="fa-solid fa-magnifying-glass-check"></i></div><div class="card-ht">Cek Kembali Ringkasan Data Anda</div></div>
@@ -352,6 +388,7 @@ textarea{resize:none;line-height:1.6}
   </form>
 </main>
 
+<!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="success-modal">
   <div class="modal">
     <div class="modal-hdr"><h3>Pendaftaran Sukses!</h3></div>
@@ -379,21 +416,47 @@ let fileData = { akta: null, kk: null };
 let totalPendaftarAktif = 0;
 let isUsiaValid = false;
 let isTelpValid = false;
+let isNikValid = false;
+let existingNikList = [];
 
 function fetchKuotaAwal() {
   fetch(SHEET_API).then(r => r.json()).then(data => {
     if(Array.isArray(data)) {
       totalPendaftarAktif = data.length;
+      existingNikList = data.map(item => item.nik); // Ambil daftar NIK yang sudah ada
       const sisa = Math.max(0, KUOTA_MAX - totalPendaftarAktif);
       const pct = Math.min(100, (totalPendaftarAktif / KUOTA_MAX) * 100);
       document.getElementById('quota-text').textContent = `${totalPendaftarAktif} / ${KUOTA_MAX} Kursi (Sisa ${sisa})`;
       document.getElementById('quota-fill').style.width = pct + '%';
+      document.getElementById('countdown-text').textContent = 'Database sinkron dengan server.';
       if(pct >= 100) {
         document.getElementById('btn-submit').disabled = true;
         document.getElementById('btn-submit').textContent = 'Kuota Penuh';
       }
     }
-  }).catch(()=>{});
+  }).catch(()=>{
+    document.getElementById('countdown-text').textContent = 'Gagal sinkronisasi data.';
+  });
+}
+
+function checkNikDuplicate(nikVal) {
+  const hint = document.getElementById('nik-hint');
+  if (nikVal.length < 16) {
+    hint.style.display = 'none';
+    isNikValid = false;
+    return;
+  }
+  hint.style.display = 'block';
+  
+  if (existingNikList.includes(nikVal)) {
+    hint.className = 'field-hint hint-err';
+    hint.innerHTML = `❌ NIK ini sudah terdaftar! Tidak bisa mendaftar dua kali.`;
+    isNikValid = false;
+  } else {
+    hint.className = 'field-hint hint-ok';
+    hint.innerHTML = `✔ NIK aman (Belum pernah terdaftar).`;
+    isNikValid = true;
+  }
 }
 
 function validateUsia() {
@@ -402,7 +465,7 @@ function validateUsia() {
   if (!tglInput) return;
   
   const tglLahir = new Date(tglInput);
-  const targetTgl = new Date('2026-07-01'); // Batas acuan aturan PPDB 2026
+  const targetTgl = new Date('2026-07-01');
   
   let usiaBulan = (targetTgl.getFullYear() - tglLahir.getFullYear()) * 12 + (targetTgl.getMonth() - tglLahir.getMonth());
   let tahun = Math.floor(usiaBulan / 12);
@@ -410,7 +473,6 @@ function validateUsia() {
 
   hint.style.display = 'block';
   
-  // Aturan Mutlak Sekolah Dasar: Idealnya 6 sampai 7 tahun ke atas
   if (tahun >= 6) {
     hint.className = 'field-hint hint-ok';
     hint.innerHTML = `✔ Usia anak per 1 Juli 2026: <b>${tahun} Tahun ${bulan} Bulan</b> (Memenuhi Syarat)`;
@@ -422,19 +484,39 @@ function validateUsia() {
   }
 }
 
+function toggleKerjaManual(role) {
+  const sel = document.getElementById(`ortu-kerja-${role}-sel`).value;
+  const manualInput = document.getElementById(`ortu-kerja-${role}-manual`);
+  if (sel === 'LAINNYA') {
+    manualInput.style.display = 'block';
+    manualInput.required = true;
+  } else {
+    manualInput.style.display = 'none';
+    manualInput.required = false;
+    manualInput.value = '';
+  }
+}
+
 function checkTelpValid(val) {
   const hint = document.getElementById('telp-hint');
   hint.style.display = 'block';
-  // Panjang nomor telp seluler Indonesia normalnya 10-13 digit (setelah angka 8)
   if (val.length >= 9 && val.length <= 13) {
     hint.className = 'field-hint hint-ok';
     hint.innerHTML = `✔ Nomor WhatsApp valid (+62 ${val})`;
     isTelpValid = true;
   } else {
     hint.className = 'field-hint hint-err';
-    hint.innerHTML = `❌ Nomor harus di antara 10 - 13 digit. (Sekarang: ${val.length+1} digit)`;
+    hint.innerHTML = `❌ Nomor harus di antara 10 - 13 digit.`;
     isTelpValid = false;
   }
+}
+
+function getPekerjaanValue(role) {
+  const sel = document.getElementById(`ortu-kerja-${role}-sel`).value;
+  if (sel === 'LAINNYA') {
+    return document.getElementById(`ortu-kerja-${role}-manual`).value.toUpperCase();
+  }
+  return sel;
 }
 
 function goStep(target) {
@@ -442,10 +524,12 @@ function goStep(target) {
     if (currentStep === 1) {
       if (!document.getElementById('siswa-nama').value.trim()) { toast('Nama siswa wajib diisi!','err'); return; }
       if (document.getElementById('siswa-nik').value.length !== 16) { toast('NIK harus bernilai tepat 16 digit!','err'); return; }
+      if (!isNikValid) { toast('Periksa kembali NIK Siswa. NIK ganda atau kurang digit tidak diperbolehkan!','err'); return; }
       if (!isUsiaValid) { toast('Usia anak belum memenuhi syarat minimal masuk SD!','err'); return; }
     }
     if (currentStep === 2) {
       if (!document.getElementById('ortu-ayah').value.trim() || !document.getElementById('ortu-ibu').value.trim()) { toast('Nama Orang Tua wajib diisi!','err'); return; }
+      if (!document.getElementById('ortu-kerja-ayah-sel').value || !document.getElementById('ortu-kerja-ibu-sel').value) { toast('Pekerjaan Ayah & Ibu wajib dipilih!','err'); return; }
       if (!isTelpValid) { toast('Format nomor ponsel WhatsApp salah atau kurang digit!','err'); return; }
     }
     if (currentStep === 3 && (!fileData.akta || !fileData.kk)) {
@@ -487,6 +571,7 @@ function buildReview() {
     ['NIK Siswa', document.getElementById('siswa-nik').value],
     ['Alamat Rumah', document.getElementById('siswa-alamat').value],
     ['Nama Orang Tua (Ayah/Ibu)', document.getElementById('ortu-ayah').value + ' / ' + document.getElementById('ortu-ibu').value],
+    ['Pekerjaan (Ayah/Ibu)', getPekerjaanValue('ayah') + ' / ' + getPekerjaanValue('ibu')],
     ['No. WhatsApp Wali', '+62 ' + document.getElementById('ortu-telp').value]
   ];
   document.getElementById('review-body').innerHTML = rows.map(([k,v]) => `
@@ -516,7 +601,8 @@ function handleFormSubmit(e) {
     alamat: document.getElementById('siswa-alamat').value,
     ayah: document.getElementById('ortu-ayah').value.toUpperCase(),
     ibu: document.getElementById('ortu-ibu').value.toUpperCase(),
-    kerja_ayah: document.getElementById('ortu-kerja-ayah').value,
+    kerja_ayah: getPekerjaanValue('ayah'),
+    kerja_ibu: getPekerjaanValue('ibu'),
     telp: '0' + document.getElementById('ortu-telp').value,
     anak_ke: document.getElementById('anak-ke').value,
     jml_saudara: document.getElementById('jml-saudara').value,
