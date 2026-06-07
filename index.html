@@ -33,28 +33,28 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .topbar-brand-text h1{font-family:'DM Serif Display',serif;font-size:14px;color:var(--g9);line-height:1.2}
 .topbar-brand-text p{font-size:10px;color:var(--g6);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 
-/* ===== HERO ===== */
-.hero{background:linear-gradient(160deg,var(--g9) 0%,var(--g8) 50%,#0d4a38 100%);position:relative;overflow:hidden;border-radius:0 0 var(--r2xl) var(--r2xl)}
-.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:22px 22px}
-.hero-glow{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(52,201,149,.18) 0%,transparent 70%);top:-100px;right:-60px;pointer-events:none}
+/* ===== HERO (Latar Belakang Menggunakan Foto Gedung Sekolah) ===== */
+.hero{background:linear-gradient(rgba(10, 61, 46, 0.88), rgba(13, 74, 56, 0.92)), url('https://sumbernews.id/wp-content/uploads/2022/08/LLLL.jpg');background-size:cover;background-position:center center;position:relative;overflow:hidden;border-radius:0 0 var(--r2xl) var(--r2xl)}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px}
+.hero-glow{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(52,201,149,.15) 0%,transparent 70%);top:-100px;right:-60px;pointer-events:none}
 .hero-content{position:relative;z-index:2;padding:32px 24px 28px;max-width:960px;margin:0 auto}
-.hero-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(52,201,149,.12);border:1px solid rgba(52,201,149,.28);color:var(--g3);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+.hero-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(52,201,149,.16);border:1px solid rgba(52,201,149,.35);color:var(--g3);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
 .hero-chip::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--g4);box-shadow:0 0 8px var(--g4);animation:pdot 2s ease-in-out infinite}
 @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(22px,5vw,32px);color:#fff;line-height:1.15;margin-bottom:8px}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(22px,5vw,32px);color:#fff;line-height:1.15;margin-bottom:8px;text-shadow:0 2px 4px rgba(0,0,0,0.3)}
 .hero-title em{font-style:italic;color:var(--g3)}
-.hero-sub{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.65;max-width:440px;margin-bottom:20px}
+.hero-sub{font-size:12.5px;color:rgba(255,255,255,.8);line-height:1.65;max-width:440px;margin-bottom:20px;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
 .hero-meta{display:flex;flex-wrap:wrap;gap:10px}
-.hero-mi{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);padding:7px 13px;border-radius:10px;font-size:11.5px;color:rgba(255,255,255,.7);backdrop-filter:blur(8px)}
+.hero-mi{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:10px;font-size:11.5px;color:rgba(255,255,255,.95);backdrop-filter:blur(8px);text-shadow:0 1px 2px rgba(0,0,0,0.2)}
 .hero-mi i{color:var(--g4);font-size:12px}
 
-.quota-bar-wrap{margin-top:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:var(--rmd);padding:14px 16px}
+.quota-bar-wrap{margin-top:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--rmd);padding:14px 16px;backdrop-filter:blur(4px)}
 .quota-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
-.quota-bar-label{font-size:11.5px;color:rgba(255,255,255,.65);font-weight:500}
+.quota-bar-label{font-size:11.5px;color:rgba(255,255,255,.85);font-weight:500}
 .quota-bar-val{font-size:12px;font-weight:700;color:var(--g3)}
-.quota-bar-track{height:6px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden}
+.quota-bar-track{height:6px;background:rgba(255,255,255,.2);border-radius:3px;overflow:hidden}
 .quota-bar-fill{height:100%;background:linear-gradient(90deg,var(--g5),var(--g3));border-radius:3px;transition:width .6s ease}
-.quota-countdown{margin-top:10px;font-size:11px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px}
+.quota-countdown{margin-top:10px;font-size:11px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:6px}
 .quota-countdown i{color:var(--a5)}
 
 /* ===== WRAPPER ===== */
@@ -191,6 +191,7 @@ textarea{resize:none;line-height:1.6}
   </div>
 
   <form id="spmb-form" onsubmit="handleFormSubmit(event)" autocomplete="off">
+    <!-- STEP 1: DATA SISWA -->
     <div id="step-1" class="fade-in">
       <div class="notice notice-green">
         <i class="fa-solid fa-circle-info"></i>
@@ -205,8 +206,8 @@ textarea{resize:none;line-height:1.6}
           </div>
           <div class="g2">
             <div class="fg">
-              <label class="fl"><span>NIK (16 Digit) <span class="req">*</span></span><span class="fcnt" id="nik-cnt">0/16</span></label>
-              <input type="text" id="siswa-nik" required maxlength="16" placeholder="Sesuai Kartu Keluarga" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('nik-cnt').textContent=this.value.length+'/16'; checkNikDuplicate(this.value)">
+              <label class="fl"><span>NIK (16 Digit) <span class="req">*</span></span></label>
+              <input type="text" id="siswa-nik" required maxlength="16" placeholder="Sesuai Kartu Keluarga" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); checkNikDuplicate(this.value)">
               <div class="field-hint" id="nik-hint" style="display:none"></div>
             </div>
             <div class="fg">
@@ -251,6 +252,7 @@ textarea{resize:none;line-height:1.6}
       </div>
     </div>
 
+    <!-- STEP 2: DATA ORANG TUA -->
     <div id="step-2" class="fade-in" style="display:none">
       <div class="card">
         <div class="card-header"><div class="card-hi"><i class="fa-solid fa-people-roof"></i></div><div class="card-ht">Data Orang Tua / Wali</div></div>
@@ -300,10 +302,10 @@ textarea{resize:none;line-height:1.6}
 
           <div class="g2">
             <div class="fg">
-              <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span><span class="fcnt" id="telp-cnt">0/13</span></label>
+              <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span></label>
               <div class="inp-pre">
                 <span class="inp-pre-txt">+62</span>
-                <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('telp-cnt').textContent=this.value.length+'/13'; checkTelpValid(this.value)">
+                <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); checkTelpValid(this.value)">
               </div>
               <div class="field-hint" id="telp-hint" style="display:none"></div>
             </div>
@@ -324,6 +326,7 @@ textarea{resize:none;line-height:1.6}
       </div>
     </div>
 
+    <!-- STEP 3: KONFIRMASI -->
     <div id="step-3" class="fade-in" style="display:none">
       <div class="notice">
         <i class="fa-solid fa-triangle-exclamation"></i>
@@ -347,6 +350,7 @@ textarea{resize:none;line-height:1.6}
   </form>
 </main>
 
+<!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="success-modal">
   <div class="modal">
     <div class="modal-hdr"><h3>Pendaftaran Sukses!</h3></div>
