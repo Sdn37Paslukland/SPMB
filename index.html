@@ -423,13 +423,13 @@ function fetchKuotaAwal() {
   fetch(SHEET_API).then(r => r.json()).then(data => {
     if(Array.isArray(data)) {
       totalPendaftarAktif = data.length;
-      existingNikList = data.map(item => item.nik); // Ambil daftar NIK yang sudah ada
+      existingNikList = data.map(item => item.nik ? item.nik.toString().trim() : "");
       const sisa = Math.max(0, KUOTA_MAX - totalPendaftarAktif);
-      const pct = Math.min(100, (totalPendaftarAktif / KUOTA_MAX) * 100);
+      const pct = Math.min(100, (totalPendaftarAktif / KUMAX) * 100);
       document.getElementById('quota-text').textContent = `${totalPendaftarAktif} / ${KUOTA_MAX} Kursi (Sisa ${sisa})`;
       document.getElementById('quota-fill').style.width = pct + '%';
       document.getElementById('countdown-text').textContent = 'Database sinkron dengan server.';
-      if(pct >= 100) {
+      if(totalPendaftarAktif >= KUOTA_MAX) {
         document.getElementById('btn-submit').disabled = true;
         document.getElementById('btn-submit').textContent = 'Kuota Penuh';
       }
@@ -441,14 +441,15 @@ function fetchKuotaAwal() {
 
 function checkNikDuplicate(nikVal) {
   const hint = document.getElementById('nik-hint');
-  if (nikVal.length < 16) {
+  const cleanNik = nikVal.trim();
+  if (cleanNik.length < 16) {
     hint.style.display = 'none';
     isNikValid = false;
     return;
   }
   hint.style.display = 'block';
   
-  if (existingNikList.includes(nikVal)) {
+  if (existingNikList.includes(cleanNik)) {
     hint.className = 'field-hint hint-err';
     hint.innerHTML = `❌ NIK ini sudah terdaftar! Tidak bisa mendaftar dua kali.`;
     isNikValid = false;
@@ -525,12 +526,22 @@ function goStep(target) {
       if (!document.getElementById('siswa-nama').value.trim()) { toast('Nama siswa wajib diisi!','err'); return; }
       if (document.getElementById('siswa-nik').value.length !== 16) { toast('NIK harus bernilai tepat 16 digit!','err'); return; }
       if (!isNikValid) { toast('Periksa kembali NIK Siswa. NIK ganda atau kurang digit tidak diperbolehkan!','err'); return; }
-      if (!isUsiaValid) { toast('Usia anak belum memenuhi syarat minimal masuk SD!','err'); return; }
+      if (!isUsiaValid) { toast('Usia anak belum memenuhi syarat minimal masuk SD (Minimal 6 tahun per 1 Juli 2026)!','err'); return; }
+      if (!document.getElementById('siswa-tempat-lahir').value.trim()) { toast('Tempat lahir wajib diisi!','err'); return; }
+      if (!document.getElementById('siswa-agama').value) { toast('Agama wajib dipilih!','err'); return; }
+      if (!document.getElementById('siswa-alamat').value.trim()) { toast('Alamat wajib diisi!','err'); return; }
     }
     if (currentStep === 2) {
       if (!document.getElementById('ortu-ayah').value.trim() || !document.getElementById('ortu-ibu').value.trim()) { toast('Nama Orang Tua wajib diisi!','err'); return; }
-      if (!document.getElementById('ortu-kerja-ayah-sel').value || !document.getElementById('ortu-kerja-ibu-sel').value) { toast('Pekerjaan Ayah & Ibu wajib dipilih!','err'); return; }
+      
+      const selAyah = document.getElementById('ortu-kerja-ayah-sel').value;
+      const selIbu = document.getElementById('ortu-kerja-ibu-sel').value;
+      if (!selAyah || !selIbu) { toast('Pekerjaan Ayah & Ibu wajib dipilih!','err'); return; }
+      if (selAyah === 'LAINNYA' && !document.getElementById('ortu-kerja-ayah-manual').value.trim()) { toast('Isi kolom ketik manual pekerjaan Ayah!','err'); return; }
+      if (selIbu === 'LAINNYA' && !document.getElementById('ortu-kerja-ibu-manual').value.trim()) { toast('Isi kolom ketik manual pekerjaan Ibu!','err'); return; }
+      
       if (!isTelpValid) { toast('Format nomor ponsel WhatsApp salah atau kurang digit!','err'); return; }
+      if (!document.getElementById('anak-ke').value || !document.getElementById('jml-saudara').value) { toast('Isi jumlah urutan anak & saudara dengan benar!','err'); return; }
     }
     if (currentStep === 3 && (!fileData.akta || !fileData.kk)) {
       toast('Anda wajib melampirkan file dokumen Akta dan KK!','err'); return;
@@ -549,10 +560,15 @@ function updateStepUI() {
   for (let i = 1; i <= 4; i++) {
     const dot = document.getElementById('dot-' + i);
     const lbl = document.getElementById('lbl-' + i);
-    dot.className = i < currentStep ? 'step-dot done' : i === currentStep ? 'step-dot active' : 'step-dot';
-    dot.textContent = i < currentStep ? '✓' : i;
+    if(dot) {
+      dot.className = i < currentStep ? 'step-dot done' : i === currentStep ? 'step-dot active' : 'step-dot';
+      dot.textContent = i < currentStep ? '✓' : i;
+    }
     if(lbl) lbl.className = i < currentStep ? 'step-label done' : i === currentStep ? 'step-label active' : 'step-label';
-    if(i <= 3) document.getElementById('line-' + i).className = i < currentStep ? 'step-line done' : 'step-line';
+    if(i <= 3) {
+      const line = document.getElementById('line-' + i);
+      if(line) line.className = i < currentStep ? 'step-line done' : 'step-line';
+    }
   }
 }
 
@@ -583,8 +599,15 @@ function buildReview() {
 
 function handleFormSubmit(e) {
   e.preventDefault();
+  
+  if(!document.getElementById('persetujuan').checked) {
+    toast('Anda harus menyetujui pernyataan kebenaran data terlebih dahulu!','err');
+    return;
+  }
+
   const btn = document.getElementById('btn-submit');
-  btn.disabled = true; btn.textContent = 'Memproses Kiriman...';
+  btn.disabled = true; 
+  btn.textContent = 'Memproses Kiriman...';
 
   const regId = `REG/SD37/2026/${String(totalPendaftarAktif + 1).padStart(3,'0')}`;
   const timestamp = new Date().toLocaleString('id-ID') + ' WIB';
@@ -596,7 +619,7 @@ function handleFormSubmit(e) {
     nisn: document.getElementById('siswa-nisn').value || '-',
     tempatLahir: document.getElementById('siswa-tempat-lahir').value.toUpperCase(),
     tanggalLahir: document.getElementById('siswa-tanggal-lahir').value,
-    gender: document.querySelector('input[name="gender"]:checked').value,
+    gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '-',
     agama: document.getElementById('siswa-agama').value,
     alamat: document.getElementById('siswa-alamat').value,
     ayah: document.getElementById('ortu-ayah').value.toUpperCase(),
@@ -606,13 +629,18 @@ function handleFormSubmit(e) {
     telp: '0' + document.getElementById('ortu-telp').value,
     anak_ke: document.getElementById('anak-ke').value,
     jml_saudara: document.getElementById('jml-saudara').value,
-    status: 'Terdaftar', timestamp
+    status: 'Terdaftar', 
+    timestamp: timestamp
   };
 
   fetch(SHEET_API, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ data: [payload] })
+  })
+  .then(res => {
+    if(!res.ok) throw new Error("Gagal menyimpan");
+    return res.json();
   })
   .then(() => {
     document.getElementById('receipt-id').textContent = payload.id;
@@ -621,11 +649,17 @@ function handleFormSubmit(e) {
     document.getElementById('receipt-date').textContent = payload.timestamp;
     document.getElementById('success-modal').classList.add('open');
   })
-  .catch(() => { toast('Koneksi bermasalah, silakan coba lagi!','err'); btn.disabled = false; btn.textContent = 'Kirim Formulir'; });
+  .catch((err) => { 
+    console.error(err);
+    toast('Koneksi bermasalah atau Server SheetDB penuh, silakan coba lagi!','err'); 
+    btn.disabled = false; 
+    btn.textContent = 'Kirim Formulir'; 
+  });
 }
 
 function toast(msg, type) {
   const wrap = document.getElementById('toast-wrap');
+  if(!wrap) return;
   const el = document.createElement('div');
   el.className = 'toast ' + (type==='err'?'toast-err':'toast-ok');
   el.innerHTML = `<span>${msg}</span>`;
