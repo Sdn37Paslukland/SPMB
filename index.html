@@ -16,130 +16,167 @@
   --gr5:#7a9088;--gr4:#a0b5ae;--gr3:#ccddd7;--gr2:#e4eee9;
   --gr1:#f2f7f4;--gr0:#f8fbf9;
   --white:#fff;
-  --shsm:0 1px 3px rgba(10,63,46,.06),0 1px 2px rgba(10,63,46,.04);
-  --shmd:0 4px 16px rgba(10,63,46,.08),0 2px 6px rgba(10,63,46,.05);
+  --shsm:0 4px 6px -1px rgba(10,63,46,.05), 0 2px 4px -1px rgba(10,63,46,.03);
+  --shmd:0 10px 15px -3px rgba(10,63,46,.08), 0 4px 6px -2px rgba(10,63,46,.04);
+  --shlg:0 20px 25px -5px rgba(10,63,46,.1), 0 10px 10px -5px rgba(10,63,46,.04);
   --rsm:8px;--rmd:12px;--rlg:16px;--rxl:20px;--r2xl:28px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--gr1);color:var(--gr9);min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 10% -10%,rgba(34,168,120,.10) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 90% 110%,rgba(26,138,98,.08) 0%,transparent 55%);pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 10% -10%,rgba(34,168,120,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 90% 110%,rgba(26,138,98,.09) 0%,transparent 55%);pointer-events:none;z-index:0}
 
 /* ===== TOPBAR ===== */
-.topbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(34,168,120,.12);box-shadow:0 2px 20px rgba(10,63,46,.06)}
-.topbar-inner{max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:62px}
-.topbar-brand{display:flex;align-items:center;gap:11px}
-.topbar-logo{width:40px;height:40px;background:linear-gradient(135deg,var(--g7),var(--g5));border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 4px 12px rgba(34,168,120,.32);flex-shrink:0}
-.topbar-brand-text h1{font-family:'DM Serif Display',serif;font-size:14px;color:var(--g9);line-height:1.2}
-.topbar-brand-text p{font-size:10px;color:var(--g6);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.topbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(34,168,120,.12);box-shadow:0 2px 20px rgba(10,63,46,.04)}
+.topbar-inner{max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.topbar-brand{display:flex;align-items:center;gap:12px}
+.topbar-logo{width:42px;height:42px;background:linear-gradient(135deg,var(--g7),var(--g5));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(34,168,120,.3);flex-shrink:0}
+.topbar-brand-text h1{font-family:'DM Serif Display',serif;font-size:15px;color:var(--g9);line-height:1.2}
+.topbar-brand-text p{font-size:10px;color:var(--g6);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
 
-/* ===== HERO (Latar Belakang Menggunakan Foto Gedung Sekolah) ===== */
-.hero{background:linear-gradient(rgba(10, 61, 46, 0.88), rgba(13, 74, 56, 0.92)), url('https://sumbernews.id/wp-content/uploads/2022/08/LLLL.jpg');background-size:cover;background-position:center center;position:relative;overflow:hidden;border-radius:0 0 var(--r2xl) var(--r2xl)}
-.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px}
-.hero-glow{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(52,201,149,.15) 0%,transparent 70%);top:-100px;right:-60px;pointer-events:none}
-.hero-content{position:relative;z-index:2;padding:32px 24px 28px;max-width:960px;margin:0 auto}
-.hero-chip{display:inline-flex;align-items:center;gap:7px;background:rgba(52,201,149,.16);border:1px solid rgba(52,201,149,.35);color:var(--g3);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
-.hero-chip::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--g4);box-shadow:0 0 8px var(--g4);animation:pdot 2s ease-in-out infinite}
-@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(22px,5vw,32px);color:#fff;line-height:1.15;margin-bottom:8px;text-shadow:0 2px 4px rgba(0,0,0,0.3)}
-.hero-title em{font-style:italic;color:var(--g3)}
-.hero-sub{font-size:12.5px;color:rgba(255,255,255,.8);line-height:1.65;max-width:440px;margin-bottom:20px;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
-.hero-meta{display:flex;flex-wrap:wrap;gap:10px}
-.hero-mi{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:10px;font-size:11.5px;color:rgba(255,255,255,.95);backdrop-filter:blur(8px);text-shadow:0 1px 2px rgba(0,0,0,0.2)}
-.hero-mi i{color:var(--g4);font-size:12px}
+/* ===== HERO ===== */
+.hero{background:linear-gradient(rgba(8, 48, 36, 0.88), rgba(11, 64, 49, 0.93)), url('https://sumbernews.id/wp-content/uploads/2022/08/LLLL.jpg');background-size:cover;background-position:center center;position:relative;overflow:hidden;border-radius:0 0 var(--r2xl) var(--r2xl);box-shadow:var(--shmd)}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px}
+.hero-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(52,201,149,.18) 0%,transparent 70%);top:-120px;right:-80px;pointer-events:none}
+.hero-content{position:relative;z-index:2;padding:40px 24px 36px;max-width:960px;margin:0 auto}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(52,201,149,.16);border:1px solid rgba(52,201,149,.35);color:var(--g3);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.hero-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g4);box-shadow:0 0 8px var(--g4);animation:pdot 2s ease-in-out infinite}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,5.5vw,36px);color:#fff;line-height:1.2;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,0.4)}
+.hero-title em{font-style:normal;color:var(--g3);background:linear-gradient(to right, #a8edce, #6ddcb4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.82);line-height:1.7;max-width:480px;margin-bottom:24px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-mi{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:8px 14px;border-radius:12px;font-size:12px;color:rgba(255,255,255,.95);backdrop-filter:blur(8px);transition:all 0.3s}
+.hero-mi:hover{background:rgba(255,255,255,.14);transform:translateY(-1px)}
+.hero-mi i{color:var(--g3);font-size:13px}
 
-.quota-bar-wrap{margin-top:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--rmd);padding:14px 16px;backdrop-filter:blur(4px)}
-.quota-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
-.quota-bar-label{font-size:11.5px;color:rgba(255,255,255,.85);font-weight:500}
-.quota-bar-val{font-size:12px;font-weight:700;color:var(--g3)}
-.quota-bar-track{height:6px;background:rgba(255,255,255,.2);border-radius:3px;overflow:hidden}
-.quota-bar-fill{height:100%;background:linear-gradient(90deg,var(--g5),var(--g3));border-radius:3px;transition:width .6s ease}
-.quota-countdown{margin-top:10px;font-size:11px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:6px}
-.quota-countdown i{color:var(--a5)}
+.quota-bar-wrap{margin-top:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--rmd);padding:16px;backdrop-filter:blur(10px);box-shadow:inset 0 1px 1px rgba(255,255,255,0.1)}
+.quota-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.quota-bar-label{font-size:12px;color:rgba(255,255,255,.9);font-weight:600;display:flex;align-items:center;gap:6px}
+.quota-bar-val{font-size:13px;font-weight:700;color:var(--g3)}
+.quota-bar-track{height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,0.2)}
+.quota-bar-fill{height:100%;background:linear-gradient(90deg,var(--g5),var(--g3));border-radius:4px;transition:width 0.8s cubic-bezier(0.4, 0, 0.2, 1)}
+.quota-countdown{margin-top:12px;font-size:11.5px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:7px}
+.quota-countdown i{color:var(--a5);animation:pulse 1.5s infinite}
+@keyframes pulse { 0%,100% {transform:scale(1);} 50% {transform:scale(1.15);} }
 
 /* ===== WRAPPER ===== */
 .wrapper{max-width:960px;margin:0 auto;padding:0 20px 60px;position:relative;z-index:1}
 
 /* ===== STEP INDICATOR ===== */
-.step-indicator{background:var(--white);border-radius:var(--rlg);padding:14px 18px;box-shadow:var(--shsm);border:1px solid var(--gr2);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 18px}
-.step-list{display:flex;align-items:center;flex:1;gap:0;justify-content:space-between}
-.step-item{display:flex;align-items:center;gap:7px}
-.step-dot{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;border:2px solid var(--gr2);background:var(--white);color:var(--gr4);transition:all .3s}
-.step-dot.active{background:var(--g7);border-color:var(--g7);color:#fff;box-shadow:0 0 0 4px rgba(34,168,120,.15)}
-.step-dot.done{background:var(--g1);border-color:var(--g3);color:var(--g7)}
-.step-label{font-size:11px;font-weight:500;color:var(--gr4);white-space:nowrap}
+.step-indicator{background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);border-radius:var(--rlg);padding:16px 20px;box-shadow:var(--shsm);border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0}
+.step-list{display:flex;align-items:center;flex:1;justify-content:space-between}
+.step-item{display:flex;align-items:center;gap:9px}
+.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;border:2px solid var(--gr3);background:var(--white);color:var(--gr5);transition:all .3s ease}
+.step-dot.active{background:var(--g7);border-color:var(--g7);color:#fff;box-shadow:0 0 0 4px rgba(34,168,120,.2)}
+.step-dot.done{background:var(--g1);border-color:var(--g4);color:var(--g7)}
+.step-label{font-size:12px;font-weight:600;color:var(--gr5);white-space:nowrap;transition:color 0.3s}
 .step-label.active{color:var(--g8);font-weight:700}
 .step-label.done{color:var(--g6)}
-.step-line{flex:1;height:2px;background:var(--gr2);margin:0 8px;border-radius:2px;transition:background .3s}
-.step-line.done{background:var(--g3)}
+.step-line{flex:1;height:2px;background:var(--gr3);margin:0 12px;border-radius:2px;transition:background .4s ease}
+.step-line.done{background:var(--g4)}
 
-/* ===== CARD ===== */
-.card{background:var(--white);border-radius:var(--rxl);border:1px solid var(--gr2);box-shadow:var(--shsm);overflow:hidden;margin-bottom:16px}
-.card-header{padding:16px 20px 13px;border-bottom:1px solid var(--gr1);display:flex;align-items:center;gap:10px}
-.card-hi{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--g1);color:var(--g7);flex-shrink:0}
-.card-ht{font-size:13px;font-weight:700;color:var(--gr9)}
-.card-body{padding:18px 20px}
+/* ===== CARD (GLASSMORPHISM) ===== */
+.card{background:rgba(255, 255, 255, 0.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:var(--rxl);border:1px solid rgba(255,255,255,0.6);box-shadow:var(--shmd);overflow:hidden;margin-bottom:20px;transition:transform 0.3s, box-shadow 0.3s}
+.card:hover{box-shadow:var(--shlg)}
+.card-header{padding:18px 24px;border-bottom:1px solid rgba(34,168,120,.08);display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.3)}
+.card-hi{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;background:var(--g1);color:var(--g7);flex-shrink:0;box-shadow:0 2px 6px rgba(34,168,120,0.1)}
+.card-ht{font-size:14px;font-weight:700;color:var(--gr8);letter-spacing:0.2px}
+.card-body{padding:24px}
 
 /* ===== FORM ELEMENTS ===== */
-.fg{margin-bottom:14px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-@media(max-width:520px){.g2{grid-template-columns:1fr;gap:10px}.step-label{display:none}}
-label.fl{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:600;color:var(--gr7);margin-bottom:5px}
-label.fl .req{color:var(--r5)}
-label.fl .opt{color:var(--gr4);font-weight:400}
-label.fl .fcnt{font-size:10px;font-weight:600}
-input[type=text],input[type=date],select,textarea{width:100%;background:var(--gr0);border:1.5px solid var(--gr2);border-radius:var(--rmd);padding:10px 14px;font-size:12.5px;color:var(--gr9);font-family:'DM Sans',sans-serif;outline:none;transition:all .2s;appearance:none}
-input:focus,select:focus,textarea:focus{border-color:var(--g5);background:var(--white);box-shadow:0 0 0 3px rgba(34,168,120,.11)}
-input.err,select.err,textarea.err{border-color:var(--r5);background:var(--r0)}
+.fg{margin-bottom:18px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:520px){.g2{grid-template-columns:1fr;gap:14px}.step-label{display:none}}
+label.fl{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--gr7);margin-bottom:6px}
+label.fl .req{color:var(--r5);margin-left:2px}
+label.fl .opt{color:var(--gr5);font-weight:400;font-size:11px}
+label.fl .fcnt{font-size:10.5px;font-weight:700;color:var(--gr5);background:var(--gr2);padding:2px 6px;border-radius:10px}
+input[type=text],input[type=date],select,textarea{width:100%;background:rgba(255,255,255,0.7);border:1.5px solid var(--gr3);border-radius:var(--rmd);padding:11px 14px;font-size:13px;color:var(--gr9);font-family:'DM Sans',sans-serif;outline:none;transition:all .25s ease;appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--g5);background:var(--white);box-shadow:0 0 0 4px rgba(34,168,120,.14)}
+
+/* Dynamic Input Errors State */
+input.input-err-active, select.input-err-active, textarea.input-err-active{border-color:var(--r5) !important;background:var(--r0) !important;box-shadow:0 0 0 4px rgba(239,68,68,.14) !important}
+
 input::placeholder,textarea::placeholder{color:var(--gr4)}
 textarea{resize:none;line-height:1.6}
 .inp-pre{position:relative}
-.inp-pre-txt{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:var(--gr5);pointer-events:none;z-index:1}
-.inp-pre input{padding-left:44px}
-.radio-grp{display:flex;gap:10px}
-.radio-opt{flex:1;display:flex;align-items:center;gap:8px;padding:10px 13px;background:var(--gr0);border:1.5px solid var(--gr2);border-radius:var(--rmd);cursor:pointer;font-size:12.5px;font-weight:500;color:var(--gr7);transition:all .2s}
-.radio-opt:has(input:checked){border-color:var(--g5);background:var(--g0);color:var(--g8)}
-.radio-opt input{accent-color:var(--g6)}
+.inp-pre-txt{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:700;color:var(--gr6);pointer-events:none;z-index:1}
+.inp-pre input{padding-left:46px}
+.radio-grp{display:flex;gap:12px}
+.radio-opt{flex:1;display:flex;align-items:center;gap:10px;padding:11px 14px;background:rgba(255,255,255,0.6);border:1.5px solid var(--gr3);border-radius:var(--rmd);cursor:pointer;font-size:13px;font-weight:600;color:var(--gr7);transition:all .2s ease}
+.radio-opt:hover{background:rgba(255,255,255,0.9);border-color:var(--gr4)}
+.radio-opt:has(input:checked){border-color:var(--g5);background:var(--g0);color:var(--g8);box-shadow:0 2px 6px rgba(34,168,120,0.06)}
+.radio-opt input{accent-color:var(--g6);width:16px;height:16px}
 
 /* ===== NOTICE & HINT ===== */
-.notice{background:var(--a0);border:1px solid #fde68a;border-radius:var(--rmd);padding:11px 13px;font-size:11.5px;color:#92400e;display:flex;gap:9px;line-height:1.55;margin-bottom:14px}
-.notice i{color:var(--a5);flex-shrink:0;margin-top:1px}
-.notice-green{background:var(--g0);border-color:rgba(34,168,120,.2);color:var(--g8)}
+.notice{background:var(--a0);border:1px solid rgba(245,158,11,0.25);border-radius:var(--rmd);padding:12px 16px;font-size:12px;color:#92400e;display:flex;gap:10px;line-height:1.6;margin-bottom:18px;box-shadow:0 2px 4px rgba(245,158,11,0.03)}
+.notice i{color:var(--a5);flex-shrink:0;margin-top:2px;font-size:13px}
+.notice-green{background:var(--g0);border-color:rgba(34,168,120,.22);color:var(--g9)}
 .notice-green i{color:var(--g6)}
-.field-hint{font-size:11px;margin-top:5px;font-weight:500}
-.hint-ok{color:var(--g7)}
+.field-hint{font-size:11.5px;margin-top:6px;font-weight:600;display:flex;align-items:center;gap:4px}
+.hint-ok{color:var(--g8)}
 .hint-err{color:var(--r5)}
 
 /* ===== BUTTONS ===== */
-.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:var(--rmd);font-size:12.5px;font-weight:700;font-family:'DM Sans',sans-serif;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn-primary{background:linear-gradient(135deg,var(--g7),var(--g6));color:#fff;box-shadow:0 4px 14px rgba(17,106,75,.32)}
-.btn-primary:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 20px rgba(17,106,75,.42)}
-.btn-sec{background:var(--white);color:var(--gr7);border:1.5px solid var(--gr2)}
-.form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--rmd);font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;border:none;cursor:pointer;transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);white-space:nowrap}
 
-/* ===== MODAL ===== */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,15,13,.52);backdrop-filter:blur(8px);z-index:300;justify-content:center;align-items:center;padding:20px}
+/* Active State Button */
+.btn-primary{background:linear-gradient(135deg,var(--g7),var(--g6));color:#fff;box-shadow:0 4px 14px rgba(17,106,75,.28)}
+.btn-primary:hover:not(:disabled){transform:translateY(-1.5px);box-shadow:0 6px 20px rgba(17,106,75,.38)}
+
+/* Locked State Button CSS UI Fix */
+.btn-primary:disabled{background:var(--gr3) !important;color:var(--gr5) !important;box-shadow:none !important;cursor:not-allowed;opacity:0.85}
+
+.btn-sec{background:rgba(255,255,255,0.8);color:var(--gr7);border:1.5px solid var(--gr3);box-shadow:var(--shsm)}
+.btn-sec:hover{background:var(--white);border-color:var(--gr4);transform:translateY(-1px)}
+.btn-wa{background:linear-gradient(135deg, #25d366, #1ebd54);color:#fff;box-shadow:0 4px 14px rgba(37,211,102,0.25);width:100%;justify-content:center;font-size:13.5px;padding:13px}
+.btn-wa:hover{box-shadow:0 6px 20px rgba(37,211,102,0.35);transform:translateY(-1px)}
+.form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px}
+
+/* ===== MODAL & PREMIUM RESI ===== */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,18,14,.6);backdrop-filter:blur(10px);z-index:300;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.open{display:flex}
-.modal{background:var(--white);border-radius:var(--r2xl);width:100%;max-width:440px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.1)}
-.modal-hdr{padding:26px 24px 18px;text-align:center;background:linear-gradient(160deg,var(--g9),var(--g7))}
-.modal-hdr h3{font-family:'DM Serif Display',serif;font-size:19px;color:#fff}
-.receipt-body{padding:22px 24px}
-.receipt-hdr{text-align:center;margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed var(--gr2)}
-.receipt-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--gr1)}
-.rv{font-weight:600;color:var(--gr9)}
-.rv.accent{color:var(--g7)}
-.modal-ftr{padding:14px 22px;background:var(--gr0);border-top:1px solid var(--gr1);display:flex;gap:9px}
-.modal-ftr .btn{flex:1;justify-content:center}
+.modal{background:var(--white);border-radius:var(--r2xl);width:100%;max-width:440px;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);animation:modalAnim 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both}
+@keyframes modalAnim{from{opacity:0;transform:scale(0.92) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-hdr{padding:26px 24px 20px;text-align:center;background:linear-gradient(135deg,var(--g9),var(--g7))}
+.modal-hdr h3{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;letter-spacing:0.3px}
+.receipt-body{padding:24px}
+
+/* Resi Design (Tear-off ticket style) */
+.receipt-card{background:var(--gr0);border:1px solid var(--gr3);border-radius:var(--rmd);padding:20px;position:relative;box-shadow:inset 0 0 20px rgba(0,0,0,0.01)}
+.receipt-card::before, .receipt-card::after{content:'';position:absolute;width:16px;height:16px;background:var(--white);border:1px solid var(--gr3);border-radius:50%;top:64px}
+.receipt-card::before{left:-9px;box-shadow:inset -2px 0 4px rgba(0,0,0,0.02)}
+.receipt-card::after{right:-9px;box-shadow:inset 2px 0 4px rgba(0,0,0,0.02)}
+
+.receipt-hdr{text-align:center;margin-bottom:16px;padding-bottom:14px;border-bottom:1.5px dashed var(--gr3)}
+.receipt-hdr h4{font-size:13px;color:var(--g9);letter-spacing:0.8px;font-weight:700}
+.receipt-hdr p{font-size:10.5px;color:var(--gr5);margin-top:4px;font-weight:500}
+.receipt-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);font-size:12.5px}
+.receipt-row:last-of-type{border-bottom:none;padding-bottom:0}
+.rv{font-weight:700;color:var(--gr9);text-align:right;max-width:62%;word-break:break-word}
+.rv.accent{color:var(--g7);font-family:monospace;font-size:14px;background:var(--g1);padding:1px 6px;border-radius:4px}
+.modal-ftr{padding:16px 24px 20px;background:var(--gr1);border-top:1px solid var(--gr2);display:flex;flex-direction:column;gap:10px}
+.modal-ftr-btns{display:flex;gap:10px}
+.modal-ftr-btns .btn{flex:1;justify-content:center}
+
+/* ===== LOCKOUT SCREEN ===== */
+#lockout-screen{background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border:2px solid var(--r5);border-radius:var(--rxl);padding:40px 24px;text-align:center;box-shadow:var(--shlg);margin-top:24px}
+#lockout-screen i{font-size:52px;color:var(--r5);margin-bottom:18px;animation:shake 0.5s ease infinite alternate}
+@keyframes shake { from{transform:translateY(0)} to{transform:translateY(-4px)} }
+#lockout-screen h3{font-family:'DM Serif Display',serif;font-size:24px;color:var(--gr9);margin-bottom:10px}
+#lockout-screen p{font-size:13.5px;color:var(--gr6);line-height:1.65}
 
 /* ===== TOAST ===== */
 #toast-wrap{position:fixed;bottom:24px;right:24px;z-index:600;display:flex;flex-direction:column;gap:8px}
-.toast{background:var(--gr9);color:#fff;padding:12px 18px;border-radius:var(--rmd);font-size:12.5px;font-weight:500;box-shadow:0 4px 12px rgba(0,0,0,0.15);animation:tslide 0.3s ease forwards}
-@keyframes tslide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.toast-err{background:#b91c1c}
-.toast-ok{background:var(--g8)}
+.toast{background:var(--gr9);color:#fff;padding:14px 20px;border-radius:var(--rmd);font-size:13px;font-weight:600;box-shadow:var(--shlg);animation:tslide 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;display:flex;align-items:center;gap:8px}
+@keyframes tslide{from{opacity:0;transform:translateY(20px) scale(0.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+.toast-err{background:linear-gradient(135deg, #b91c1c, #991b1b);border-left:4px solid #f87171}
+.toast-ok{background:linear-gradient(135deg, var(--g8), var(--g9));border-left:4px solid var(--g4)}
 
-.fade-in{animation:fadeIn .4s ease both}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* Smooth Step Transitions Animation */
+.slide-step-in{animation:slideStepIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) both}
+@keyframes slideStepIn{from{opacity:0;transform:translateX(15px)}to{opacity:1;transform:translateX(0)}}
 </style>
 </head>
 <body>
@@ -170,7 +207,7 @@ textarea{resize:none;line-height:1.6}
     </div>
     <div class="quota-bar-wrap">
       <div class="quota-bar-top">
-        <span class="quota-bar-label"><i class="fa-solid fa-chair" style="margin-right:5px;"></i>Kuota Kursi</span>
+        <span class="quota-bar-label"><i class="fa-solid fa-chair"></i>Kuota Kursi</span>
         <span class="quota-bar-val" id="quota-text">— / 60 kursi</span>
       </div>
       <div class="quota-bar-track"><div class="quota-bar-fill" id="quota-fill" style="width:0%"></div></div>
@@ -179,8 +216,8 @@ textarea{resize:none;line-height:1.6}
   </div>
 </div>
 
-<main class="wrapper">
-  <div class="step-indicator">
+<main class="wrapper" id="main-content">
+  <div class="step-indicator" id="step-nav">
     <div class="step-list">
       <div class="step-item"><div class="step-dot active" id="dot-1">1</div><span class="step-label active" id="lbl-1">Data Siswa</span></div>
       <div class="step-line" id="line-1"></div>
@@ -191,8 +228,7 @@ textarea{resize:none;line-height:1.6}
   </div>
 
   <form id="spmb-form" onsubmit="handleFormSubmit(event)" autocomplete="off">
-    <!-- STEP 1: DATA SISWA -->
-    <div id="step-1" class="fade-in">
+    <div id="step-1" class="slide-step-in">
       <div class="notice notice-green">
         <i class="fa-solid fa-circle-info"></i>
         <span>Aturan Batas Umur: Prioritas utama adalah anak berusia minimal **6 hingga 7 tahun** per tanggal 1 Juli 2026.</span>
@@ -206,8 +242,8 @@ textarea{resize:none;line-height:1.6}
           </div>
           <div class="g2">
             <div class="fg">
-              <label class="fl"><span>NIK (16 Digit) <span class="req">*</span></span></label>
-              <input type="text" id="siswa-nik" required maxlength="16" placeholder="Sesuai Kartu Keluarga" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); checkNikDuplicate(this.value)">
+              <label class="fl"><span>NIK (16 Digit) <span class="req">*</span></span><span class="fcnt" id="nik-cnt">0/16</span></label>
+              <input type="text" id="siswa-nik" required maxlength="16" placeholder="Sesuai Kartu Keluarga" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('nik-cnt').textContent=this.value.length+'/16'; checkNikDuplicate(this.value)">
               <div class="field-hint" id="nik-hint" style="display:none"></div>
             </div>
             <div class="fg">
@@ -248,23 +284,22 @@ textarea{resize:none;line-height:1.6}
       </div>
       <div class="form-actions">
         <div></div>
-        <button type="button" onclick="goStep(2)" class="btn btn-primary">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+        <button type="button" id="btn-next-1" onclick="goStep(2)" class="btn btn-primary" disabled><i class="fa-solid fa-lock" id="lock-icon-1"></i> Lanjut <i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
 
-    <!-- STEP 2: DATA ORANG TUA -->
-    <div id="step-2" class="fade-in" style="display:none">
+    <div id="step-2" class="slide-step-in" style="display:none">
       <div class="card">
         <div class="card-header"><div class="card-hi"><i class="fa-solid fa-people-roof"></i></div><div class="card-ht">Data Orang Tua / Wali</div></div>
         <div class="card-body">
           <div class="g2">
             <div class="fg">
               <label class="fl"><span>Nama Ayah Kandung <span class="req">*</span></span></label>
-              <input type="text" id="ortu-ayah" required placeholder="NAMA AYAH" oninput="this.value=this.value.toUpperCase()">
+              <input type="text" id="ortu-ayah" required placeholder="NAMA AYAH" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
             </div>
             <div class="fg">
               <label class="fl"><span>Nama Ibu Kandung <span class="req">*</span></span></label>
-              <input type="text" id="ortu-ibu" required placeholder="NAMA IBU" oninput="this.value=this.value.toUpperCase()">
+              <input type="text" id="ortu-ibu" required placeholder="NAMA IBU" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
             </div>
           </div>
           
@@ -302,10 +337,10 @@ textarea{resize:none;line-height:1.6}
 
           <div class="g2">
             <div class="fg">
-              <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span></label>
+              <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span><span class="fcnt" id="telp-cnt">0/13</span></label>
               <div class="inp-pre">
                 <span class="inp-pre-txt">+62</span>
-                <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); checkTelpValid(this.value)">
+                <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('telp-cnt').textContent=this.value.length+'/13'; checkTelpValid(this.value)">
               </div>
               <div class="field-hint" id="telp-hint" style="display:none"></div>
             </div>
@@ -322,15 +357,14 @@ textarea{resize:none;line-height:1.6}
       </div>
       <div class="form-actions">
         <button type="button" onclick="goStep(1)" class="btn btn-sec"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
-        <button type="button" onclick="goStep(3)" class="btn btn-primary">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+        <button type="button" id="btn-next-2" onclick="goStep(3)" class="btn btn-primary" disabled><i class="fa-solid fa-lock" id="lock-icon-2"></i> Lanjut <i class="fa-solid fa-arrow-right"></i></button>
       </div>
     </div>
 
-    <!-- STEP 3: KONFIRMASI -->
-    <div id="step-3" class="fade-in" style="display:none">
+    <div id="step-3" class="slide-step-in" style="display:none">
       <div class="notice">
         <i class="fa-solid fa-triangle-exclamation"></i>
-        <span><b>Pemberitahuan:</b> Pendaftaran online ini tidak memungut biaya berkas gambar. Mohon membawa fotokopi <b>Akta Kelahiran</b> dan <b>Kartu Keluarga (KK)</b> asli saat verifikasi ke sekolah.</span>
+        <span><b>Pemberitahuan Berkas:</b> Pendaftaran online ini tidak memungut upload berkas berkas gambar. Mohon membawa fotokopi <b>Akta Kelahiran</b> dan <b>Kartu Keluarga (KK)</b> asli saat verifikasi berkas langsung ke sekolah.</span>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-hi"><i class="fa-solid fa-magnifying-glass-check"></i></div><div class="card-ht">Cek Kembali Ringkasan Data Anda</div></div>
@@ -350,20 +384,24 @@ textarea{resize:none;line-height:1.6}
   </form>
 </main>
 
-<!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="success-modal">
   <div class="modal">
     <div class="modal-hdr"><h3>Pendaftaran Sukses!</h3></div>
     <div class="receipt-body">
-      <div class="receipt-hdr"><h4>BUKTI PENDAFTARAN ONLINE PPDB</h4><p id="receipt-date">—</p></div>
-      <div class="receipt-row"><span>No. Registrasi</span><span class="rv accent" id="receipt-id">—</span></div>
-      <div class="receipt-row"><span>Nama Calon Siswa</span><span class="rv" id="receipt-name">—</span></div>
-      <div class="receipt-row"><span>NIK Siswa</span><span class="rv" id="receipt-nik">—</span></div>
-      <p style="font-size:11px; color:var(--g8); text-align:center; margin-top:15px; padding:8px; background:var(--g0); border-radius:6px">Silakan screenshot/cetak halaman ini untuk diserahkan saat verifikasi berkas fisik di sekolah.</p>
+      <div class="receipt-card">
+        <div class="receipt-hdr"><h4>BUKTI PENDAFTARAN ONLINE PPDB</h4><p id="receipt-date">—</p></div>
+        <div class="receipt-row"><span>No. Registrasi</span><span class="rv accent" id="receipt-id">—</span></div>
+        <div class="receipt-row"><span>Nama Calon Siswa</span><span class="rv" id="receipt-name">—</span></div>
+        <div class="receipt-row"><span>NIK Siswa</span><span class="rv" id="receipt-nik">—</span></div>
+        <p style="font-size:11.5px; color:var(--g8); text-align:center; margin-top:14px; padding:8px; background:var(--g0); border-radius:6px; font-weight:600">Silakan screenshot/cetak bukti ini lalu tekan tombol Hijau di bawah untuk konfirmasi ke WhatsApp Panitia.</p>
+      </div>
     </div>
     <div class="modal-ftr">
-      <button class="btn btn-sec" onclick="window.print()">Cetak</button>
-      <button class="btn btn-primary" onclick="location.reload()">Selesai</button>
+      <button class="btn btn-wa" id="btn-wa-confirm"><i class="fa-brands fa-whatsapp"></i> Hubungi Panitia (WA)</button>
+      <div class="modal-ftr-btns">
+        <button class="btn btn-sec" onclick="window.print()"><i class="fa-solid fa-print"></i> Cetak</button>
+        <button class="btn btn-primary" onclick="location.reload()">Selesai</button>
+      </div>
     </div>
   </div>
 </div>
@@ -373,6 +411,8 @@ textarea{resize:none;line-height:1.6}
 <script>
 const SHEET_API = 'https://sheetdb.io/api/v1/7mf16prngcydq';
 const KUOTA_MAX = 60;
+const WA_PANITIA = '6285266710437'; 
+
 let currentStep = 1;
 let totalPendaftarAktif = 0;
 let isUsiaValid = false;
@@ -390,9 +430,9 @@ function fetchKuotaAwal() {
       document.getElementById('quota-text').textContent = `${totalPendaftarAktif} / ${KUOTA_MAX} Kursi (Sisa ${sisa})`;
       document.getElementById('quota-fill').style.width = pct + '%';
       document.getElementById('countdown-text').textContent = 'Database sinkron dengan server.';
+      
       if(totalPendaftarAktif >= KUOTA_MAX) {
-        document.getElementById('btn-submit').disabled = true;
-        document.getElementById('btn-submit').textContent = 'Kuota Penuh';
+        lockoutSystem();
       }
     }
   }).catch(()=>{
@@ -400,30 +440,49 @@ function fetchKuotaAwal() {
   });
 }
 
+function lockoutSystem() {
+  const mainContent = document.getElementById('main-content');
+  mainContent.innerHTML = `
+    <div id="lockout-screen" class="slide-step-in">
+      <i class="fa-solid fa-circle-xmark"></i>
+      <h3>Pendaftaran Jalur Online Ditutup</h3>
+      <p>Mohon maaf, kuota penerimaan melalui jalur online pendaftaran mandiri (60 Kursi) saat ini telah terpenuhi.<br>Untuk informasi lebih lanjut, silakan datang langsung ke gedung sekolah <b>SDN 37/II Pasar Lubuk Landai</b>.</p>
+    </div>
+  `;
+}
+
 function checkNikDuplicate(nikVal) {
   const hint = document.getElementById('nik-hint');
+  const inputEl = document.getElementById('siswa-nik');
   const cleanNik = nikVal.trim();
+  
   if (cleanNik.length < 16) {
     hint.style.display = 'none';
+    inputEl.classList.remove('input-err-active');
     isNikValid = false;
+    validateStep1Buttons();
     return;
   }
-  hint.style.display = 'block';
+  hint.style.display = 'flex';
   
   if (existingNikList.includes(cleanNik)) {
     hint.className = 'field-hint hint-err';
-    hint.innerHTML = `❌ NIK ini sudah terdaftar! Tidak bisa mendaftar dua kali.`;
+    hint.innerHTML = `❌ NIK ini sudah terdaftar di sistem!`;
+    inputEl.classList.add('input-err-active');
     isNikValid = false;
   } else {
     hint.className = 'field-hint hint-ok';
     hint.innerHTML = `✔ NIK aman (Belum pernah terdaftar).`;
+    inputEl.classList.remove('input-err-active');
     isNikValid = true;
   }
+  validateStep1Buttons();
 }
 
 function validateUsia() {
   const tglInput = document.getElementById('siswa-tanggal-lahir').value;
   const hint = document.getElementById('usia-hint');
+  const inputEl = document.getElementById('siswa-tanggal-lahir');
   if (!tglInput) return;
   
   const tglLahir = new Date(tglInput);
@@ -433,16 +492,31 @@ function validateUsia() {
   let tahun = Math.floor(usiaBulan / 12);
   let bulan = usiaBulan % 12;
 
-  hint.style.display = 'block';
+  hint.style.display = 'flex';
   
   if (tahun >= 6) {
     hint.className = 'field-hint hint-ok';
     hint.innerHTML = `✔ Usia anak per 1 Juli 2026: <b>${tahun} Tahun ${bulan} Bulan</b> (Memenuhi Syarat)`;
+    inputEl.classList.remove('input-err-active');
     isUsiaValid = true;
   } else {
     hint.className = 'field-hint hint-err';
-    hint.innerHTML = `❌ Usia anak: <b>${tahun} Tahun ${bulan} Bulan</b>. (Kurang dari 6 Tahun, tidak memenuhi syarat)`;
+    hint.innerHTML = `❌ Usia anak: <b>${tahun} Tahun ${bulan} Bulan</b>. (Minimal 6 tahun)`;
+    inputEl.classList.add('input-err-active');
     isUsiaValid = false;
+  }
+  validateStep1Buttons();
+}
+
+function validateStep1Buttons() {
+  const nextBtn = document.getElementById('btn-next-1');
+  const lockIcon = document.getElementById('lock-icon-1');
+  if(isNikValid && isUsiaValid) {
+    nextBtn.disabled = false;
+    if(lockIcon) { lockIcon.className = 'fa-solid fa-lock-open'; }
+  } else {
+    nextBtn.disabled = true;
+    if(lockIcon) { lockIcon.className = 'fa-solid fa-lock'; }
   }
 }
 
@@ -461,15 +535,25 @@ function toggleKerjaManual(role) {
 
 function checkTelpValid(val) {
   const hint = document.getElementById('telp-hint');
-  hint.style.display = 'block';
+  const nextBtn = document.getElementById('btn-next-2');
+  const lockIcon = document.getElementById('lock-icon-2');
+  const inputEl = document.getElementById('ortu-telp');
+  hint.style.display = 'flex';
+  
   if (val.length >= 9 && val.length <= 13) {
     hint.className = 'field-hint hint-ok';
     hint.innerHTML = `✔ Nomor WhatsApp valid (+62 ${val})`;
+    inputEl.classList.remove('input-err-active');
     isTelpValid = true;
+    nextBtn.disabled = false;
+    if(lockIcon) { lockIcon.className = 'fa-solid fa-lock-open'; }
   } else {
     hint.className = 'field-hint hint-err';
     hint.innerHTML = `❌ Nomor harus di antara 10 - 13 digit.`;
+    inputEl.classList.add('input-err-active');
     isTelpValid = false;
+    nextBtn.disabled = true;
+    if(lockIcon) { lockIcon.className = 'fa-solid fa-lock'; }
   }
 }
 
@@ -486,23 +570,19 @@ function goStep(target) {
     if (currentStep === 1) {
       if (!document.getElementById('siswa-nama').value.trim()) { toast('Nama siswa wajib diisi!','err'); return; }
       if (document.getElementById('siswa-nik').value.length !== 16) { toast('NIK harus bernilai tepat 16 digit!','err'); return; }
-      if (!isNikValid) { toast('Periksa kembali NIK Siswa. NIK ganda atau kurang digit tidak diperbolehkan!','err'); return; }
-      if (!isUsiaValid) { toast('Usia anak belum memenuhi syarat minimal masuk SD (Minimal 6 tahun per 1 Juli 2026)!','err'); return; }
+      if (!isNikValid) { toast('Periksa kembali kolom NIK Siswa!','err'); return; }
+      if (!isUsiaValid) { toast('Usia anak belum memenuhi syarat minimal!','err'); return; }
       if (!document.getElementById('siswa-tempat-lahir').value.trim()) { toast('Tempat lahir wajib diisi!','err'); return; }
       if (!document.getElementById('siswa-agama').value) { toast('Agama wajib dipilih!','err'); return; }
       if (!document.getElementById('siswa-alamat').value.trim()) { toast('Alamat wajib diisi!','err'); return; }
     }
     if (currentStep === 2) {
       if (!document.getElementById('ortu-ayah').value.trim() || !document.getElementById('ortu-ibu').value.trim()) { toast('Nama Orang Tua wajib diisi!','err'); return; }
-      
       const selAyah = document.getElementById('ortu-kerja-ayah-sel').value;
       const selIbu = document.getElementById('ortu-kerja-ibu-sel').value;
       if (!selAyah || !selIbu) { toast('Pekerjaan Ayah & Ibu wajib dipilih!','err'); return; }
-      if (selAyah === 'LAINNYA' && !document.getElementById('ortu-kerja-ayah-manual').value.trim()) { toast('Isi kolom ketik manual pekerjaan Ayah!','err'); return; }
-      if (selIbu === 'LAINNYA' && !document.getElementById('ortu-kerja-ibu-manual').value.trim()) { toast('Isi kolom ketik manual pekerjaan Ibu!','err'); return; }
-      
-      if (!isTelpValid) { toast('Format nomor ponsel WhatsApp salah atau kurang digit!','err'); return; }
-      if (!document.getElementById('anak-ke').value || !document.getElementById('jml-saudara').value) { toast('Isi jumlah urutan anak & saudara dengan benar!','err'); return; }
+      if (!isTelpValid) { toast('Format nomor WhatsApp salah!','err'); return; }
+      if (!document.getElementById('anak-ke').value || !document.getElementById('jml-saudara').value) { toast('Isi urutan anak dengan benar!','err'); return; }
     }
   }
   
@@ -531,26 +611,30 @@ function updateStepUI() {
 }
 
 function buildReview() {
+  const genderRadio = document.querySelector('input[name="gender"]:checked');
+  const tglLahirRaw = document.getElementById('siswa-tanggal-lahir').value;
+  
   const rows = [
-    ['Nama Calon Siswa', document.getElementById('siswa-nama').value],
+    ['Nama Calon Siswa', document.getElementById('siswa-nama').value.toUpperCase()],
     ['NIK Siswa', document.getElementById('siswa-nik').value],
+    ['Tanggal Lahir', tglLahirRaw ? new Date(tglLahirRaw).toLocaleDateString('id-ID', {day:'numeric', month:'long', year:'numeric'}) : '-'],
+    ['Jenis Kelamin', genderRadio ? genderRadio.value : '-'],
     ['Alamat Rumah', document.getElementById('siswa-alamat').value],
-    ['Nama Orang Tua (Ayah/Ibu)', document.getElementById('ortu-ayah').value + ' / ' + document.getElementById('ortu-ibu').value],
+    ['Nama Ayah / Ibu', document.getElementById('ortu-ayah').value.toUpperCase() + ' / ' + document.getElementById('ortu-ibu').value.toUpperCase()],
     ['Pekerjaan (Ayah/Ibu)', getPekerjaanValue('ayah') + ' / ' + getPekerjaanValue('ibu')],
     ['No. WhatsApp Wali', '+62 ' + document.getElementById('ortu-telp').value]
   ];
   document.getElementById('review-body').innerHTML = rows.map(([k,v]) => `
-    <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee; font-size:12px">
-      <span style="color:#666">${k}</span><strong style="color:#111">${v}</strong>
+    <div style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid rgba(0,0,0,0.05); font-size:12.5px; gap: 12px;">
+      <span style="color:var(--gr6); min-width:120px">${k}</span><strong style="color:var(--gr9); text-align:right; word-break:break-all">${v}</strong>
     </div>
   `).join('');
 }
 
 function handleFormSubmit(e) {
   e.preventDefault();
-  
   if(!document.getElementById('persetujuan').checked) {
-    toast('Anda harus menyetujui pernyataan kebenaran data terlebih dahulu!','err');
+    toast('Anda harus menyetujui pernyataan kebenaran data!','err');
     return;
   }
 
@@ -560,10 +644,11 @@ function handleFormSubmit(e) {
 
   const regId = `REG/SD37/2026/${String(totalPendaftarAktif + 1).padStart(3,'0')}`;
   const timestamp = new Date().toLocaleString('id-ID') + ' WIB';
+  const siswaNamaFixed = document.getElementById('siswa-nama').value.toUpperCase();
 
   const payload = {
     id: regId,
-    nama: document.getElementById('siswa-nama').value.toUpperCase(),
+    nama: siswaNamaFixed,
     nik: document.getElementById('siswa-nik').value,
     nisn: document.getElementById('siswa-nisn').value || '-',
     tempatLahir: document.getElementById('siswa-tempat-lahir').value.toUpperCase(),
@@ -596,11 +681,23 @@ function handleFormSubmit(e) {
     document.getElementById('receipt-name').textContent = payload.nama;
     document.getElementById('receipt-nik').textContent = payload.nik;
     document.getElementById('receipt-date').textContent = payload.timestamp;
+    
+    document.getElementById('btn-wa-confirm').onclick = function() {
+      const waText = encodeURIComponent(
+        `Halo Panitia PPDB SDN 37/II Pasar Lubuk Landai,\n\nSaya telah melakukan pendaftaran online dengan data berikut:\n` +
+        `- No. Registrasi: ${payload.id}\n` +
+        `- Nama Calon Siswa: ${payload.nama}\n` +
+        `- NIK Siswa: ${payload.nik}\n\n` +
+        `Mohon informasi mengenai jadwal penyerahan berkas fisik asli ke sekolah. Terima kasih.`
+      );
+      window.open(`https://api.whatsapp.com/send?phone=${WA_PANITIA}&text=${waText}`, '_blank');
+    };
+
     document.getElementById('success-modal').classList.add('open');
   })
   .catch((err) => { 
     console.error(err);
-    toast('Koneksi bermasalah, silakan coba lagi!','err'); 
+    toast('Koneksi internet lambat, silakan coba lagi!','err'); 
     btn.disabled = false; 
     btn.textContent = 'Kirim Formulir'; 
   });
@@ -611,9 +708,9 @@ function toast(msg, type) {
   if(!wrap) return;
   const el = document.createElement('div');
   el.className = 'toast ' + (type==='err'?'toast-err':'toast-ok');
-  el.innerHTML = `<span>${msg}</span>`;
+  el.innerHTML = type==='err' ? `<i class="fa-solid fa-circle-exclamation"></i> <span>${msg}</span>` : `<i class="fa-solid fa-circle-check"></i> <span>${msg}</span>`;
   wrap.appendChild(el);
-  setTimeout(() => el.remove(), 3500);
+  setTimeout(() => el.remove(), 3800);
 }
 
 window.onload = function() { fetchKuotaAwal(); };
