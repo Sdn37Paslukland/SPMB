@@ -117,15 +117,6 @@ textarea{resize:none;line-height:1.6}
 .btn-sec{background:var(--white);color:var(--gr7);border:1.5px solid var(--gr2)}
 .form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:12px}
 
-/* ===== UPLOAD FIELD ===== */
-.upload-zone{border:2px dashed var(--gr3);border-radius:var(--rmd);padding:20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--gr0);position:relative;overflow:hidden}
-.upload-zone.has-file{border-color:var(--g4);background:var(--g0);border-style:solid}
-.upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
-.upload-icon{font-size:22px;color:var(--gr4);margin-bottom:7px}
-.upload-zone.has-file .upload-icon{color:var(--g6)}
-.upload-label{font-size:12px;color:var(--gr5)}
-.upload-zone.has-file .upload-label{color:var(--g7);font-weight:600}
-
 /* ===== MODAL ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,15,13,.52);backdrop-filter:blur(8px);z-index:300;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.open{display:flex}
@@ -191,18 +182,15 @@ textarea{resize:none;line-height:1.6}
 <main class="wrapper">
   <div class="step-indicator">
     <div class="step-list">
-      <div class="step-item"><div class="step-dot active" id="dot-1">1</div><span class="step-label active" id="lbl-1">Siswa</span></div>
+      <div class="step-item"><div class="step-dot active" id="dot-1">1</div><span class="step-label active" id="lbl-1">Data Siswa</span></div>
       <div class="step-line" id="line-1"></div>
-      <div class="step-item"><div class="step-dot" id="dot-2">2</div><span class="step-label" id="lbl-2">Orang Tua</span></div>
+      <div class="step-item"><div class="step-dot" id="dot-2">2</div><span class="step-label" id="lbl-2">Data Orang Tua</span></div>
       <div class="step-line" id="line-2"></div>
-      <div class="step-item"><div class="step-dot" id="dot-3">3</div><span class="step-label" id="lbl-3">Dokumen</span></div>
-      <div class="step-line" id="line-3"></div>
-      <div class="step-item"><div class="step-dot" id="dot-4">4</div><span class="step-label" id="lbl-4">Konfirmasi</span></div>
+      <div class="step-item"><div class="step-dot" id="dot-3">3</div><span class="step-label" id="lbl-3">Konfirmasi</span></div>
     </div>
   </div>
 
   <form id="spmb-form" onsubmit="handleFormSubmit(event)" autocomplete="off">
-    <!-- STEP 1: DATA SISWA -->
     <div id="step-1" class="fade-in">
       <div class="notice notice-green">
         <i class="fa-solid fa-circle-info"></i>
@@ -263,7 +251,6 @@ textarea{resize:none;line-height:1.6}
       </div>
     </div>
 
-    <!-- STEP 2: DATA ORANG TUA -->
     <div id="step-2" class="fade-in" style="display:none">
       <div class="card">
         <div class="card-header"><div class="card-hi"><i class="fa-solid fa-people-roof"></i></div><div class="card-ht">Data Orang Tua / Wali</div></div>
@@ -280,7 +267,6 @@ textarea{resize:none;line-height:1.6}
           </div>
           
           <div class="g2">
-            <!-- Pekerjaan Ayah -->
             <div class="fg">
               <label class="fl"><span>Pekerjaan Ayah <span class="req">*</span></span></label>
               <select id="ortu-kerja-ayah-sel" required onchange="toggleKerjaManual('ayah')">
@@ -296,7 +282,6 @@ textarea{resize:none;line-height:1.6}
               <input type="text" id="ortu-kerja-ayah-manual" placeholder="Ketik pekerjaan ayah di sini" style="display:none; margin-top:8px;" oninput="this.value=this.value.toUpperCase()">
             </div>
             
-            <!-- Pekerjaan Ibu -->
             <div class="fg">
               <label class="fl"><span>Pekerjaan Ibu <span class="req">*</span></span></label>
               <select id="ortu-kerja-ibu-sel" required onchange="toggleKerjaManual('ibu')">
@@ -339,37 +324,11 @@ textarea{resize:none;line-height:1.6}
       </div>
     </div>
 
-    <!-- STEP 3: DOKUMEN -->
     <div id="step-3" class="fade-in" style="display:none">
-      <div class="card">
-        <div class="card-header"><div class="card-hi"><i class="fa-solid fa-file-image"></i></div><div class="card-ht">Upload Berkas Pendukung (Max 3MB)</div></div>
-        <div class="card-body">
-          <div class="fg">
-            <label class="fl"><span>Foto Akta Kelahiran <span class="req">*</span></span></label>
-            <div class="upload-zone" id="zone-akta" onclick="document.getElementById('file-akta').click()">
-              <input type="file" id="file-akta" accept="image/*,.pdf" onchange="onFileChange('akta',this)">
-              <div class="upload-icon">📂</div>
-              <div class="upload-label" id="lbl-akta">Klik/Ketuk untuk pilih file gambar/PDF</div>
-            </div>
-          </div>
-          <div class="fg">
-            <label class="fl"><span>Foto Kartu Keluarga (KK) <span class="req">*</span></span></label>
-            <div class="upload-zone" id="zone-kk" onclick="document.getElementById('file-kk').click()">
-              <input type="file" id="file-kk" accept="image/*,.pdf" onchange="onFileChange('kk',this)">
-              <div class="upload-icon">📂</div>
-              <div class="upload-label" id="lbl-kk">Klik/Ketuk untuk pilih file gambar/PDF</div>
-            </div>
-          </div>
-        </div>
+      <div class="notice">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span><b>Pemberitahuan:</b> Pendaftaran online ini tidak memungut biaya berkas gambar. Mohon membawa fotokopi <b>Akta Kelahiran</b> dan <b>Kartu Keluarga (KK)</b> asli saat verifikasi ke sekolah.</span>
       </div>
-      <div class="form-actions">
-        <button type="button" onclick="goStep(2)" class="btn btn-sec"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
-        <button type="button" onclick="goStep(4)" class="btn btn-primary">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-    </div>
-
-    <!-- STEP 4: KONFIRMASI -->
-    <div id="step-4" class="fade-in" style="display:none">
       <div class="card">
         <div class="card-header"><div class="card-hi"><i class="fa-solid fa-magnifying-glass-check"></i></div><div class="card-ht">Cek Kembali Ringkasan Data Anda</div></div>
         <div class="card-body" id="review-body"></div>
@@ -381,14 +340,13 @@ textarea{resize:none;line-height:1.6}
         </label>
       </div>
       <div class="form-actions">
-        <button type="button" onclick="goStep(3)" class="btn btn-sec"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+        <button type="button" onclick="goStep(2)" class="btn btn-sec"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
         <button type="submit" class="btn btn-primary" id="btn-submit"><i class="fa-solid fa-paper-plane"></i> Kirim Formulir</button>
       </div>
     </div>
   </form>
 </main>
 
-<!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="success-modal">
   <div class="modal">
     <div class="modal-hdr"><h3>Pendaftaran Sukses!</h3></div>
@@ -397,7 +355,7 @@ textarea{resize:none;line-height:1.6}
       <div class="receipt-row"><span>No. Registrasi</span><span class="rv accent" id="receipt-id">—</span></div>
       <div class="receipt-row"><span>Nama Calon Siswa</span><span class="rv" id="receipt-name">—</span></div>
       <div class="receipt-row"><span>NIK Siswa</span><span class="rv" id="receipt-nik">—</span></div>
-      <p style="font-size:11px; color:var(--g8); text-align:center; margin-top:15px; padding:8px; background:var(--g0); border-radius:6px">Silakan screenshot/cetak halaman ini untuk diserahkan saat verifikasi berkas di sekolah.</p>
+      <p style="font-size:11px; color:var(--g8); text-align:center; margin-top:15px; padding:8px; background:var(--g0); border-radius:6px">Silakan screenshot/cetak halaman ini untuk diserahkan saat verifikasi berkas fisik di sekolah.</p>
     </div>
     <div class="modal-ftr">
       <button class="btn btn-sec" onclick="window.print()">Cetak</button>
@@ -412,7 +370,6 @@ textarea{resize:none;line-height:1.6}
 const SHEET_API = 'https://sheetdb.io/api/v1/7mf16prngcydq';
 const KUOTA_MAX = 60;
 let currentStep = 1;
-let fileData = { akta: null, kk: null };
 let totalPendaftarAktif = 0;
 let isUsiaValid = false;
 let isTelpValid = false;
@@ -425,7 +382,7 @@ function fetchKuotaAwal() {
       totalPendaftarAktif = data.length;
       existingNikList = data.map(item => item.nik ? item.nik.toString().trim() : "");
       const sisa = Math.max(0, KUOTA_MAX - totalPendaftarAktif);
-      const pct = Math.min(100, (totalPendaftarAktif / KUMAX) * 100);
+      const pct = Math.min(100, (totalPendaftarAktif / KUOTA_MAX) * 100);
       document.getElementById('quota-text').textContent = `${totalPendaftarAktif} / ${KUOTA_MAX} Kursi (Sisa ${sisa})`;
       document.getElementById('quota-fill').style.width = pct + '%';
       document.getElementById('countdown-text').textContent = 'Database sinkron dengan server.';
@@ -543,12 +500,9 @@ function goStep(target) {
       if (!isTelpValid) { toast('Format nomor ponsel WhatsApp salah atau kurang digit!','err'); return; }
       if (!document.getElementById('anak-ke').value || !document.getElementById('jml-saudara').value) { toast('Isi jumlah urutan anak & saudara dengan benar!','err'); return; }
     }
-    if (currentStep === 3 && (!fileData.akta || !fileData.kk)) {
-      toast('Anda wajib melampirkan file dokumen Akta dan KK!','err'); return;
-    }
   }
   
-  if (target === 4) buildReview();
+  if (target === 3) buildReview();
   
   document.getElementById('step-' + currentStep).style.display = 'none';
   document.getElementById('step-' + target).style.display = 'block';
@@ -557,7 +511,7 @@ function goStep(target) {
 }
 
 function updateStepUI() {
-  for (let i = 1; i <= 4; i++) {
+  for (let i = 1; i <= 3; i++) {
     const dot = document.getElementById('dot-' + i);
     const lbl = document.getElementById('lbl-' + i);
     if(dot) {
@@ -565,20 +519,11 @@ function updateStepUI() {
       dot.textContent = i < currentStep ? '✓' : i;
     }
     if(lbl) lbl.className = i < currentStep ? 'step-label done' : i === currentStep ? 'step-label active' : 'step-label';
-    if(i <= 3) {
+    if(i <= 2) {
       const line = document.getElementById('line-' + i);
       if(line) line.className = i < currentStep ? 'step-line done' : 'step-line';
     }
   }
-}
-
-function onFileChange(key, input) {
-  const file = input.files[0];
-  if (!file) return;
-  if (file.size > 3 * 1024 * 1024) { toast('Ukuran file terlalu besar! Maksimal 3MB.','err'); input.value=''; return; }
-  fileData[key] = file;
-  document.getElementById('zone-' + key).classList.add('has-file');
-  document.getElementById('lbl-' + key).textContent = '✔ Berkas Terpilih: ' + file.name;
 }
 
 function buildReview() {
@@ -651,7 +596,7 @@ function handleFormSubmit(e) {
   })
   .catch((err) => { 
     console.error(err);
-    toast('Koneksi bermasalah atau Server SheetDB penuh, silakan coba lagi!','err'); 
+    toast('Koneksi bermasalah, silakan coba lagi!','err'); 
     btn.disabled = false; 
     btn.textContent = 'Kirim Formulir'; 
   });
