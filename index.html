@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pendaftaran Siswa Baru — SDN 37/II Pasar Lubuk Landai</title>
+<title>PPDB Online — SDN 37/II Pasar Lubuk Landai</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
@@ -13,12 +13,12 @@
   --r5:#ef4444;--r1:#fee2e2;--r0:#fef2f2;
   --a5:#f59e0b;--a1:#fef3c7;--a0:#fffbeb;
   --gr9:#111714;--gr8:#1a2620;--gr7:#2d3f38;--gr6:#4a5e56;
-  --gr5:#7a9088;--gr4:#a0b5ae;--gr3:#ccddd7;--gr2:#e4eee9;
+  --gr4:#a0b5ae;--gr3:#ccddd7;--gr2:#e4eee9;
   --gr1:#f2f7f4;--gr0:#f8fbf9;
   --white:#fff;
-  --shsm:0 4px 6px -1px rgba(10,63,46,.05), 0 2px 4px -1px rgba(10,63,46,.03);
+  --shsm:0 4px 6px -1px rgba(10,63,46,.05);
   --shmd:0 10px 15px -3px rgba(10,63,46,.08), 0 4px 6px -2px rgba(10,63,46,.04);
-  --shlg:0 20px 25px -5px rgba(10,63,46,.1), 0 10px 10px -5px rgba(10,63,46,.04);
+  --shlg:0 20px 25px -5px rgba(10,63,46,.1);
   --rsm:8px;--rmd:12px;--rlg:16px;--rxl:20px;--r2xl:28px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -27,91 +27,115 @@ body{font-family:'DM Sans',sans-serif;background:var(--gr1);color:var(--gr9);min
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 10% -10%,rgba(34,168,120,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 90% 110%,rgba(26,138,98,.09) 0%,transparent 55%);pointer-events:none;z-index:0}
 
 /* ===== TOPBAR ===== */
-.topbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(34,168,120,.12);box-shadow:0 2px 20px rgba(10,63,46,.04)}
-.topbar-inner{max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:66px}
+.topbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(34,168,120,.12);box-shadow:0 2px 20px rgba(10,63,46,.04)}
+.topbar-inner{max-width:960px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:66px}
 .topbar-brand{display:flex;align-items:center;gap:12px}
-.topbar-logo{width:42px;height:42px;background:linear-gradient(135deg,var(--g7),var(--g5));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(34,168,120,.3);flex-shrink:0}
+.topbar-logo{width:42px;height:42px;background:linear-gradient(135deg,var(--g7),var(--g5));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(34,168,120,.3)}
 .topbar-brand-text h1{font-family:'DM Serif Display',serif;font-size:15px;color:var(--g9);line-height:1.2}
 .topbar-brand-text p{font-size:10px;color:var(--g6);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
 
-/* ===== HERO ===== */
-.hero{background:linear-gradient(rgba(8, 48, 36, 0.88), rgba(11, 64, 49, 0.93)), url('https://sumbernews.id/wp-content/uploads/2022/08/LLLL.jpg');background-size:cover;background-position:center center;position:relative;overflow:hidden;border-radius:0 0 var(--r2xl) var(--r2xl);box-shadow:var(--shmd)}
-.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:24px 24px}
-.hero-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(52,201,149,.18) 0%,transparent 70%);top:-120px;right:-80px;pointer-events:none}
-.hero-content{position:relative;z-index:2;padding:40px 24px 36px;max-width:960px;margin:0 auto}
-.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(52,201,149,.16);border:1px solid rgba(52,201,149,.35);color:var(--g3);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+/* ===== HERO BACKGROUND BANNER ===== */
+.hero{background:linear-gradient(rgba(8, 48, 36, 0.88), rgba(11, 64, 49, 0.93)), url('https://sumbernews.id/wp-content/uploads/2022/08/LLLL.jpg');background-size:cover;background-position:center center;position:relative;border-radius:0 0 var(--r2xl) var(--r2xl);box-shadow:var(--shmd)}
+.hero-content{position:relative;z-index:2;padding:35px 20px;max-width:960px;margin:0 auto}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(52,201,149,.16);border:1px solid rgba(52,201,149,.35);color:var(--g3);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:12px}
 .hero-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g4);box-shadow:0 0 8px var(--g4);animation:pdot 2s ease-in-out infinite}
 @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,5.5vw,36px);color:#fff;line-height:1.2;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,0.4)}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(22px,5.5vw,32px);color:#fff;line-height:1.2;margin-bottom:8px}
 .hero-title em{font-style:normal;color:var(--g3);background:linear-gradient(to right, #a8edce, #6ddcb4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-sub{font-size:13px;color:rgba(255,255,255,.82);line-height:1.7;max-width:480px;margin-bottom:24px}
-.hero-meta{display:flex;flex-wrap:wrap;gap:12px}
-.hero-mi{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:8px 14px;border-radius:12px;font-size:12px;color:rgba(255,255,255,.95);backdrop-filter:blur(8px);transition:all 0.3s}
-.hero-mi:hover{background:rgba(255,255,255,.14);transform:translateY(-1px)}
-.hero-mi i{color:var(--g3);font-size:13px}
 
-.quota-bar-wrap{margin-top:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--rmd);padding:16px;backdrop-filter:blur(10px);box-shadow:inset 0 1px 1px rgba(255,255,255,0.1)}
-.quota-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-.quota-bar-label{font-size:12px;color:rgba(255,255,255,.9);font-weight:600;display:flex;align-items:center;gap:6px}
-.quota-bar-val{font-size:13px;font-weight:700;color:var(--g3)}
-.quota-bar-track{height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,0.2)}
-.quota-bar-fill{height:100%;background:linear-gradient(90deg,var(--g5),var(--g3));border-radius:4px;transition:width 0.8s cubic-bezier(0.4, 0, 0.2, 1)}
-.quota-countdown{margin-top:12px;font-size:11.5px;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:7px}
-.quota-countdown i{color:var(--a5);animation:pulse 1.5s infinite}
-@keyframes pulse { 0%,100% {transform:scale(1);} 50% {transform:scale(1.15);} }
+.quota-bar-wrap{margin-top:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--rmd);padding:14px;backdrop-filter:blur(10px)}
+.quota-bar-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.quota-bar-label{font-size:11.5px;color:rgba(255,255,255,.9);font-weight:600;display:flex;align-items:center;gap:6px}
+.quota-bar-val{font-size:12.5px;font-weight:700;color:var(--g3)}
+.quota-bar-track{height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden}
+.quota-bar-fill{height:100%;background:linear-gradient(90deg,var(--g5),var(--g3));border-radius:4px;transition:width 0.8s ease-in-out}
 
-/* ===== WRAPPER ===== */
-.wrapper{max-width:960px;margin:0 auto;padding:0 20px 60px;position:relative;z-index:1}
+/* ===== RAMAH ORANG TUA: DESAIN MENU BARU YANG SANGAT JELAS BISA DIKLIK ===== */
+.menu-navigation-container{max-width:960px;margin:24px auto 0;padding:0 16px}
+.menu-tabs{display:flex;background:var(--white);padding:8px;border-radius:var(--rxl);border:2px solid var(--gr3);gap:8px;box-shadow:var(--shmd)}
+.tab-btn{flex:1;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;padding:14px 10px;background:var(--gr1);border:1px solid var(--gr3);border-radius:var(--rmd);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:var(--gr7);cursor:pointer;transition:all 0.25s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+.tab-btn i{font-size:16px;color:var(--gr6);transition:all 0.25s ease}
 
-/* ===== STEP INDICATOR ===== */
-.step-indicator{background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);border-radius:var(--rlg);padding:16px 20px;box-shadow:var(--shsm);border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0}
+/* Efek saat kursor di atas tombol atau tombol ditekan (Terlihat Sangat Interaktif) */
+.tab-btn:hover{color:var(--g8);background:var(--g1);border-color:var(--g4);transform:translateY(-1px);box-shadow:0 4px 8px rgba(34,168,120,0.1)}
+.tab-btn:active{transform:translateY(1px)}
+
+/* Tampilan Menu Aktif: Tegas, Kontras Tinggi, & Mudah Dikenali Orang Tua */
+.tab-btn.active{background:linear-gradient(135deg,var(--g8),var(--g7));color:#fff;border-color:var(--g9);box-shadow:0 6px 15px rgba(13,92,66,0.25)}
+.tab-btn.active i{color:var(--g3);transform:scale(1.15)}
+
+/* ===== SECTIONS ARCHITECTURE ===== */
+.wrapper{max-width:960px;margin:0 auto;padding:0 16px 60px;position:relative;z-index:1}
+.main-section{display:none}
+.main-section.active-section{display:block}
+
+/* ===== BERANDA LANDING UI ===== */
+.welcome-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-top:18px}
+@media(max-width:768px){
+  .welcome-grid{grid-template-columns:1fr}
+  .menu-tabs{padding:6px;gap:6px}
+  .tab-btn{font-size:12.5px;padding:12px 6px;gap:6px;flex-direction:column;text-align:center}
+  .tab-btn i{font-size:15px}
+}
+.info-box{background:var(--white);border-radius:var(--rxl);padding:22px;box-shadow:var(--shsm);border:1px solid rgba(0,0,0,0.03)}
+.info-box h3{font-family:'DM Serif Display',serif;font-size:19px;color:var(--g9);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.info-box h3 i{color:var(--g5)}
+.info-box p{font-size:13.5px;color:var(--gr6);line-height:1.6;margin-bottom:16px}
+
+/* ALUR LIST UI */
+.flow-container{display:flex;flex-direction:column;gap:16px;margin-top:10px}
+.flow-node{display:flex;gap:14px;position:relative}
+.flow-node:not(:last-child)::after{content:'';position:absolute;left:16px;top:32px;bottom:-20px;width:2px;background:var(--g2)}
+.flow-icon{width:34px;height:34px;border-radius:50%;background:var(--g1);color:var(--g8);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;box-shadow:0 2px 6px rgba(34,168,120,0.15)}
+.flow-text h4{font-size:13.5px;color:var(--gr9);font-weight:700}
+.flow-text p{font-size:12px;color:var(--gr6);margin-top:2px;line-height:1.5;margin-bottom:0}
+
+/* DOKUMEN CHECKLIST UI */
+.doc-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--gr2)}
+.doc-item i{color:var(--g5);font-size:14px;margin-top:2px}
+.doc-label{font-size:12.5px;font-weight:600;color:var(--gr8)}
+
+/* ===== STEP INDICATOR FOR FORM ===== */
+.step-indicator{background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);border-radius:var(--rlg);padding:16px 20px;box-shadow:var(--shsm);border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0}
 .step-list{display:flex;align-items:center;flex:1;justify-content:space-between}
 .step-item{display:flex;align-items:center;gap:9px}
-.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;border:2px solid var(--gr3);background:var(--white);color:var(--gr5);transition:all .3s ease}
+.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--gr3);background:var(--white);color:var(--gr5);transition:all .3s ease}
 .step-dot.active{background:var(--g7);border-color:var(--g7);color:#fff;box-shadow:0 0 0 4px rgba(34,168,120,.2)}
 .step-dot.done{background:var(--g1);border-color:var(--g4);color:var(--g7)}
-.step-label{font-size:12px;font-weight:600;color:var(--gr5);white-space:nowrap;transition:color 0.3s}
+.step-label{font-size:12px;font-weight:600;color:var(--gr5);white-space:nowrap}
 .step-label.active{color:var(--g8);font-weight:700}
 .step-label.done{color:var(--g6)}
-.step-line{flex:1;height:2px;background:var(--gr3);margin:0 12px;border-radius:2px;transition:background .4s ease}
+.step-line{flex:1;height:2px;background:var(--gr3);margin:0 12px}
 .step-line.done{background:var(--g4)}
 
-/* ===== CARD (GLASSMORPHISM) ===== */
-.card{background:rgba(255, 255, 255, 0.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:var(--rxl);border:1px solid rgba(255,255,255,0.6);box-shadow:var(--shmd);overflow:hidden;margin-bottom:20px;transition:transform 0.3s, box-shadow 0.3s}
-.card:hover{box-shadow:var(--shlg)}
+/* ===== CARD ===== */
+.card{background:rgba(255, 255, 255, 0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:var(--rxl);border:1px solid rgba(255,255,255,0.6);box-shadow:var(--shmd);overflow:hidden;margin-bottom:20px}
 .card-header{padding:18px 24px;border-bottom:1px solid rgba(34,168,120,.08);display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.3)}
-.card-hi{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;background:var(--g1);color:var(--g7);flex-shrink:0;box-shadow:0 2px 6px rgba(34,168,120,0.1)}
-.card-ht{font-size:14px;font-weight:700;color:var(--gr8);letter-spacing:0.2px}
+.card-hi{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;background:var(--g1);color:var(--g7);box-shadow:0 2px 6px rgba(34,168,120,0.1)}
+.card-ht{font-size:14px;font-weight:700;color:var(--gr8)}
 .card-body{padding:24px}
 
-/* ===== FORM ELEMENTS ===== */
+/* ===== FORM INTERNALS ===== */
 .fg{margin-bottom:18px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:520px){.g2{grid-template-columns:1fr;gap:14px}.step-label{display:none}}
+@media(max-width:520px){document.getElementById('cari-nik').style.minWidth = '100%'; .g2{grid-template-columns:1fr;gap:14px}.step-label{display:none}}
 label.fl{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--gr7);margin-bottom:6px}
-label.fl .req{color:var(--r5);margin-left:2px}
+label.fl .req{color:var(--r5)}
 label.fl .opt{color:var(--gr5);font-weight:400;font-size:11px}
 label.fl .fcnt{font-size:10.5px;font-weight:700;color:var(--gr5);background:var(--gr2);padding:2px 6px;border-radius:10px}
-input[type=text],input[type=date],select,textarea{width:100%;background:rgba(255,255,255,0.7);border:1.5px solid var(--gr3);border-radius:var(--rmd);padding:11px 14px;font-size:13px;color:var(--gr9);font-family:'DM Sans',sans-serif;outline:none;transition:all .25s ease;appearance:none}
+input[type=text],input[type=date],select,textarea{width:100%;background:rgba(255,255,255,0.7);border:1.5px solid var(--gr3);border-radius:var(--rmd);padding:11px 14px;font-size:13px;color:var(--gr9);outline:none;transition:all .25s ease}
 input:focus,select:focus,textarea:focus{border-color:var(--g5);background:var(--white);box-shadow:0 0 0 4px rgba(34,168,120,.14)}
-
-/* Dynamic Input Errors State */
-input.input-err-active, select.input-err-active, textarea.input-err-active{border-color:var(--r5) !important;background:var(--r0) !important;box-shadow:0 0 0 4px rgba(239,68,68,.14) !important}
-
-input::placeholder,textarea::placeholder{color:var(--gr4)}
-textarea{resize:none;line-height:1.6}
+input.input-err-active, select.input-err-active, textarea.input-err-active{border-color:var(--r5) !important;background:var(--r0) !important}
 .inp-pre{position:relative}
-.inp-pre-txt{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:700;color:var(--gr6);pointer-events:none;z-index:1}
+.inp-pre-txt{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:700;color:var(--gr6)}
 .inp-pre input{padding-left:46px}
 .radio-grp{display:flex;gap:12px}
-.radio-opt{flex:1;display:flex;align-items:center;gap:10px;padding:11px 14px;background:rgba(255,255,255,0.6);border:1.5px solid var(--gr3);border-radius:var(--rmd);cursor:pointer;font-size:13px;font-weight:600;color:var(--gr7);transition:all .2s ease}
-.radio-opt:hover{background:rgba(255,255,255,0.9);border-color:var(--gr4)}
-.radio-opt:has(input:checked){border-color:var(--g5);background:var(--g0);color:var(--g8);box-shadow:0 2px 6px rgba(34,168,120,0.06)}
+.radio-opt{flex:1;display:flex;align-items:center;gap:10px;padding:11px 14px;background:rgba(255,255,255,0.6);border:1.5px solid var(--gr3);border-radius:var(--rmd);cursor:pointer;font-size:13px;font-weight:600;color:var(--gr7)}
+.radio-opt:has(input:checked){border-color:var(--g5);background:var(--g0);color:var(--g8)}
 .radio-opt input{accent-color:var(--g6);width:16px;height:16px}
 
-/* ===== NOTICE & HINT ===== */
-.notice{background:var(--a0);border:1px solid rgba(245,158,11,0.25);border-radius:var(--rmd);padding:12px 16px;font-size:12px;color:#92400e;display:flex;gap:10px;line-height:1.6;margin-bottom:18px;box-shadow:0 2px 4px rgba(245,158,11,0.03)}
-.notice i{color:var(--a5);flex-shrink:0;margin-top:2px;font-size:13px}
+.notice{background:var(--a0);border:1px solid rgba(245,158,11,0.25);border-radius:var(--rmd);padding:12px 16px;font-size:12px;color:#92400e;display:flex;gap:10px;line-height:1.6;margin-bottom:18px}
+.notice i{color:var(--a5);margin-top:2px;font-size:13px}
 .notice-green{background:var(--g0);border-color:rgba(34,168,120,.22);color:var(--g9)}
 .notice-green i{color:var(--g6)}
 .field-hint{font-size:11.5px;margin-top:6px;font-weight:600;display:flex;align-items:center;gap:4px}
@@ -119,53 +143,33 @@ textarea{resize:none;line-height:1.6}
 .hint-err{color:var(--r5)}
 
 /* ===== BUTTONS ===== */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--rmd);font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;border:none;cursor:pointer;transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);white-space:nowrap}
-
-/* Active State Button */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--rmd);font-size:13px;font-weight:700;border:none;cursor:pointer;transition:all .25s ease;white-space:nowrap}
 .btn-primary{background:linear-gradient(135deg,var(--g7),var(--g6));color:#fff;box-shadow:0 4px 14px rgba(17,106,75,.28)}
 .btn-primary:hover:not(:disabled){transform:translateY(-1.5px);box-shadow:0 6px 20px rgba(17,106,75,.38)}
-
-/* Locked State Button CSS UI Fix */
-.btn-primary:disabled{background:var(--gr3) !important;color:var(--gr5) !important;box-shadow:none !important;cursor:not-allowed;opacity:0.85}
-
-.btn-sec{background:rgba(255,255,255,0.8);color:var(--gr7);border:1.5px solid var(--gr3);box-shadow:var(--shsm)}
-.btn-sec:hover{background:var(--white);border-color:var(--gr4);transform:translateY(-1px)}
-.btn-wa{background:linear-gradient(135deg, #25d366, #1ebd54);color:#fff;box-shadow:0 4px 14px rgba(37,211,102,0.25);width:100%;justify-content:center;font-size:13.5px;padding:13px}
-.btn-wa:hover{box-shadow:0 6px 20px rgba(37,211,102,0.35);transform:translateY(-1px)}
+.btn-primary:disabled{background:var(--gr3) !important;color:var(--gr5) !important;cursor:not-allowed;box-shadow:none}
+.btn-sec{background:rgba(255,255,255,0.8);color:var(--gr7);border:1.5px solid var(--gr3)}
+.btn-sec:hover{background:var(--white);border-color:var(--gr4)}
+.btn-wa{background:linear-gradient(135deg, #25d366, #1ebd54);color:#fff;width:100%;justify-content:center;font-size:13.5px;padding:13px}
 .form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px}
 
-/* ===== MODAL & PREMIUM RESI ===== */
+/* ===== MODAL ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,18,14,.6);backdrop-filter:blur(10px);z-index:300;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.open{display:flex}
 .modal{background:var(--white);border-radius:var(--r2xl);width:100%;max-width:440px;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);animation:modalAnim 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both}
 @keyframes modalAnim{from{opacity:0;transform:scale(0.92) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .modal-hdr{padding:26px 24px 20px;text-align:center;background:linear-gradient(135deg,var(--g9),var(--g7))}
-.modal-hdr h3{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;letter-spacing:0.3px}
+.modal-hdr h3{font-family:'DM Serif Display',serif;font-size:20px;color:#fff}
 .receipt-body{padding:24px}
-
-/* Resi Design (Tear-off ticket style) */
-.receipt-card{background:var(--gr0);border:1px solid var(--gr3);border-radius:var(--rmd);padding:20px;position:relative;box-shadow:inset 0 0 20px rgba(0,0,0,0.01)}
-.receipt-card::before, .receipt-card::after{content:'';position:absolute;width:16px;height:16px;background:var(--white);border:1px solid var(--gr3);border-radius:50%;top:64px}
-.receipt-card::before{left:-9px;box-shadow:inset -2px 0 4px rgba(0,0,0,0.02)}
-.receipt-card::after{right:-9px;box-shadow:inset 2px 0 4px rgba(0,0,0,0.02)}
-
+.receipt-card{background:var(--gr0);border:1px solid var(--gr3);border-radius:var(--rmd);padding:20px;position:relative}
 .receipt-hdr{text-align:center;margin-bottom:16px;padding-bottom:14px;border-bottom:1.5px dashed var(--gr3)}
-.receipt-hdr h4{font-size:13px;color:var(--g9);letter-spacing:0.8px;font-weight:700}
-.receipt-hdr p{font-size:10.5px;color:var(--gr5);margin-top:4px;font-weight:500}
+.receipt-hdr h4{font-size:13px;color:var(--g9);font-weight:700}
+.receipt-hdr p{font-size:10.5px;color:var(--gr5);margin-top:4px}
 .receipt-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);font-size:12.5px}
-.receipt-row:last-of-type{border-bottom:none;padding-bottom:0}
 .rv{font-weight:700;color:var(--gr9);text-align:right;max-width:62%;word-break:break-word}
 .rv.accent{color:var(--g7);font-family:monospace;font-size:14px;background:var(--g1);padding:1px 6px;border-radius:4px}
 .modal-ftr{padding:16px 24px 20px;background:var(--gr1);border-top:1px solid var(--gr2);display:flex;flex-direction:column;gap:10px}
 .modal-ftr-btns{display:flex;gap:10px}
 .modal-ftr-btns .btn{flex:1;justify-content:center}
-
-/* ===== LOCKOUT SCREEN ===== */
-#lockout-screen{background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border:2px solid var(--r5);border-radius:var(--rxl);padding:40px 24px;text-align:center;box-shadow:var(--shlg);margin-top:24px}
-#lockout-screen i{font-size:52px;color:var(--r5);margin-bottom:18px;animation:shake 0.5s ease infinite alternate}
-@keyframes shake { from{transform:translateY(0)} to{transform:translateY(-4px)} }
-#lockout-screen h3{font-family:'DM Serif Display',serif;font-size:24px;color:var(--gr9);margin-bottom:10px}
-#lockout-screen p{font-size:13.5px;color:var(--gr6);line-height:1.65}
 
 /* ===== TOAST ===== */
 #toast-wrap{position:fixed;bottom:24px;right:24px;z-index:600;display:flex;flex-direction:column;gap:8px}
@@ -174,7 +178,6 @@ textarea{resize:none;line-height:1.6}
 .toast-err{background:linear-gradient(135deg, #b91c1c, #991b1b);border-left:4px solid #f87171}
 .toast-ok{background:linear-gradient(135deg, var(--g8), var(--g9));border-left:4px solid var(--g4)}
 
-/* Smooth Step Transitions Animation */
 .slide-step-in{animation:slideStepIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) both}
 @keyframes slideStepIn{from{opacity:0;transform:translateX(15px)}to{opacity:1;transform:translateX(0)}}
 </style>
@@ -194,194 +197,263 @@ textarea{resize:none;line-height:1.6}
 </header>
 
 <div class="hero">
-  <div class="hero-dots"></div>
-  <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-chip">Pendaftaran Dibuka</div>
-    <h2 class="hero-title">Penerimaan Peserta Didik<br><em>Baru 2026/2027</em></h2>
-    <p class="hero-sub">Isi formulir sesuai dokumen asli (KK/Akta Kelahiran). Data tersimpan langsung ke database sekolah.</p>
-    <div class="hero-meta">
-      <div class="hero-mi"><i class="fa-solid fa-map-location-dot"></i> Kec. Tanah Sepenggal, Kab. Bungo</div>
-      <div class="hero-mi"><i class="fa-solid fa-calendar-check"></i> TA 2026/2027</div>
-      <div class="hero-mi"><i class="fa-solid fa-child-reaching"></i> Usia 6–7 Tahun per 1 Juli 2026</div>
-    </div>
+    <div class="hero-chip">Pendaftaran Mandiri Dibuka</div>
+    <h2 class="hero-title">Selamat Datang di Portal<br><em>PPDB Online Resmi</em></h2>
     <div class="quota-bar-wrap">
       <div class="quota-bar-top">
-        <span class="quota-bar-label"><i class="fa-solid fa-chair"></i>Kuota Kursi</span>
+        <span class="quota-bar-label"><i class="fa-solid fa-chair"></i> Sisa Kuota Kursi Gelombang I</span>
         <span class="quota-bar-val" id="quota-text">— / 60 kursi</span>
       </div>
       <div class="quota-bar-track"><div class="quota-bar-fill" id="quota-fill" style="width:0%"></div></div>
-      <div class="quota-countdown"><i class="fa-solid fa-clock"></i> <span id="countdown-text">Sinkronisasi Database...</span></div>
     </div>
   </div>
 </div>
 
-<main class="wrapper" id="main-content">
-  <div class="step-indicator" id="step-nav">
-    <div class="step-list">
-      <div class="step-item"><div class="step-dot active" id="dot-1">1</div><span class="step-label active" id="lbl-1">Data Siswa</span></div>
-      <div class="step-line" id="line-1"></div>
-      <div class="step-item"><div class="step-dot" id="dot-2">2</div><span class="step-label" id="lbl-2">Data Orang Tua</span></div>
-      <div class="step-line" id="line-2"></div>
-      <div class="step-item"><div class="step-dot" id="dot-3">3</div><span class="step-label" id="lbl-3">Konfirmasi</span></div>
-    </div>
+<div class="menu-navigation-container">
+  <div class="menu-tabs">
+    <button class="tab-btn active" id="tab-home" onclick="switchMenu('home')"><i class="fa-solid fa-house"></i> Beranda</button>
+    <button class="tab-btn" id="tab-form" onclick="switchMenu('form')"><i class="fa-solid fa-file-signature"></i> Pendaftaran</button>
+    <button class="tab-btn" id="tab-status" onclick="switchMenu('status')"><i class="fa-solid fa-magnifying-glass"></i> Cek Status</button>
   </div>
+</div>
 
-  <form id="spmb-form" onsubmit="handleFormSubmit(event)" autocomplete="off">
-    <div id="step-1" class="slide-step-in">
-      <div class="notice notice-green">
-        <i class="fa-solid fa-circle-info"></i>
-        <span>Aturan Batas Umur: Prioritas utama adalah anak berusia minimal **6 hingga 7 tahun** per tanggal 1 Juli 2026.</span>
-      </div>
-      <div class="card">
-        <div class="card-header"><div class="card-hi"><i class="fa-solid fa-user-graduate"></i></div><div class="card-ht">Identitas Calon Siswa</div></div>
-        <div class="card-body">
-          <div class="fg">
-            <label class="fl"><span>Nama Lengkap <span class="req">*</span></span></label>
-            <input type="text" id="siswa-nama" required placeholder="NAMA SESUAI AKTA KELAHIRAN" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
-          </div>
-          <div class="g2">
-            <div class="fg">
-              <label class="fl"><span>NIK (16 Digit) <span class="req">*</span></span><span class="fcnt" id="nik-cnt">0/16</span></label>
-              <input type="text" id="siswa-nik" required maxlength="16" placeholder="Sesuai Kartu Keluarga" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('nik-cnt').textContent=this.value.length+'/16'; checkNikDuplicate(this.value)">
-              <div class="field-hint" id="nik-hint" style="display:none"></div>
-            </div>
-            <div class="fg">
-              <label class="fl"><span>NISN <span class="opt">(Jika ada)</span></span></label>
-              <input type="text" id="siswa-nisn" maxlength="10" placeholder="10 digit" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
+<main class="wrapper" id="main-content">
+  
+  <section id="section-home" class="main-section active-section slide-step-in">
+    <div class="welcome-grid">
+      <div class="info-box">
+        <h3><i class="fa-solid fa-circle-nodes"></i> Alur Pendaftaran Online</h3>
+        <p>Berikut langkah mudah bagi Ayah/Bunda untuk mendaftarkan anak tercinta ke SDN 37/II Pasar Lubuk Landai melalui sistem digital:</p>
+        
+        <div class="flow-container">
+          <div class="flow-node">
+            <div class="flow-icon">1</div>
+            <div class="flow-text">
+              <h4>Isi Formulir Online</h4>
+              <p>Klik menu <b>Pendaftaran</b> di atas, lengkapi identitas anak (NIK) beserta data orang tua secara valid.</p>
             </div>
           </div>
-          <div class="g2">
-            <div class="fg">
-              <label class="fl"><span>Tempat Lahir <span class="req">*</span></span></label>
-              <input type="text" id="siswa-tempat-lahir" required placeholder="KOTA/KABUPATEN" oninput="this.value=this.value.toUpperCase()">
-            </div>
-            <div class="fg">
-              <label class="fl"><span>Tanggal Lahir <span class="req">*</span></span></label>
-              <input type="date" id="siswa-tanggal-lahir" required onchange="validateUsia()">
-              <div class="field-hint" id="usia-hint" style="display:none"></div>
+          <div class="flow-node">
+            <div class="flow-icon">2</div>
+            <div class="flow-text">
+              <h4>Simpan Bukti Registrasi</h4>
+              <p>Setelah selesai mengirim form, sistem otomatis menerbitkan lembar resi digital berupa nomor registrasi resmi.</p>
             </div>
           </div>
-          <div class="fg">
-            <label class="fl"><span>Jenis Kelamin <span class="req">*</span></span></label>
-            <div class="radio-grp">
-              <label class="radio-opt"><input type="radio" name="gender" value="Laki-laki" required> Laki-laki</label>
-              <label class="radio-opt"><input type="radio" name="gender" value="Perempuan"> Perempuan</label>
-            </div>
-          </div>
-          <div class="fg">
-            <label class="fl"><span>Agama <span class="req">*</span></span></label>
-            <select id="siswa-agama" required>
-              <option value="" disabled selected>Pilih Agama</option>
-              <option>Islam</option><option>Kristen</option><option>Katolik</option><option>Hindu</option><option>Buddha</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label class="fl"><span>Alamat Tempat Tinggal <span class="req">*</span></span></label>
-            <textarea id="siswa-alamat" required rows="3" placeholder="Dusun, RT/RW, Desa, Kecamatan"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="form-actions">
-        <div></div>
-        <button type="button" id="btn-next-1" onclick="goStep(2)" class="btn btn-primary" disabled><i class="fa-solid fa-lock" id="lock-icon-1"></i> Lanjut <i class="fa-solid fa-arrow-right"></i></button>
-      </div>
-    </div>
-
-    <div id="step-2" class="slide-step-in" style="display:none">
-      <div class="card">
-        <div class="card-header"><div class="card-hi"><i class="fa-solid fa-people-roof"></i></div><div class="card-ht">Data Orang Tua / Wali</div></div>
-        <div class="card-body">
-          <div class="g2">
-            <div class="fg">
-              <label class="fl"><span>Nama Ayah Kandung <span class="req">*</span></span></label>
-              <input type="text" id="ortu-ayah" required placeholder="NAMA AYAH" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
-            </div>
-            <div class="fg">
-              <label class="fl"><span>Nama Ibu Kandung <span class="req">*</span></span></label>
-              <input type="text" id="ortu-ibu" required placeholder="NAMA IBU" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
-            </div>
-          </div>
-          
-          <div class="g2">
-            <div class="fg">
-              <label class="fl"><span>Pekerjaan Ayah <span class="req">*</span></span></label>
-              <select id="ortu-kerja-ayah-sel" required onchange="toggleKerjaManual('ayah')">
-                <option value="" disabled selected>Pilih Pekerjaan Ayah</option>
-                <option value="PETANI">Petani / Pekebun</option>
-                <option value="BURUH">Buruh Harian Lepas</option>
-                <option value="PNS">PNS / ASN</option>
-                <option value="TNI/POLRI">TNI / POLRI</option>
-                <option value="KARYAWAN">Karyawan Swasta</option>
-                <option value="WIRASWASTA">Wiraswasta / Pedagang</option>
-                <option value="LAINNYA">Lainnya (Ketik Sendiri)</option>
-              </select>
-              <input type="text" id="ortu-kerja-ayah-manual" placeholder="Ketik pekerjaan ayah di sini" style="display:none; margin-top:8px;" oninput="this.value=this.value.toUpperCase()">
-            </div>
-            
-            <div class="fg">
-              <label class="fl"><span>Pekerjaan Ibu <span class="req">*</span></span></label>
-              <select id="ortu-kerja-ibu-sel" required onchange="toggleKerjaManual('ibu')">
-                <option value="" disabled selected>Pilih Pekerjaan Ibu</option>
-                <option value="IBU RUMAH TANGGA">Ibu Rumah Tangga (IRT)</option>
-                <option value="PETANI">Petani / Pekebun</option>
-                <option value="BURUH">Buruh Harian Lepas</option>
-                <option value="PNS">PNS / ASN</option>
-                <option value="KARYAWAN">Karyawan Swasta</option>
-                <option value="WIRASWASTA">Wiraswasta / Pedagang</option>
-                <option value="LAINNYA">Lainnya (Ketik Sendiri)</option>
-              </select>
-              <input type="text" id="ortu-kerja-ibu-manual" placeholder="Ketik pekerjaan ibu di sini" style="display:none; margin-top:8px;" oninput="this.value=this.value.toUpperCase()">
-            </div>
-          </div>
-
-          <div class="g2">
-            <div class="fg">
-              <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span><span class="fcnt" id="telp-cnt">0/13</span></label>
-              <div class="inp-pre">
-                <span class="inp-pre-txt">+62</span>
-                <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('telp-cnt').textContent=this.value.length+'/13'; checkTelpValid(this.value)">
-              </div>
-              <div class="field-hint" id="telp-hint" style="display:none"></div>
-            </div>
-            <div class="fg">
-              <label class="fl"><span>Anak ke- / Dari <span class="req">*</span></span></label>
-              <div style="display:flex; gap:5px; align-items:center">
-                <input type="text" id="anak-ke" required placeholder="Ke" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
-                <span>dari</span>
-                <input type="text" id="jml-saudara" required placeholder="Sdr" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
-              </div>
+          <div class="flow-node">
+            <div class="flow-icon">3</div>
+            <div class="flow-text">
+              <h4>Konfirmasi WhatsApp & Validasi Fisik</h4>
+              <p>Klik konfirmasi WA ke Panitia, kemudian bawa berkas fisik ke sekolah untuk pencocokan berkas asli.</p>
             </div>
           </div>
         </div>
+        
+        <button class="btn btn-primary" onclick="switchMenu('form')" style="margin-top:24px; width:100%; justify-content:center; padding:14px;">
+          Mulai Isi Formulir Sekarang <i class="fa-solid fa-arrow-right"></i>
+        </button>
       </div>
-      <div class="form-actions">
-        <button type="button" onclick="goStep(1)" class="btn btn-sec"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
-        <button type="button" id="btn-next-2" onclick="goStep(3)" class="btn btn-primary" disabled><i class="fa-solid fa-lock" id="lock-icon-2"></i> Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+
+      <div class="info-box" style="background: rgba(255,255,255,0.85);">
+        <h3><i class="fa-solid fa-briefcase"></i> Syarat & Berkas</h3>
+        <p>Persiapkan dokumen fotokopi berikut untuk diserahkan ke ruang panitia saat daftar ulang:</p>
+        
+        <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Usia Minimal 6 Tahun (Per 1 Juli 2026)</span></div>
+        <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Fotokopi Akta Kelahiran (1 Lembar)</span></div>
+        <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Fotokopi Kartu Keluarga / KK (1 Lembar)</span></div>
+        <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Membawa KK & Akta Asli (Untuk dicocokkan)</span></div>
+        
+        <div style="margin-top: 20px; background: var(--g0); border: 1px solid var(--g3); padding: 12px; border-radius: var(--rmd); font-size: 11.5px; color: var(--g9); line-height: 1.5;">
+          <i class="fa-solid fa-headset"></i> <b>Butuh Bantuan?</b><br>
+          Jika mengalami kendala sistem, Anda bisa langsung datang ke gedung sekolah pada jam kerja (08.00 - 12.00 WIB).
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="section-form" class="main-section slide-step-in">
+    <div class="step-indicator" id="step-nav">
+      <div class="step-list">
+        <div class="step-item"><div class="step-dot active" id="dot-1">1</div><span class="step-label active" id="lbl-1">Data Siswa</span></div>
+        <div class="step-line" id="line-1"></div>
+        <div class="step-item"><div class="step-dot" id="dot-2">2</div><span class="step-label" id="lbl-2">Orang Tua</span></div>
+        <div class="step-line" id="line-2"></div>
+        <div class="step-item"><div class="step-dot" id="dot-3">3</div><span class="step-label" id="lbl-3">Konfirmasi</span></div>
       </div>
     </div>
 
-    <div id="step-3" class="slide-step-in" style="display:none">
-      <div class="notice">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <span><b>Pemberitahuan Berkas:</b> Pendaftaran online ini tidak memungut upload berkas berkas gambar. Mohon membawa fotokopi <b>Akta Kelahiran</b> dan <b>Kartu Keluarga (KK)</b> asli saat verifikasi berkas langsung ke sekolah.</span>
+    <form id="spmb-form" onsubmit="handleFormSubmit(event)" autocomplete="off">
+      <div id="step-1">
+        <div class="notice notice-green">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Aturan Batas Umur: Prioritas utama adalah anak berusia minimal <b>6 hingga 7 tahun</b> per tanggal 1 Juli 2026.</span>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-hi"><i class="fa-solid fa-user-graduate"></i></div><div class="card-ht">Identitas Calon Siswa</div></div>
+          <div class="card-body">
+            <div class="fg">
+              <label class="fl"><span>Nama Lengkap <span class="req">*</span></span></label>
+              <input type="text" id="siswa-nama" required placeholder="NAMA SESUAI AKTA KELAHIRAN" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
+            </div>
+            <div class="g2">
+              <div class="fg">
+                <label class="fl"><span>NIK (16 Digit) <span class="req">*</span></span><span class="fcnt" id="nik-cnt">0/16</span></label>
+                <input type="text" id="siswa-nik" required maxlength="16" placeholder="Sesuai Kartu Keluarga" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('nik-cnt').textContent=this.value.length+'/16'; checkNikDuplicate(this.value)">
+                <div class="field-hint" id="nik-hint" style="display:none"></div>
+              </div>
+              <div class="fg">
+                <label class="fl"><span>NISN <span class="opt">(Jika ada)</span></span></label>
+                <input type="text" id="siswa-nisn" maxlength="10" placeholder="10 digit" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
+              </div>
+            </div>
+            <div class="g2">
+              <div class="fg">
+                <label class="fl"><span>Tempat Lahir <span class="req">*</span></span></label>
+                <input type="text" id="siswa-tempat-lahir" required placeholder="KOTA/KABUPATEN" oninput="this.value=this.value.toUpperCase()">
+              </div>
+              <div class="fg">
+                <label class="fl"><span>Tanggal Lahir <span class="req">*</span></span></label>
+                <input type="date" id="siswa-tanggal-lahir" required onchange="validateUsia()">
+                <div class="field-hint" id="usia-hint" style="display:none"></div>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl"><span>Jenis Kelamin <span class="req">*</span></span></label>
+              <div class="radio-grp">
+                <label class="radio-opt"><input type="radio" name="gender" value="Laki-laki" required> Laki-laki</label>
+                <label class="radio-opt"><input type="radio" name="gender" value="Perempuan"> Perempuan</label>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl"><span>Agama <span class="req">*</span></span></label>
+              <select id="siswa-agama" required>
+                <option value="" disabled selected>Pilih Agama</option>
+                <option>Islam</option><option>Kristen</option><option>Katolik</option><option>Hindu</option><option>Buddha</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label class="fl"><span>Alamat Tempat Tinggal <span class="req">*</span></span></label>
+              <textarea id="siswa-alamat" required rows="3" placeholder="Dusun, RT/RW, Desa, Kecamatan"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <div></div>
+          <button type="button" id="btn-next-1" onclick="goStep(2)" class="btn btn-primary" disabled><i class="fa-solid fa-lock" id="lock-icon-1"></i> Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-header"><div class="card-hi"><i class="fa-solid fa-magnifying-glass-check"></i></div><div class="card-ht">Cek Kembali Ringkasan Data Anda</div></div>
-        <div class="card-body" id="review-body"></div>
+
+      <div id="step-2" style="display:none">
+        <div class="card">
+          <div class="card-header"><div class="card-hi"><i class="fa-solid fa-people-roof"></i></div><div class="card-ht">Data Orang Tua / Wali</div></div>
+          <div class="card-body">
+            <div class="g2">
+              <div class="fg">
+                <label class="fl"><span>Nama Ayah Kandung <span class="req">*</span></span></label>
+                <input type="text" id="ortu-ayah" required placeholder="NAMA AYAH" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
+              </div>
+              <div class="fg">
+                <label class="fl"><span>Nama Ibu Kandung <span class="req">*</span></span></label>
+                <input type="text" id="ortu-ibu" required placeholder="NAMA IBU" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
+              </div>
+            </div>
+            <div class="g2">
+              <div class="fg">
+                <label class="fl"><span>Pekerjaan Ayah <span class="req">*</span></span></label>
+                <select id="ortu-kerja-ayah-sel" required onchange="toggleKerjaManual('ayah')">
+                  <option value="" disabled selected>Pilih Pekerjaan Ayah</option>
+                  <option value="PETANI">Petani / Pekebun</option>
+                  <option value="BURUH">Buruh Harian Lepas</option>
+                  <option value="PNS">PNS / ASN</option>
+                  <option value="TNI/POLRI">TNI / POLRI</option>
+                  <option value="WIRASWASTA">Wiraswasta / Pedagang</option>
+                  <option value="LAINNYA">Lainnya (Ketik Sendiri)</option>
+                </select>
+                <input type="text" id="ortu-kerja-ayah-manual" placeholder="Ketik pekerjaan ayah" style="display:none; margin-top:8px;" oninput="this.value=this.value.toUpperCase()">
+              </div>
+              <div class="fg">
+                <label class="fl"><span>Pekerjaan Ibu <span class="req">*</span></span></label>
+                <select id="ortu-kerja-ibu-sel" required onchange="toggleKerjaManual('ibu')">
+                  <option value="" disabled selected>Pilih Pekerjaan Ibu</option>
+                  <option value="IBU RUMAH TANGGA">Ibu Rumah Tangga (IRT)</option>
+                  <option value="PETANI">Petani / Pekebun</option>
+                  <option value="BURUH">Buruh Harian Lepas</option>
+                  <option value="PNS">PNS / ASN</option>
+                  <option value="WIRASWASTA">Wiraswasta / Pedagang</option>
+                  <option value="LAINNYA">Lainnya (Ketik Sendiri)</option>
+                </select>
+                <input type="text" id="ortu-kerja-ibu-manual" placeholder="Ketik pekerjaan ibu" style="display:none; margin-top:8px;" oninput="this.value=this.value.toUpperCase()">
+              </div>
+            </div>
+            <div class="g2">
+              <div class="fg">
+                <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span><span class="fcnt" id="telp-cnt">0/13</span></label>
+                <div class="inp-pre">
+                  <span class="inp-pre-txt">+62</span>
+                  <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('telp-cnt').textContent=this.value.length+'/13'; checkTelpValid(this.value)">
+                </div>
+                <div class="field-hint" id="telp-hint" style="display:none"></div>
+              </div>
+              <div class="fg">
+                <label class="fl"><span>Anak ke- / Dari <span class="req">*</span></span></label>
+                <div style="display:flex; gap:5px; align-items:center">
+                  <input type="text" id="anak-ke" required placeholder="Ke" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
+                  <span>dari</span>
+                  <input type="text" id="jml-saudara" required placeholder="Sdr" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" onclick="goStep(1)" class="btn btn-sec"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+          <button type="button" id="btn-next-2" onclick="goStep(3)" class="btn btn-primary" disabled><i class="fa-solid fa-lock" id="lock-icon-2"></i> Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
       </div>
-      <div class="card" style="padding:15px; background:var(--g0)">
-        <label style="display:flex; gap:10px; cursor:pointer; font-size:12px; font-weight:500">
-          <input type="checkbox" id="persetujuan" required style="width:16px; height:16px">
-          <span>Saya menyatakan secara sadar bahwa seluruh data di atas sudah benar sesuai dokumen KK & Akta asli.</span>
-        </label>
+
+      <div id="step-3" style="display:none">
+        <div class="notice">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span><b>Pemberitahuan Berkas:</b> Mohon membawa fotokopi <b>Akta Kelahiran</b> dan <b>Kartu Keluarga (KK)</b> asli saat verifikasi berkas langsung ke sekolah.</span>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-hi"><i class="fa-solid fa-magnifying-glass-check"></i></div><div class="card-ht">Cek Kembali Ringkasan Data Anda</div></div>
+          <div class="card-body" id="review-body"></div>
+        </div>
+        <div class="card" style="padding:15px; background:var(--g0)">
+          <label style="display:flex; gap:10px; cursor:pointer; font-size:12px; font-weight:500">
+            <input type="checkbox" id="persetujuan" required style="width:16px; height:16px">
+            <span>Saya menyatakan secara sadar bahwa seluruh data di atas sudah benar sesuai dokumen asli.</span>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="button" onclick="goStep(2)" class="btn btn-sec"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit"><i class="fa-solid fa-paper-plane"></i> Kirim Formulir</button>
+        </div>
       </div>
-      <div class="form-actions">
-        <button type="button" onclick="goStep(2)" class="btn btn-sec"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
-        <button type="submit" class="btn btn-primary" id="btn-submit"><i class="fa-solid fa-paper-plane"></i> Kirim Formulir</button>
+    </form>
+  </section>
+
+  <section id="section-status" class="main-section slide-step-in">
+    <div class="card" style="margin-top: 10px;">
+      <div class="card-header">
+        <div class="card-hi"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="card-ht">Pencarian Status Validasi Siswa</div>
+      </div>
+      <div class="card-body">
+        <p style="font-size: 13px; color: var(--gr6); margin-bottom: 16px;">
+          Masukkan 16 digit Nomor Induk Kependudukan (NIK) Calon Siswa untuk melacak status verifikasi berkas dan jadwal daftar ulang fisik.
+        </p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <input type="text" id="cari-nik" maxlength="16" placeholder="Masukkan 16 Digit NIK Anak" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" style="flex: 1; min-width: 200px;">
+          <button type="button" onclick="cariStatusSiswa()" class="btn btn-primary" style="padding: 11px 24px;"><i class="fa-solid fa-search"></i> Cari Data</button>
+        </div>
+        <div id="hasil-pencarian" style="display: none; margin-top: 24px; padding: 20px; background: var(--gr0); border: 1px solid var(--gr3); border-radius: var(--rmd);"></div>
       </div>
     </div>
-  </form>
+  </section>
+
 </main>
 
 <div class="modal-overlay" id="success-modal">
@@ -393,7 +465,7 @@ textarea{resize:none;line-height:1.6}
         <div class="receipt-row"><span>No. Registrasi</span><span class="rv accent" id="receipt-id">—</span></div>
         <div class="receipt-row"><span>Nama Calon Siswa</span><span class="rv" id="receipt-name">—</span></div>
         <div class="receipt-row"><span>NIK Siswa</span><span class="rv" id="receipt-nik">—</span></div>
-        <p style="font-size:11.5px; color:var(--g8); text-align:center; margin-top:14px; padding:8px; background:var(--g0); border-radius:6px; font-weight:600">Silakan screenshot/cetak bukti ini lalu tekan tombol Hijau di bawah untuk konfirmasi ke WhatsApp Panitia.</p>
+        <p style="font-size:11.5px; color:var(--g8); text-align:center; margin-top:14px; padding:8px; background:var(--g0); border-radius:6px; font-weight:600">Silakan screenshot bukti ini lalu tekan tombol Hijau untuk konfirmasi langsung ke WA Panitia.</p>
       </div>
     </div>
     <div class="modal-ftr">
@@ -420,6 +492,22 @@ let isTelpValid = false;
 let isNikValid = false;
 let existingNikList = [];
 
+function switchMenu(menu) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.main-section').forEach(s => s.classList.remove('active-section'));
+  
+  if (menu === 'home') {
+    document.getElementById('tab-home').classList.add('active');
+    document.getElementById('section-home').classList.add('active-section');
+  } else if (menu === 'form') {
+    document.getElementById('tab-form').classList.add('active');
+    document.getElementById('section-form').classList.add('active-section');
+  } else if (menu === 'status') {
+    document.getElementById('tab-status').classList.add('active');
+    document.getElementById('section-status').classList.add('active-section');
+  }
+}
+
 function fetchKuotaAwal() {
   fetch(SHEET_API).then(r => r.json()).then(data => {
     if(Array.isArray(data)) {
@@ -429,52 +517,91 @@ function fetchKuotaAwal() {
       const pct = Math.min(100, (totalPendaftarAktif / KUOTA_MAX) * 100);
       document.getElementById('quota-text').textContent = `${totalPendaftarAktif} / ${KUOTA_MAX} Kursi (Sisa ${sisa})`;
       document.getElementById('quota-fill').style.width = pct + '%';
-      document.getElementById('countdown-text').textContent = 'Database sinkron dengan server.';
       
       if(totalPendaftarAktif >= KUOTA_MAX) {
-        lockoutSystem();
+        lockoutFormOnly();
       }
     }
-  }).catch(()=>{
-    document.getElementById('countdown-text').textContent = 'Gagal sinkronisasi data.';
-  });
+  }).catch(()=>{});
 }
 
-function lockoutSystem() {
-  const mainContent = document.getElementById('main-content');
-  mainContent.innerHTML = `
-    <div id="lockout-screen" class="slide-step-in">
-      <i class="fa-solid fa-circle-xmark"></i>
-      <h3>Pendaftaran Jalur Online Ditutup</h3>
-      <p>Mohon maaf, kuota penerimaan melalui jalur online pendaftaran mandiri (60 Kursi) saat ini telah terpenuhi.<br>Untuk informasi lebih lanjut, silakan datang langsung ke gedung sekolah <b>SDN 37/II Pasar Lubuk Landai</b>.</p>
+function lockoutFormOnly() {
+  document.getElementById('section-form').innerHTML = `
+    <div style="background:rgba(255,255,255,0.8); border:2px solid var(--r5); border-radius:var(--rxl); padding:40px 24px; text-align:center; margin-top:20px;">
+      <i class="fa-solid fa-circle-xmark" style="font-size:48px; color:var(--r5); margin-bottom:14px;"></i>
+      <h3 style="font-family:'DM Serif Display',serif; font-size:22px; margin-bottom:8px;">Kuota Online Penuh</h3>
+      <p style="font-size:13px; color:var(--gr6); line-height:1.6;">Kuota pendaftaran mandiri (60 Kursi) telah terpenuhi. Anda masih bisa melakukan pengecekan data lama pada menu <b>Cek Status</b> di atas.</p>
     </div>
   `;
+}
+
+function cariStatusSiswa() {
+  const nikInput = document.getElementById('cari-nik').value.trim();
+  const boxHasil = document.getElementById('hasil-pencarian');
+  
+  if (nikInput.length !== 16) {
+    toast('Mohon masukkan 16 digit NIK secara lengkap!', 'err');
+    return;
+  }
+  
+  boxHasil.style.display = 'block';
+  boxHasil.innerHTML = `<p style="font-size:13px; color:var(--gr6); text-align:center;"><i class="fa-solid fa-spinner fa-spin"></i> Mencari data di database...</p>`;
+  
+  fetch(SHEET_API)
+    .then(res => res.json())
+    .then(data => {
+      if (!Array.isArray(data)) {
+        boxHasil.innerHTML = `<p style="font-size:13px; color:var(--r5); text-align:center;">❌ Gagal memuat database server.</p>`;
+        return;
+      }
+      
+      const siswa = data.find(item => item.nik && item.nik.toString().trim() === nikInput);
+      
+      if (siswa) {
+        boxHasil.innerHTML = `
+          <div style="text-align: center; margin-bottom:16px; padding-bottom:12px; border-bottom:1.5px dashed var(--gr3);">
+            <span style="background: var(--g1); color: var(--g8); font-size:11px; font-weight:700; padding:4px 10px; border-radius:12px; text-transform:uppercase;">Data Ditemukan</span>
+            <h4 style="font-family:'DM Serif Display',serif; font-size:20px; color:var(--g9); margin-top:8px;">${siswa.nama}</h4>
+            <p style="font-size:12px; color:var(--g7); font-family:monospace; font-weight:700;">${siswa.id}</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:13px; margin-bottom:18px;">
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--gr6)">Status Validasi:</span><strong style="color:var(--g6); background:var(--g0); padding:2px 8px; border-radius:4px;">${siswa.status || 'Terdaftar'}</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--gr6)">Orang Tua / Wali:</span><strong style="color:var(--gr9)">${siswa.ayah} / ${siswa.ibu}</strong></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--gr6)">Tanggal Input:</span><strong style="color:var(--gr6)">${siswa.timestamp || '-'}</strong></div>
+          </div>
+          <div style="background:var(--a0); border:1px solid rgba(245,158,11,0.3); padding:14px; border-radius:8px; font-size:12px; color:#92400e; line-height:1.6;">
+            <strong style="display:block; margin-bottom:4px;"><i class="fa-solid fa-circle-exclamation"></i> ALUR VERIFIKASI FISIK:</strong>
+            Silakan wali murid membawa berkas fisik asli ke gedung <b>SDN 37/II Pasar Lubuk Landai</b>:
+            <ul style="margin-left:16px; margin-top:4px; display:flex; flex-direction:column; gap:2px;">
+              <li>Fotokopi Akta Kelahiran Anak (1 Lembar)</li>
+              <li>Fotokopi Kartu Keluarga / KK (1 Lembar)</li>
+              <li>Sebutkan No. Registrasi <b>${siswa.id}</b> kepada panitia</li>
+            </ul>
+          </div>
+        `;
+      } else {
+        boxHasil.innerHTML = `
+          <div style="text-align:center; padding:10px 0;">
+            <p style="font-size:14px; font-weight:700; color:var(--r5);">❌ Data Tidak Ditemukan</p>
+            <p style="font-size:12.5px; color:var(--gr6); margin-top:4px;">NIK <b>${nikInput}</b> belum terdaftar. Silakan klik menu <b>Pendaftaran</b> untuk mengisi formulir baru.</p>
+          </div>
+        `;
+      }
+    }).catch(() => {
+      boxHasil.innerHTML = `<p style="font-size:13px; color:var(--r5); text-align:center;">❌ Gagal terhubung ke database server.</p>`;
+    });
 }
 
 function checkNikDuplicate(nikVal) {
   const hint = document.getElementById('nik-hint');
   const inputEl = document.getElementById('siswa-nik');
   const cleanNik = nikVal.trim();
-  
-  if (cleanNik.length < 16) {
-    hint.style.display = 'none';
-    inputEl.classList.remove('input-err-active');
-    isNikValid = false;
-    validateStep1Buttons();
-    return;
-  }
+  if (cleanNik.length < 16) { hint.style.display = 'none'; inputEl.classList.remove('input-err-active'); isNikValid = false; validateStep1Buttons(); return; }
   hint.style.display = 'flex';
-  
   if (existingNikList.includes(cleanNik)) {
-    hint.className = 'field-hint hint-err';
-    hint.innerHTML = `❌ NIK ini sudah terdaftar di sistem!`;
-    inputEl.classList.add('input-err-active');
-    isNikValid = false;
+    hint.className = 'field-hint hint-err'; hint.innerHTML = `❌ NIK ini sudah terdaftar di sistem!`; inputEl.classList.add('input-err-active'); isNikValid = false;
   } else {
-    hint.className = 'field-hint hint-ok';
-    hint.innerHTML = `✔ NIK aman (Belum pernah terdaftar).`;
-    inputEl.classList.remove('input-err-active');
-    isNikValid = true;
+    hint.className = 'field-hint hint-ok'; hint.innerHTML = `✔ NIK aman (Belum pernah digunakan).`; inputEl.classList.remove('input-err-active'); isNikValid = true;
   }
   validateStep1Buttons();
 }
@@ -484,26 +611,16 @@ function validateUsia() {
   const hint = document.getElementById('usia-hint');
   const inputEl = document.getElementById('siswa-tanggal-lahir');
   if (!tglInput) return;
-  
   const tglLahir = new Date(tglInput);
   const targetTgl = new Date('2026-07-01');
-  
   let usiaBulan = (targetTgl.getFullYear() - tglLahir.getFullYear()) * 12 + (targetTgl.getMonth() - tglLahir.getMonth());
   let tahun = Math.floor(usiaBulan / 12);
   let bulan = usiaBulan % 12;
-
   hint.style.display = 'flex';
-  
   if (tahun >= 6) {
-    hint.className = 'field-hint hint-ok';
-    hint.innerHTML = `✔ Usia anak per 1 Juli 2026: <b>${tahun} Tahun ${bulan} Bulan</b> (Memenuhi Syarat)`;
-    inputEl.classList.remove('input-err-active');
-    isUsiaValid = true;
+    hint.className = 'field-hint hint-ok'; hint.innerHTML = `✔ Usia anak per 1 Juli 2026: <b>${tahun} Tahun ${bulan} Bulan</b>`; inputEl.classList.remove('input-err-active'); isUsiaValid = true;
   } else {
-    hint.className = 'field-hint hint-err';
-    hint.innerHTML = `❌ Usia anak: <b>${tahun} Tahun ${bulan} Bulan</b>. (Minimal 6 tahun)`;
-    inputEl.classList.add('input-err-active');
-    isUsiaValid = false;
+    hint.className = 'field-hint hint-err'; hint.innerHTML = `❌ Usia anak: <b>${tahun} Tahun ${bulan} Bulan</b> (Minimal 6 tahun)`; inputEl.classList.add('input-err-active'); isUsiaValid = false;
   }
   validateStep1Buttons();
 }
@@ -512,25 +629,17 @@ function validateStep1Buttons() {
   const nextBtn = document.getElementById('btn-next-1');
   const lockIcon = document.getElementById('lock-icon-1');
   if(isNikValid && isUsiaValid) {
-    nextBtn.disabled = false;
-    if(lockIcon) { lockIcon.className = 'fa-solid fa-lock-open'; }
+    nextBtn.disabled = false; if(lockIcon) lockIcon.className = 'fa-solid fa-lock-open';
   } else {
-    nextBtn.disabled = true;
-    if(lockIcon) { lockIcon.className = 'fa-solid fa-lock'; }
+    nextBtn.disabled = true; if(lockIcon) lockIcon.className = 'fa-solid fa-lock';
   }
 }
 
 function toggleKerjaManual(role) {
   const sel = document.getElementById(`ortu-kerja-${role}-sel`).value;
   const manualInput = document.getElementById(`ortu-kerja-${role}-manual`);
-  if (sel === 'LAINNYA') {
-    manualInput.style.display = 'block';
-    manualInput.required = true;
-  } else {
-    manualInput.style.display = 'none';
-    manualInput.required = false;
-    manualInput.value = '';
-  }
+  if (sel === 'LAINNYA') { manualInput.style.display = 'block'; manualInput.required = true; } 
+  else { manualInput.style.display = 'none'; manualInput.required = false; manualInput.value = ''; }
 }
 
 function checkTelpValid(val) {
@@ -539,29 +648,16 @@ function checkTelpValid(val) {
   const lockIcon = document.getElementById('lock-icon-2');
   const inputEl = document.getElementById('ortu-telp');
   hint.style.display = 'flex';
-  
   if (val.length >= 9 && val.length <= 13) {
-    hint.className = 'field-hint hint-ok';
-    hint.innerHTML = `✔ Nomor WhatsApp valid (+62 ${val})`;
-    inputEl.classList.remove('input-err-active');
-    isTelpValid = true;
-    nextBtn.disabled = false;
-    if(lockIcon) { lockIcon.className = 'fa-solid fa-lock-open'; }
+    hint.className = 'field-hint hint-ok'; hint.innerHTML = `✔ WhatsApp Terbaca Valid`; inputEl.classList.remove('input-err-active'); isTelpValid = true; nextBtn.disabled = false; if(lockIcon) lockIcon.className = 'fa-solid fa-lock-open';
   } else {
-    hint.className = 'field-hint hint-err';
-    hint.innerHTML = `❌ Nomor harus di antara 10 - 13 digit.`;
-    inputEl.classList.add('input-err-active');
-    isTelpValid = false;
-    nextBtn.disabled = true;
-    if(lockIcon) { lockIcon.className = 'fa-solid fa-lock'; }
+    hint.className = 'field-hint hint-err'; hint.innerHTML = `❌ Nomor harus 10 - 13 digit.`; inputEl.classList.add('input-err-active'); isTelpValid = false; nextBtn.disabled = true; if(lockIcon) lockIcon.className = 'fa-solid fa-lock';
   }
 }
 
 function getPekerjaanValue(role) {
   const sel = document.getElementById(`ortu-kerja-${role}-sel`).value;
-  if (sel === 'LAINNYA') {
-    return document.getElementById(`ortu-kerja-${role}-manual`).value.toUpperCase();
-  }
+  if (sel === 'LAINNYA') return document.getElementById(`ortu-kerja-${role}-manual`).value.toUpperCase();
   return sel;
 }
 
@@ -569,25 +665,17 @@ function goStep(target) {
   if (target > currentStep) {
     if (currentStep === 1) {
       if (!document.getElementById('siswa-nama').value.trim()) { toast('Nama siswa wajib diisi!','err'); return; }
-      if (document.getElementById('siswa-nik').value.length !== 16) { toast('NIK harus bernilai tepat 16 digit!','err'); return; }
       if (!isNikValid) { toast('Periksa kembali kolom NIK Siswa!','err'); return; }
-      if (!isUsiaValid) { toast('Usia anak belum memenuhi syarat minimal!','err'); return; }
+      if (!isUsiaValid) { toast('Usia anak belum memenuhi syarat!','err'); return; }
       if (!document.getElementById('siswa-tempat-lahir').value.trim()) { toast('Tempat lahir wajib diisi!','err'); return; }
       if (!document.getElementById('siswa-agama').value) { toast('Agama wajib dipilih!','err'); return; }
-      if (!document.getElementById('siswa-alamat').value.trim()) { toast('Alamat wajib diisi!','err'); return; }
     }
     if (currentStep === 2) {
       if (!document.getElementById('ortu-ayah').value.trim() || !document.getElementById('ortu-ibu').value.trim()) { toast('Nama Orang Tua wajib diisi!','err'); return; }
-      const selAyah = document.getElementById('ortu-kerja-ayah-sel').value;
-      const selIbu = document.getElementById('ortu-kerja-ibu-sel').value;
-      if (!selAyah || !selIbu) { toast('Pekerjaan Ayah & Ibu wajib dipilih!','err'); return; }
       if (!isTelpValid) { toast('Format nomor WhatsApp salah!','err'); return; }
-      if (!document.getElementById('anak-ke').value || !document.getElementById('jml-saudara').value) { toast('Isi urutan anak dengan benar!','err'); return; }
     }
   }
-  
   if (target === 3) buildReview();
-  
   document.getElementById('step-' + currentStep).style.display = 'none';
   document.getElementById('step-' + target).style.display = 'block';
   currentStep = target;
@@ -598,34 +686,26 @@ function updateStepUI() {
   for (let i = 1; i <= 3; i++) {
     const dot = document.getElementById('dot-' + i);
     const lbl = document.getElementById('lbl-' + i);
-    if(dot) {
-      dot.className = i < currentStep ? 'step-dot done' : i === currentStep ? 'step-dot active' : 'step-dot';
-      dot.textContent = i < currentStep ? '✓' : i;
-    }
+    if(dot) { dot.className = i < currentStep ? 'step-dot done' : i === currentStep ? 'step-dot active' : 'step-dot'; dot.textContent = i < currentStep ? '✓' : i; }
     if(lbl) lbl.className = i < currentStep ? 'step-label done' : i === currentStep ? 'step-label active' : 'step-label';
-    if(i <= 2) {
-      const line = document.getElementById('line-' + i);
-      if(line) line.className = i < currentStep ? 'step-line done' : 'step-line';
-    }
+    if(i <= 2) { const line = document.getElementById('line-' + i); if(line) line.className = i < currentStep ? 'step-line done' : 'step-line'; }
   }
 }
 
 function buildReview() {
   const genderRadio = document.querySelector('input[name="gender"]:checked');
   const tglLahirRaw = document.getElementById('siswa-tanggal-lahir').value;
-  
   const rows = [
     ['Nama Calon Siswa', document.getElementById('siswa-nama').value.toUpperCase()],
     ['NIK Siswa', document.getElementById('siswa-nik').value],
     ['Tanggal Lahir', tglLahirRaw ? new Date(tglLahirRaw).toLocaleDateString('id-ID', {day:'numeric', month:'long', year:'numeric'}) : '-'],
     ['Jenis Kelamin', genderRadio ? genderRadio.value : '-'],
     ['Alamat Rumah', document.getElementById('siswa-alamat').value],
-    ['Nama Ayah / Ibu', document.getElementById('ortu-ayah').value.toUpperCase() + ' / ' + document.getElementById('ortu-ibu').value.toUpperCase()],
-    ['Pekerjaan (Ayah/Ibu)', getPekerjaanValue('ayah') + ' / ' + getPekerjaanValue('ibu')],
+    ['Nama Orang Tua', document.getElementById('ortu-ayah').value.toUpperCase() + ' / ' + document.getElementById('ortu-ibu').value.toUpperCase()],
     ['No. WhatsApp Wali', '+62 ' + document.getElementById('ortu-telp').value]
   ];
   document.getElementById('review-body').innerHTML = rows.map(([k,v]) => `
-    <div style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid rgba(0,0,0,0.05); font-size:12.5px; gap: 12px;">
+    <div style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid rgba(0,0,0,0.05); font-size:12.5px; gap:12px;">
       <span style="color:var(--gr6); min-width:120px">${k}</span><strong style="color:var(--gr9); text-align:right; word-break:break-all">${v}</strong>
     </div>
   `).join('');
@@ -633,49 +713,25 @@ function buildReview() {
 
 function handleFormSubmit(e) {
   e.preventDefault();
-  if(!document.getElementById('persetujuan').checked) {
-    toast('Anda harus menyetujui pernyataan kebenaran data!','err');
-    return;
-  }
-
+  if(!document.getElementById('persetujuan').checked) { toast('Anda harus menyetujui syarat kebenaran data!','err'); return; }
+  
   const btn = document.getElementById('btn-submit');
-  btn.disabled = true; 
-  btn.textContent = 'Memproses Kiriman...';
-
+  btn.disabled = true; btn.textContent = 'Memproses...';
+  
   const regId = `REG/SD37/2026/${String(totalPendaftarAktif + 1).padStart(3,'0')}`;
   const timestamp = new Date().toLocaleString('id-ID') + ' WIB';
-  const siswaNamaFixed = document.getElementById('siswa-nama').value.toUpperCase();
-
   const payload = {
-    id: regId,
-    nama: siswaNamaFixed,
-    nik: document.getElementById('siswa-nik').value,
-    nisn: document.getElementById('siswa-nisn').value || '-',
-    tempatLahir: document.getElementById('siswa-tempat-lahir').value.toUpperCase(),
-    tanggalLahir: document.getElementById('siswa-tanggal-lahir').value,
-    gender: document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '-',
-    agama: document.getElementById('siswa-agama').value,
-    alamat: document.getElementById('siswa-alamat').value,
-    ayah: document.getElementById('ortu-ayah').value.toUpperCase(),
-    ibu: document.getElementById('ortu-ibu').value.toUpperCase(),
-    kerja_ayah: getPekerjaanValue('ayah'),
-    kerja_ibu: getPekerjaanValue('ibu'),
-    telp: '0' + document.getElementById('ortu-telp').value,
-    anak_ke: document.getElementById('anak-ke').value,
-    jml_saudara: document.getElementById('jml-saudara').value,
-    status: 'Terdaftar', 
-    timestamp: timestamp
+    id: regId, nama: document.getElementById('siswa-nama').value.toUpperCase(), nik: document.getElementById('siswa-nik').value,
+    nisn: document.getElementById('siswa-nisn').value || '-', tempatLahir: document.getElementById('siswa-tempat-lahir').value.toUpperCase(),
+    tanggalLahir: document.getElementById('siswa-tanggal-lahir').value, gender: document.querySelector('input[name="gender"]:checked').value,
+    agama: document.getElementById('siswa-agama').value, alamat: document.getElementById('siswa-alamat').value,
+    ayah: document.getElementById('ortu-ayah').value.toUpperCase(), ibu: document.getElementById('ortu-ibu').value.toUpperCase(),
+    kerja_ayah: getPekerjaanValue('ayah'), kerja_ibu: getPekerjaanValue('ibu'), telp: '0' + document.getElementById('ortu-telp').value,
+    anak_ke: document.getElementById('anak-ke').value, jml_saudara: document.getElementById('jml-saudara').value, status: 'Terdaftar', timestamp: timestamp
   };
 
-  fetch(SHEET_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ data: [payload] })
-  })
-  .then(res => {
-    if(!res.ok) throw new Error("Gagal menyimpan");
-    return res.json();
-  })
+  fetch(SHEET_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) })
+  .then(res => { if(!res.ok) throw new Error(); return res.json(); })
   .then(() => {
     document.getElementById('receipt-id').textContent = payload.id;
     document.getElementById('receipt-name').textContent = payload.nama;
@@ -683,37 +739,21 @@ function handleFormSubmit(e) {
     document.getElementById('receipt-date').textContent = payload.timestamp;
     
     document.getElementById('btn-wa-confirm').onclick = function() {
-      const waText = encodeURIComponent(
-        `Halo Panitia PPDB SDN 37/II Pasar Lubuk Landai,\n\nSaya telah melakukan pendaftaran online dengan data berikut:\n` +
-        `- No. Registrasi: ${payload.id}\n` +
-        `- Nama Calon Siswa: ${payload.nama}\n` +
-        `- NIK Siswa: ${payload.nik}\n\n` +
-        `Mohon informasi mengenai jadwal penyerahan berkas fisik asli ke sekolah. Terima kasih.`
-      );
+      const waText = encodeURIComponent(`Halo Panitia PPDB SDN 37/II,\n\nSaya mendaftar online:\n- No: ${payload.id}\n- Nama: ${payload.nama}\n- NIK: ${payload.nik}\n\nMohon petunjuk berkas fisik.`);
       window.open(`https://api.whatsapp.com/send?phone=${WA_PANITIA}&text=${waText}`, '_blank');
     };
-
     document.getElementById('success-modal').classList.add('open');
-  })
-  .catch((err) => { 
-    console.error(err);
-    toast('Koneksi internet lambat, silakan coba lagi!','err'); 
-    btn.disabled = false; 
-    btn.textContent = 'Kirim Formulir'; 
-  });
+  }).catch(() => { toast('Masalah jaringan, ulangi beberapa saat lagi!','err'); btn.disabled = false; btn.textContent = 'Kirim Formulir'; });
 }
 
 function toast(msg, type) {
-  const wrap = document.getElementById('toast-wrap');
-  if(!wrap) return;
-  const el = document.createElement('div');
-  el.className = 'toast ' + (type==='err'?'toast-err':'toast-ok');
+  const wrap = document.getElementById('toast-wrap'); if(!wrap) return;
+  const el = document.createElement('div'); el.className = 'toast ' + (type==='err'?'toast-err':'toast-ok');
   el.innerHTML = type==='err' ? `<i class="fa-solid fa-circle-exclamation"></i> <span>${msg}</span>` : `<i class="fa-solid fa-circle-check"></i> <span>${msg}</span>`;
-  wrap.appendChild(el);
-  setTimeout(() => el.remove(), 3800);
+  wrap.appendChild(el); setTimeout(() => el.remove(), 3800);
 }
 
-window.onload = function() { fetchKuotaAwal(); };
+window.onload = function() { switchMenu('home'); fetchKuotaAwal(); };
 </script>
 </body>
 </html>
