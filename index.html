@@ -24,7 +24,6 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--gr1);color:var(--gr9);min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 10% -10%,rgba(34,168,120,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 90% 110%,rgba(26,138,98,.09) 0%,transparent 55%);pointer-events:none;z-index:0}
 
 /* ===== TOPBAR ===== */
 .topbar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(34,168,120,.12);box-shadow:0 2px 20px rgba(10,63,46,.04)}
@@ -34,12 +33,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .topbar-brand-text h1{font-family:'DM Serif Display',serif;font-size:15px;color:var(--g9);line-height:1.2}
 .topbar-brand-text p{font-size:10px;color:var(--g6);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
 
-/* ===== HERO BACKGROUND BANNER ===== */
+/* ===== HERO ===== */
 .hero{background:linear-gradient(rgba(8, 48, 36, 0.88), rgba(11, 64, 49, 0.93)), url('https://sumbernews.id/wp-content/uploads/2022/08/LLLL.jpg');background-size:cover;background-position:center center;position:relative;border-radius:0 0 var(--r2xl) var(--r2xl);box-shadow:var(--shmd)}
 .hero-content{position:relative;z-index:2;padding:35px 20px;max-width:960px;margin:0 auto}
 .hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(52,201,149,.16);border:1px solid rgba(52,201,149,.35);color:var(--g3);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:12px}
-.hero-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g4);box-shadow:0 0 8px var(--g4);animation:pdot 2s ease-in-out infinite}
-@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 .hero-title{font-family:'DM Serif Display',serif;font-size:clamp(22px,5.5vw,32px);color:#fff;line-height:1.2;margin-bottom:8px}
 .hero-title em{font-style:normal;color:var(--g3);background:linear-gradient(to right, #a8edce, #6ddcb4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
@@ -50,31 +47,23 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .quota-bar-track{height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden}
 .quota-bar-fill{height:100%;background:linear-gradient(90deg,var(--g5),var(--g3));border-radius:4px;transition:width 0.8s ease-in-out}
 
-/* ===== KHUSUS ORANG TUA: MENU SATU BARIS KE BAWAH (VERTIKAL) ===== */
-.menu-navigation-container{max-width:960px;margin:20px auto 0;padding:0 16px}
+/* ===== NAVIGATION MENU VERTIKAL ===== */
+.menu-navigation-container{max-width:960px;margin:20px auto 0;padding:0 16px;position:relative;z-index:100}
 .menu-tabs{display:flex;flex-direction:column;gap:12px}
-
-/* Desain Tombol Menu: Besar, Menonjol, dan Sangat Terlihat Clickable */
 .tab-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:16px 20px;background:var(--white);border:2px solid var(--gr3);border-radius:var(--rmd);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--gr8);cursor:pointer;transition:all 0.2s ease;box-shadow:var(--shsm)}
-.tab-btn i{font-size:18px;color:var(--gr6);transition:all 0.2s ease}
-
-/* Efek Interaktif Saat Kursor di Atas Tombol (Bagi Pengguna PC/Laptop) */
-.tab-btn:hover{background:var(--g0);border-color:var(--g4);color:var(--g9);transform:translateY(-2px);box-shadow:var(--shmd)}
-
-/* Efek Animasi Membal Saat Tombol Layar Sentuh Diklik (Bagi Pengguna HP) */
-.tab-btn:active{transform:translateY(1px);box-shadow:var(--shsm)}
-
-/* Indikator Menu Aktif: Berwarna Hijau Penuh, Sangat Kontras & Jelas Posisi Halamannya */
+.tab-btn i{font-size:18px;color:var(--gr6)}
+.tab-btn:hover{background:var(--g0);border-color:var(--g4);color:var(--g9);transform:translateY(-2px)}
+.tab-btn:active{transform:translateY(1px)}
 .tab-btn.active{background:linear-gradient(135deg,var(--g8),var(--g7));color:#fff;border-color:var(--g9);box-shadow:0 6px 16px rgba(13,92,66,0.2)}
-.tab-btn.active i{color:var(--g3);transform:scale(1.1)}
+.tab-btn.active i{color:var(--g3)}
 
-/* ===== SECTIONS ARCHITECTURE ===== */
-.wrapper{max-width:960px;margin:0 auto;padding:0 16px 60px;position:relative;z-index:1}
+/* ===== SECTIONS CONTAINER ===== */
+.wrapper{max-width:960px;margin:0 auto;padding:20px 16px 60px;position:relative;z-index:1}
 .main-section{display:none}
 .main-section.active-section{display:block}
 
-/* ===== BERANDA LANDING UI ===== */
-.welcome-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-top:18px}
+/* ===== LANDING HOME ===== */
+.welcome-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
 @media(max-width:768px){
   .welcome-grid{grid-template-columns:1fr}
   .tab-btn{font-size:14.5px;padding:15px 16px}
@@ -84,24 +73,22 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .info-box h3 i{color:var(--g5)}
 .info-box p{font-size:13.5px;color:var(--gr6);line-height:1.6;margin-bottom:16px}
 
-/* ALUR LIST UI */
 .flow-container{display:flex;flex-direction:column;gap:16px;margin-top:10px}
 .flow-node{display:flex;gap:14px;position:relative}
 .flow-node:not(:last-child)::after{content:'';position:absolute;left:16px;top:32px;bottom:-20px;width:2px;background:var(--g2)}
-.flow-icon{width:34px;height:34px;border-radius:50%;background:var(--g1);color:var(--g8);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;box-shadow:0 2px 6px rgba(34,168,120,0.15)}
+.flow-icon{width:34px;height:34px;border-radius:50%;background:var(--g1);color:var(--g8);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
 .flow-text h4{font-size:13.5px;color:var(--gr9);font-weight:700}
-.flow-text p{font-size:12px;color:var(--gr6);margin-top:2px;line-height:1.5;margin-bottom:0}
+.flow-text p{font-size:12px;color:var(--gr6);margin-top:2px;line-height:1.5}
 
-/* DOKUMEN CHECKLIST UI */
 .doc-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--gr2)}
 .doc-item i{color:var(--g5);font-size:14px;margin-top:2px}
 .doc-label{font-size:12.5px;font-weight:600;color:var(--gr8)}
 
 /* ===== STEP INDICATOR FOR FORM ===== */
-.step-indicator{background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);border-radius:var(--rlg);padding:16px 20px;box-shadow:var(--shsm);border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0}
+.step-indicator{background:rgba(255,255,255,0.75);backdrop-filter:blur(10px);border-radius:var(--rlg);padding:16px 20px;box-shadow:var(--shsm);border:1px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
 .step-list{display:flex;align-items:center;flex:1;justify-content:space-between}
 .step-item{display:flex;align-items:center;gap:9px}
-.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--gr3);background:var(--white);color:var(--gr5);transition:all .3s ease}
+.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;border:2px solid var(--gr3);background:var(--white);color:var(--gr5)}
 .step-dot.active{background:var(--g7);border-color:var(--g7);color:#fff;box-shadow:0 0 0 4px rgba(34,168,120,.2)}
 .step-dot.done{background:var(--g1);border-color:var(--g4);color:var(--g7)}
 .step-label{font-size:12px;font-weight:600;color:var(--gr5);white-space:nowrap}
@@ -110,22 +97,25 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .step-line{flex:1;height:2px;background:var(--gr3);margin:0 12px}
 .step-line.done{background:var(--g4)}
 
-/* ===== CARD ===== */
+/* ===== FORM & CARDS ===== */
 .card{background:rgba(255, 255, 255, 0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:var(--rxl);border:1px solid rgba(255,255,255,0.6);box-shadow:var(--shmd);overflow:hidden;margin-bottom:20px}
 .card-header{padding:18px 24px;border-bottom:1px solid rgba(34,168,120,.08);display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.3)}
-.card-hi{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;background:var(--g1);color:var(--g7);box-shadow:0 2px 6px rgba(34,168,120,0.1)}
+.card-hi{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;background:var(--g1);color:var(--g7)}
 .card-ht{font-size:14px;font-weight:700;color:var(--gr8)}
 .card-body{padding:24px}
 
-/* ===== FORM INTERNALS ===== */
 .fg{margin-bottom:18px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:520px){document.getElementById('cari-nik').style.minWidth = '100%'; .g2{grid-template-columns:1fr;gap:14px}.step-label{display:none}}
+@media(max-width:520px){
+  .g2{grid-template-columns:1fr;gap:14px}
+  .step-label{display:none}
+  #cari-nik{width:100% !important;}
+}
 label.fl{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--gr7);margin-bottom:6px}
 label.fl .req{color:var(--r5)}
 label.fl .opt{color:var(--gr5);font-weight:400;font-size:11px}
 label.fl .fcnt{font-size:10.5px;font-weight:700;color:var(--gr5);background:var(--gr2);padding:2px 6px;border-radius:10px}
-input[type=text],input[type=date],select,textarea{width:100%;background:rgba(255,255,255,0.7);border:1.5px solid var(--gr3);border-radius:var(--rmd);padding:11px 14px;font-size:13px;color:var(--gr9);outline:none;transition:all .25s ease}
+input[type=text],input[type=date],select,textarea{width:100%;background:rgba(255,255,255,0.7);border:1.5px solid var(--gr3);border-radius:var(--rmd);padding:11px 14px;font-size:13px;color:var(--gr9);outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--g5);background:var(--white);box-shadow:0 0 0 4px rgba(34,168,120,.14)}
 input.input-err-active, select.input-err-active, textarea.input-err-active{border-color:var(--r5) !important;background:var(--r0) !important}
 .inp-pre{position:relative}
@@ -154,11 +144,10 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
 .btn-wa{background:linear-gradient(135deg, #25d366, #1ebd54);color:#fff;width:100%;justify-content:center;font-size:13.5px;padding:13px}
 .form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px}
 
-/* ===== MODAL ===== */
+/* ===== MODAL MULTI-FUNGSI ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,18,14,.6);backdrop-filter:blur(10px);z-index:300;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.open{display:flex}
-.modal{background:var(--white);border-radius:var(--r2xl);width:100%;max-width:440px;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);animation:modalAnim 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both}
-@keyframes modalAnim{from{opacity:0;transform:scale(0.92) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal{background:var(--white);border-radius:var(--r2xl);width:100%;max-width:440px;overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25)}
 .modal-hdr{padding:26px 24px 20px;text-align:center;background:linear-gradient(135deg,var(--g9),var(--g7))}
 .modal-hdr h3{font-family:'DM Serif Display',serif;font-size:20px;color:#fff}
 .receipt-body{padding:24px}
@@ -173,15 +162,13 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
 .modal-ftr-btns{display:flex;gap:10px}
 .modal-ftr-btns .btn{flex:1;justify-content:center}
 
-/* ===== TOAST ===== */
 #toast-wrap{position:fixed;bottom:24px;right:24px;z-index:600;display:flex;flex-direction:column;gap:8px}
-.toast{background:var(--gr9);color:#fff;padding:14px 20px;border-radius:var(--rmd);font-size:13px;font-weight:600;box-shadow:var(--shlg);animation:tslide 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;display:flex;align-items:center;gap:8px}
-@keyframes tslide{from{opacity:0;transform:translateY(20px) scale(0.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+.toast{background:var(--gr9);color:#fff;padding:14px 20px;border-radius:var(--rmd);font-size:13px;font-weight:600;box-shadow:var(--shlg);display:flex;align-items:center;gap:8px}
 .toast-err{background:linear-gradient(135deg, #b91c1c, #991b1b);border-left:4px solid #f87171}
 .toast-ok{background:linear-gradient(135deg, var(--g8), var(--g9));border-left:4px solid var(--g4)}
 
-.slide-step-in{animation:slideStepIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) both}
-@keyframes slideStepIn{from{opacity:0;transform:translateX(15px)}to{opacity:1;transform:translateX(0)}}
+.slide-step-in{animation:slideStepIn 0.35s ease-out both}
+@keyframes slideStepIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -214,9 +201,9 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
 
 <div class="menu-navigation-container">
   <div class="menu-tabs">
-    <button class="tab-btn active" id="tab-home" onclick="switchMenu('home')"><i class="fa-solid fa-house"></i> Beranda Portal Utama</button>
-    <button class="tab-btn" id="tab-form" onclick="switchMenu('form')"><i class="fa-solid fa-file-signature"></i> Isi Formulir Pendaftaran</button>
-    <button class="tab-btn" id="tab-status" onclick="switchMenu('status')"><i class="fa-solid fa-magnifying-glass"></i> Cek Status Hasil Validasi</button>
+    <button type="button" class="tab-btn active" id="tab-home" onclick="switchMenu('home')"><i class="fa-solid fa-house"></i> Beranda Portal Utama</button>
+    <button type="button" class="tab-btn" id="tab-form" onclick="switchMenu('form')"><i class="fa-solid fa-file-signature"></i> Isi Formulir Pendaftaran</button>
+    <button type="button" class="tab-btn" id="tab-status" onclick="switchMenu('status')"><i class="fa-solid fa-magnifying-glass"></i> Cek Status Hasil Validasi</button>
   </div>
 </div>
 
@@ -252,7 +239,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
           </div>
         </div>
         
-        <button class="btn btn-primary" onclick="switchMenu('form')" style="margin-top:24px; width:100%; justify-content:center; padding:14px;">
+        <button type="button" class="btn btn-primary" onclick="switchMenu('form')" style="margin-top:24px; width:100%; justify-content:center; padding:14px;">
           Mulai Isi Formulir Sekarang <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
@@ -438,7 +425,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
   </section>
 
   <section id="section-status" class="main-section slide-step-in">
-    <div class="card" style="margin-top: 10px;">
+    <div class="card">
       <div class="card-header">
         <div class="card-hi"><i class="fa-solid fa-magnifying-glass"></i></div>
         <div class="card-ht">Pencarian Status Validasi Siswa</div>
@@ -448,7 +435,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
           Masukkan 16 digit Nomor Induk Kependudukan (NIK) Calon Siswa untuk melacak status verifikasi berkas dan jadwal daftar ulang fisik.
         </p>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <input type="text" id="cari-nik" maxlength="16" placeholder="Masukkan 16 Digit NIK Anak" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')" style="flex: 1; min-width: 200px;">
+          <input type="text" id="cari-nik" style="width:70%; min-width: 200px;" maxlength="16" placeholder="Masukkan 16 Digit NIK Anak" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'')">
           <button type="button" onclick="cariStatusSiswa()" class="btn btn-primary" style="padding: 11px 24px;"><i class="fa-solid fa-search"></i> Cari Data</button>
         </div>
         <div id="hasil-pencarian" style="display: none; margin-top: 24px; padding: 20px; background: var(--gr0); border: 1px solid var(--gr3); border-radius: var(--rmd);"></div>
@@ -494,10 +481,19 @@ let isTelpValid = false;
 let isNikValid = false;
 let existingNikList = [];
 
+// PERBAIKAN LOGIKA: Fungsi switchMenu sekarang berjalan independen dan stabil
 function switchMenu(menu) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.main-section').forEach(s => s.classList.remove('active-section'));
+  // Reset semua class active pada tombol menu
+  document.getElementById('tab-home').classList.remove('active');
+  document.getElementById('tab-form').classList.remove('active');
+  document.getElementById('tab-status').classList.remove('active');
   
+  // Sembunyikan seluruh section konten terlebih dahulu
+  document.getElementById('section-home').classList.remove('active-section');
+  document.getElementById('section-form').classList.remove('active-section');
+  document.getElementById('section-status').classList.remove('active-section');
+  
+  // Aktifkan tab dan section yang dipilih pengguna
   if (menu === 'home') {
     document.getElementById('tab-home').classList.add('active');
     document.getElementById('section-home').classList.add('active-section');
@@ -508,11 +504,12 @@ function switchMenu(menu) {
     document.getElementById('tab-status').classList.add('active');
     document.getElementById('section-status').classList.add('active-section');
   }
-  // Otomatis scroll halus ke area konten setelah memilih menu
+  
+  // Scroll halus otomatis ke area konten utama agar terlihat jelas di HP orang tua
   if(menu !== 'home') {
     setTimeout(() => {
       document.getElementById('main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+    }, 50);
   }
 }
 
@@ -538,7 +535,7 @@ function lockoutFormOnly() {
     <div style="background:rgba(255,255,255,0.8); border:2px solid var(--r5); border-radius:var(--rxl); padding:40px 24px; text-align:center; margin-top:20px;">
       <i class="fa-solid fa-circle-xmark" style="font-size:48px; color:var(--r5); margin-bottom:14px;"></i>
       <h3 style="font-family:'DM Serif Display',serif; font-size:22px; margin-bottom:8px;">Kuota Online Penuh</h3>
-      <p style="font-size:13px; color:var(--gr6); line-height:1.6;">Kuota pendaftaran mandiri (60 Kursi) telah terpenuhi. Anda masih bisa melakukan pengecekan data lama pada menu <b>Cek Status Hasil Validasi</b> di atas.</p>
+      <p style="font-size:13px; color:var(--gr6); line-height:1.6;">Kuota pendaftaran mandiri (60 Kursi) telah memenuhi batas maksimum. Silakan langsung datang ke sekolah untuk pendaftaran manual.</p>
     </div>
   `;
 }
@@ -740,3 +737,28 @@ function handleFormSubmit(e) {
 
   fetch(SHEET_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) })
   .then(res => { if(!res.ok) throw new Error(); return res.json(); })
+  .then(() => {
+    document.getElementById('receipt-id').textContent = payload.id;
+    document.getElementById('receipt-name').textContent = payload.nama;
+    document.getElementById('receipt-nik').textContent = payload.nik;
+    document.getElementById('receipt-date').textContent = payload.timestamp;
+    
+    document.getElementById('btn-wa-confirm').onclick = function() {
+      const waText = encodeURIComponent(`Halo Panitia PPDB SDN 37/II,\n\nSaya mendaftar online:\n- No: ${payload.id}\n- Nama: ${payload.nama}\n- NIK: ${payload.nik}\n\nMohon petunjuk berkas fisik.`);
+      window.open(`https://api.whatsapp.com/send?phone=${WA_PANITIA}&text=${waText}`, '_blank');
+    };
+    document.getElementById('success-modal').classList.add('open');
+  }).catch(() => { toast('Masalah jaringan, ulangi beberapa saat lagi!','err'); btn.disabled = false; btn.textContent = 'Kirim Formulir'; });
+}
+
+function toast(msg, type) {
+  const wrap = document.getElementById('toast-wrap'); if(!wrap) return;
+  const el = document.createElement('div'); el.className = 'toast ' + (type==='err'?'toast-err':'toast-ok');
+  el.innerHTML = type==='err' ? `<i class="fa-solid fa-circle-exclamation"></i> <span>${msg}</span>` : `<i class="fa-solid fa-circle-check"></i> <span>${msg}</span>`;
+  wrap.appendChild(el); setTimeout(() => el.remove(), 3800);
+}
+
+window.onload = function() { fetchKuotaAwal(); };
+</script>
+</body>
+</html>
