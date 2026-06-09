@@ -50,19 +50,23 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .quota-bar-track{height:8px;background:rgba(255,255,255,.15);border-radius:4px;overflow:hidden}
 .quota-bar-fill{height:100%;background:linear-gradient(90deg,var(--g5),var(--g3));border-radius:4px;transition:width 0.8s ease-in-out}
 
-/* ===== RAMAH ORANG TUA: DESAIN MENU BARU YANG SANGAT JELAS BISA DIKLIK ===== */
-.menu-navigation-container{max-width:960px;margin:24px auto 0;padding:0 16px}
-.menu-tabs{display:flex;background:var(--white);padding:8px;border-radius:var(--rxl);border:2px solid var(--gr3);gap:8px;box-shadow:var(--shmd)}
-.tab-btn{flex:1;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;padding:14px 10px;background:var(--gr1);border:1px solid var(--gr3);border-radius:var(--rmd);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:var(--gr7);cursor:pointer;transition:all 0.25s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
-.tab-btn i{font-size:16px;color:var(--gr6);transition:all 0.25s ease}
+/* ===== KHUSUS ORANG TUA: MENU SATU BARIS KE BAWAH (VERTIKAL) ===== */
+.menu-navigation-container{max-width:960px;margin:20px auto 0;padding:0 16px}
+.menu-tabs{display:flex;flex-direction:column;gap:12px}
 
-/* Efek saat kursor di atas tombol atau tombol ditekan (Terlihat Sangat Interaktif) */
-.tab-btn:hover{color:var(--g8);background:var(--g1);border-color:var(--g4);transform:translateY(-1px);box-shadow:0 4px 8px rgba(34,168,120,0.1)}
-.tab-btn:active{transform:translateY(1px)}
+/* Desain Tombol Menu: Besar, Menonjol, dan Sangat Terlihat Clickable */
+.tab-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:16px 20px;background:var(--white);border:2px solid var(--gr3);border-radius:var(--rmd);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--gr8);cursor:pointer;transition:all 0.2s ease;box-shadow:var(--shsm)}
+.tab-btn i{font-size:18px;color:var(--gr6);transition:all 0.2s ease}
 
-/* Tampilan Menu Aktif: Tegas, Kontras Tinggi, & Mudah Dikenali Orang Tua */
-.tab-btn.active{background:linear-gradient(135deg,var(--g8),var(--g7));color:#fff;border-color:var(--g9);box-shadow:0 6px 15px rgba(13,92,66,0.25)}
-.tab-btn.active i{color:var(--g3);transform:scale(1.15)}
+/* Efek Interaktif Saat Kursor di Atas Tombol (Bagi Pengguna PC/Laptop) */
+.tab-btn:hover{background:var(--g0);border-color:var(--g4);color:var(--g9);transform:translateY(-2px);box-shadow:var(--shmd)}
+
+/* Efek Animasi Membal Saat Tombol Layar Sentuh Diklik (Bagi Pengguna HP) */
+.tab-btn:active{transform:translateY(1px);box-shadow:var(--shsm)}
+
+/* Indikator Menu Aktif: Berwarna Hijau Penuh, Sangat Kontras & Jelas Posisi Halamannya */
+.tab-btn.active{background:linear-gradient(135deg,var(--g8),var(--g7));color:#fff;border-color:var(--g9);box-shadow:0 6px 16px rgba(13,92,66,0.2)}
+.tab-btn.active i{color:var(--g3);transform:scale(1.1)}
 
 /* ===== SECTIONS ARCHITECTURE ===== */
 .wrapper{max-width:960px;margin:0 auto;padding:0 16px 60px;position:relative;z-index:1}
@@ -73,9 +77,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .welcome-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-top:18px}
 @media(max-width:768px){
   .welcome-grid{grid-template-columns:1fr}
-  .menu-tabs{padding:6px;gap:6px}
-  .tab-btn{font-size:12.5px;padding:12px 6px;gap:6px;flex-direction:column;text-align:center}
-  .tab-btn i{font-size:15px}
+  .tab-btn{font-size:14.5px;padding:15px 16px}
 }
 .info-box{background:var(--white);border-radius:var(--rxl);padding:22px;box-shadow:var(--shsm);border:1px solid rgba(0,0,0,0.03)}
 .info-box h3{font-family:'DM Serif Display',serif;font-size:19px;color:var(--g9);margin-bottom:14px;display:flex;align-items:center;gap:10px}
@@ -212,9 +214,9 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
 
 <div class="menu-navigation-container">
   <div class="menu-tabs">
-    <button class="tab-btn active" id="tab-home" onclick="switchMenu('home')"><i class="fa-solid fa-house"></i> Beranda</button>
-    <button class="tab-btn" id="tab-form" onclick="switchMenu('form')"><i class="fa-solid fa-file-signature"></i> Pendaftaran</button>
-    <button class="tab-btn" id="tab-status" onclick="switchMenu('status')"><i class="fa-solid fa-magnifying-glass"></i> Cek Status</button>
+    <button class="tab-btn active" id="tab-home" onclick="switchMenu('home')"><i class="fa-solid fa-house"></i> Beranda Portal Utama</button>
+    <button class="tab-btn" id="tab-form" onclick="switchMenu('form')"><i class="fa-solid fa-file-signature"></i> Isi Formulir Pendaftaran</button>
+    <button class="tab-btn" id="tab-status" onclick="switchMenu('status')"><i class="fa-solid fa-magnifying-glass"></i> Cek Status Hasil Validasi</button>
   </div>
 </div>
 
@@ -231,7 +233,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
             <div class="flow-icon">1</div>
             <div class="flow-text">
               <h4>Isi Formulir Online</h4>
-              <p>Klik menu <b>Pendaftaran</b> di atas, lengkapi identitas anak (NIK) beserta data orang tua secara valid.</p>
+              <p>Klik menu <b>Isi Formulir Pendaftaran</b> di atas, lengkapi identitas anak (NIK) beserta data orang tua secara valid.</p>
             </div>
           </div>
           <div class="flow-node">
@@ -506,6 +508,12 @@ function switchMenu(menu) {
     document.getElementById('tab-status').classList.add('active');
     document.getElementById('section-status').classList.add('active-section');
   }
+  // Otomatis scroll halus ke area konten setelah memilih menu
+  if(menu !== 'home') {
+    setTimeout(() => {
+      document.getElementById('main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
 }
 
 function fetchKuotaAwal() {
@@ -530,7 +538,7 @@ function lockoutFormOnly() {
     <div style="background:rgba(255,255,255,0.8); border:2px solid var(--r5); border-radius:var(--rxl); padding:40px 24px; text-align:center; margin-top:20px;">
       <i class="fa-solid fa-circle-xmark" style="font-size:48px; color:var(--r5); margin-bottom:14px;"></i>
       <h3 style="font-family:'DM Serif Display',serif; font-size:22px; margin-bottom:8px;">Kuota Online Penuh</h3>
-      <p style="font-size:13px; color:var(--gr6); line-height:1.6;">Kuota pendaftaran mandiri (60 Kursi) telah terpenuhi. Anda masih bisa melakukan pengecekan data lama pada menu <b>Cek Status</b> di atas.</p>
+      <p style="font-size:13px; color:var(--gr6); line-height:1.6;">Kuota pendaftaran mandiri (60 Kursi) telah terpenuhi. Anda masih bisa melakukan pengecekan data lama pada menu <b>Cek Status Hasil Validasi</b> di atas.</p>
     </div>
   `;
 }
@@ -583,7 +591,7 @@ function cariStatusSiswa() {
         boxHasil.innerHTML = `
           <div style="text-align:center; padding:10px 0;">
             <p style="font-size:14px; font-weight:700; color:var(--r5);">❌ Data Tidak Ditemukan</p>
-            <p style="font-size:12.5px; color:var(--gr6); margin-top:4px;">NIK <b>${nikInput}</b> belum terdaftar. Silakan klik menu <b>Pendaftaran</b> untuk mengisi formulir baru.</p>
+            <p style="font-size:12.5px; color:var(--gr6); margin-top:4px;">NIK <b>${nikInput}</b> belum terdaftar. Silakan klik menu <b>Isi Formulir Pendaftaran</b> untuk mengisi formulir baru.</p>
           </div>
         `;
       }
@@ -732,28 +740,3 @@ function handleFormSubmit(e) {
 
   fetch(SHEET_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) })
   .then(res => { if(!res.ok) throw new Error(); return res.json(); })
-  .then(() => {
-    document.getElementById('receipt-id').textContent = payload.id;
-    document.getElementById('receipt-name').textContent = payload.nama;
-    document.getElementById('receipt-nik').textContent = payload.nik;
-    document.getElementById('receipt-date').textContent = payload.timestamp;
-    
-    document.getElementById('btn-wa-confirm').onclick = function() {
-      const waText = encodeURIComponent(`Halo Panitia PPDB SDN 37/II,\n\nSaya mendaftar online:\n- No: ${payload.id}\n- Nama: ${payload.nama}\n- NIK: ${payload.nik}\n\nMohon petunjuk berkas fisik.`);
-      window.open(`https://api.whatsapp.com/send?phone=${WA_PANITIA}&text=${waText}`, '_blank');
-    };
-    document.getElementById('success-modal').classList.add('open');
-  }).catch(() => { toast('Masalah jaringan, ulangi beberapa saat lagi!','err'); btn.disabled = false; btn.textContent = 'Kirim Formulir'; });
-}
-
-function toast(msg, type) {
-  const wrap = document.getElementById('toast-wrap'); if(!wrap) return;
-  const el = document.createElement('div'); el.className = 'toast ' + (type==='err'?'toast-err':'toast-ok');
-  el.innerHTML = type==='err' ? `<i class="fa-solid fa-circle-exclamation"></i> <span>${msg}</span>` : `<i class="fa-solid fa-circle-check"></i> <span>${msg}</span>`;
-  wrap.appendChild(el); setTimeout(() => el.remove(), 3800);
-}
-
-window.onload = function() { switchMenu('home'); fetchKuotaAwal(); };
-</script>
-</body>
-</html>
