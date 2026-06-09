@@ -481,21 +481,17 @@ let isTelpValid = false;
 let isNikValid = false;
 let existingNikList = [];
 
-// PERBAIKAN LOGIKA: Fungsi switchMenu sekarang berjalan independen dan stabil
 function switchMenu(menu) {
-  // Reset semua class active pada tombol menu
   document.getElementById('tab-home').classList.remove('active');
   document.getElementById('tab-form').classList.remove('active');
   document.getElementById('tab-status').classList.remove('active');
   
-  // Sembunyikan seluruh section konten terlebih dahulu
   document.getElementById('section-home').classList.remove('active-section');
   document.getElementById('section-form').classList.remove('active-section');
   document.getElementById('section-status').classList.remove('active-section');
   
-  // Aktifkan tab dan section yang dipilih pengguna
   if (menu === 'home') {
-    document.getElementById('tab-home').classList.add('active');
+    document.getElementById('tab-home').add('active');
     document.getElementById('section-home').classList.add('active-section');
   } else if (menu === 'form') {
     document.getElementById('tab-form').classList.add('active');
@@ -505,7 +501,6 @@ function switchMenu(menu) {
     document.getElementById('section-status').classList.add('active-section');
   }
   
-  // Scroll halus otomatis ke area konten utama agar terlihat jelas di HP orang tua
   if(menu !== 'home') {
     setTimeout(() => {
       document.getElementById('main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -666,20 +661,33 @@ function getPekerjaanValue(role) {
   return sel;
 }
 
+// PERBAIKAN TOTAL PROTEKSI: Memeriksa tombol sebelum melompat ke halaman berikutnya
 function goStep(target) {
   if (target > currentStep) {
+    // Validasi Mutlak Tahap 1
     if (currentStep === 1) {
+      const isButtonDisabled = document.getElementById('btn-next-1').disabled;
+      if (isButtonDisabled || !isNikValid || !isUsiaValid) {
+        toast('Data Siswa belum lengkap / NIK salah / Umur anak kurang dari 6 tahun!', 'err');
+        return; // Blokir paksa di sini
+      }
       if (!document.getElementById('siswa-nama').value.trim()) { toast('Nama siswa wajib diisi!','err'); return; }
-      if (!isNikValid) { toast('Periksa kembali kolom NIK Siswa!','err'); return; }
-      if (!isUsiaValid) { toast('Usia anak belum memenuhi syarat!','err'); return; }
       if (!document.getElementById('siswa-tempat-lahir').value.trim()) { toast('Tempat lahir wajib diisi!','err'); return; }
       if (!document.getElementById('siswa-agama').value) { toast('Agama wajib dipilih!','err'); return; }
+      if (!document.getElementById('siswa-alamat').value.trim()) { toast('Alamat wajib diisi!','err'); return; }
     }
+    // Validasi Mutlak Tahap 2
     if (currentStep === 2) {
+      const isButtonDisabled = document.getElementById('btn-next-2').disabled;
+      if (isButtonDisabled || !isTelpValid) {
+        toast('Nomor WhatsApp orang tua belum valid!', 'err');
+        return; // Blokir paksa di sini
+      }
       if (!document.getElementById('ortu-ayah').value.trim() || !document.getElementById('ortu-ibu').value.trim()) { toast('Nama Orang Tua wajib diisi!','err'); return; }
-      if (!isTelpValid) { toast('Format nomor WhatsApp salah!','err'); return; }
+      if (!document.getElementById('anak-ke').value || !document.getElementById('jml-saudara').value) { toast('Kolom data anak ke berapa wajib diisi!','err'); return; }
     }
   }
+  
   if (target === 3) buildReview();
   document.getElementById('step-' + currentStep).style.display = 'none';
   document.getElementById('step-' + target).style.display = 'block';
