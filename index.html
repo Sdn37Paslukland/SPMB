@@ -617,7 +617,7 @@ function validateUsia() {
   let tahun = Math.floor(usiaBulan / 12);
   let bulan = usiaBulan % 12;
   hint.style.display = 'flex';
-  if (tahun >= 6) {
+  if (tahun >= 5) {
     hint.className = 'field-hint hint-ok'; hint.innerHTML = `✔ Usia anak per 1 Juli 2026: <b>${tahun} Tahun ${bulan} Bulan</b>`; inputEl.classList.remove('input-err-active'); isUsiaValid = true;
   } else {
     hint.className = 'field-hint hint-err'; hint.innerHTML = `❌ Usia anak: <b>${tahun} Tahun ${bulan} Bulan</b> (Minimal 6 tahun)`; inputEl.classList.add('input-err-active'); isUsiaValid = false;
