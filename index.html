@@ -744,6 +744,17 @@ function handleFormSubmit(e) {
     anak_ke: document.getElementById('anak-ke').value, jml_saudara: document.getElementById('jml-saudara').value, status: 'Terdaftar', timestamp: timestamp
   };
 
+  document.getElementById('receipt-id').textContent = payload.id;
+  document.getElementById('receipt-name').textContent = payload.nama;
+  document.getElementById('receipt-nik').textContent = payload.nik;
+  document.getElementById('receipt-date').textContent = payload.timestamp;
+  
+  document.getElementById('btn-wa-confirm').onclick = function() {
+    const waText = encodeURIComponent(`Halo Panitia PPDB SDN 37/II,\n\nSaya mendaftar online:\n- No: ${payload.id}\n- Nama: ${payload.nama}\n- NIK: ${payload.nik}\n\nMohon petunjuk berkas fisik.`);
+    window.open(`https://api.whatsapp.com/send?phone=${WA_PANITIA}&text=${waText}`, '_blank');
+  };
+  document.getElementById('success-modal').classList.add('open');
+  
     // HAPUS BLOK FETCH LAMA ANDA DAN GANTI DENGAN BLOK KODE DI BAWAH INI:
   fetch(SHEET_API, { 
     method: 'POST', 
