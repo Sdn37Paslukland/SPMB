@@ -248,7 +248,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
         <h3><i class="fa-solid fa-briefcase"></i> Syarat & Berkas</h3>
         <p>Persiapkan dokumen fotokopi berikut untuk diserahkan ke ruang panitia saat daftar ulang:</p>
         
-        <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Usia Minimal 6 Tahun (Per 1 Juli 2026)</span></div>
+        <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Usia Minimal 5 Tahun 6 Bulan (Per 1 Juli 2026)</span></div>
         <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Fotokopi Akta Kelahiran (1 Lembar)</span></div>
         <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Fotokopi Kartu Keluarga / KK (1 Lembar)</span></div>
         <div class="doc-item"><i class="fa-solid fa-circle-check"></i> <span class="doc-label">Membawa KK & Akta Asli (Untuk dicocokkan)</span></div>
@@ -276,7 +276,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
       <div id="step-1">
         <div class="notice notice-green">
           <i class="fa-solid fa-circle-info"></i>
-          <span>Aturan Batas Umur: Prioritas utama adalah anak berusia minimal <b>6 hingga 7 tahun</b> per tanggal 1 Juli 2026.</span>
+          <span>Aturan Batas Umur: Prioritas pendaftaran adalah anak berusia minimal <b>5 tahun 6 bulan hingga 7 tahun</b> per tanggal 1 Juli 2026.</span>
         </div>
         <div class="card">
           <div class="card-header"><div class="card-hi"><i class="fa-solid fa-user-graduate"></i></div><div class="card-ht">Identitas Calon Siswa</div></div>
@@ -377,7 +377,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
             </div>
             <div class="g2">
               <div class="fg">
-                <label class="fl"><span>No. WhatsApp Aktif <span class="req">*</span></span><span class="fcnt" id="telp-cnt">0/13</span></label>
+                <label class="fl"><span>No. WhatsApp Wali / Orang Tua <span class="req">*</span></span><span class="fcnt" id="telp-cnt">0/13</span></label>
                 <div class="inp-pre">
                   <span class="inp-pre-txt">+62</span>
                   <input type="text" id="ortu-telp" required maxlength="13" placeholder="8xxxxxxxxxx" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,''); document.getElementById('telp-cnt').textContent=this.value.length+'/13'; checkTelpValid(this.value)">
@@ -491,7 +491,7 @@ function switchMenu(menu) {
   document.getElementById('section-status').classList.remove('active-section');
   
   if (menu === 'home') {
-    document.getElementById('tab-home').add('active');
+    document.getElementById('tab-home').classList.add('active');
     document.getElementById('section-home').classList.add('active-section');
   } else if (menu === 'form') {
     document.getElementById('tab-form').classList.add('active');
@@ -617,10 +617,12 @@ function validateUsia() {
   let tahun = Math.floor(usiaBulan / 12);
   let bulan = usiaBulan % 12;
   hint.style.display = 'flex';
-  if (tahun >= 5) {
+  
+  // Validasi minimal 5 tahun 6 bulan (66 bulan)
+  if (usiaBulan >= 66) {
     hint.className = 'field-hint hint-ok'; hint.innerHTML = `✔ Usia anak per 1 Juli 2026: <b>${tahun} Tahun ${bulan} Bulan</b>`; inputEl.classList.remove('input-err-active'); isUsiaValid = true;
   } else {
-    hint.className = 'field-hint hint-err'; hint.innerHTML = `❌ Usia anak: <b>${tahun} Tahun ${bulan} Bulan</b> (Minimal 6 tahun)`; inputEl.classList.add('input-err-active'); isUsiaValid = false;
+    hint.className = 'field-hint hint-err'; hint.innerHTML = `❌ Usia anak: <b>${tahun} Tahun ${bulan} Bulan</b> (Minimal 5 Tahun 6 Bulan)`; inputEl.classList.add('input-err-active'); isUsiaValid = false;
   }
   validateStep1Buttons();
 }
@@ -661,15 +663,14 @@ function getPekerjaanValue(role) {
   return sel;
 }
 
-// PERBAIKAN TOTAL PROTEKSI: Memeriksa tombol sebelum melompat ke halaman berikutnya
 function goStep(target) {
   if (target > currentStep) {
     // Validasi Mutlak Tahap 1
     if (currentStep === 1) {
       const isButtonDisabled = document.getElementById('btn-next-1').disabled;
       if (isButtonDisabled || !isNikValid || !isUsiaValid) {
-        toast('Data Siswa belum lengkap / NIK salah / Umur anak kurang dari 6 tahun!', 'err');
-        return; // Blokir paksa di sini
+        toast('Data Siswa belum lengkap / NIK salah / Umur anak kurang dari 5 tahun 6 bulan!', 'err');
+        return; 
       }
       if (!document.getElementById('siswa-nama').value.trim()) { toast('Nama siswa wajib diisi!','err'); return; }
       if (!document.getElementById('siswa-tempat-lahir').value.trim()) { toast('Tempat lahir wajib diisi!','err'); return; }
@@ -681,7 +682,7 @@ function goStep(target) {
       const isButtonDisabled = document.getElementById('btn-next-2').disabled;
       if (isButtonDisabled || !isTelpValid) {
         toast('Nomor WhatsApp orang tua belum valid!', 'err');
-        return; // Blokir paksa di sini
+        return; 
       }
       if (!document.getElementById('ortu-ayah').value.trim() || !document.getElementById('ortu-ibu').value.trim()) { toast('Nama Orang Tua wajib diisi!','err'); return; }
       if (!document.getElementById('anak-ke').value || !document.getElementById('jml-saudara').value) { toast('Kolom data anak ke berapa wajib diisi!','err'); return; }
