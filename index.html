@@ -67,8 +67,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--gr1);color:var(--gr9);min
 
 @media(max-width:768px){
   .welcome-grid{grid-template-columns:1fr}
-  .menu-tabs{flex-direction:row;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
-  .tab-btn{font-size:13.5px;padding:12px 16px;scroll-snap-align:start;flex:0 0 auto;width:auto}
+   .menu-tabs{
+    flex-direction: column !important;
+    overflow-x: visible !important;
+    gap: 8px;
+  }
+  .tab-btn{
+    font-size: 14px;
+    padding: 14px 16px;
+    width: 100% !important; /* Tombol melebar penuh */
+    justify-content: flex-start; /* Ikon dan teks rata kiri agar rapi */
+  }
 }
 
 .info-box{background:var(--white);border-radius:var(--rxl);padding:22px;box-shadow:var(--shsm);border:1px solid rgba(0,0,0,0.03)}
