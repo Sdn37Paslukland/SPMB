@@ -73,11 +73,24 @@ const SHEET_API = 'https://script.google.com/macros/s/AKfycbyz8ijUjN1ZYqHOw7tGzV
 const ADMIN_PASS = 'sdn37admin2026';
 let listSiswa = [];
 
+// === BARU: Cek status login otomatis saat halaman dimuat ===
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
+    showAdminContent();
+  }
+});
+
+function showAdminContent() {
+  document.getElementById('lock-screen').style.display = 'none';
+  document.getElementById('admin-content').style.display = 'block';
+  fetchData();
+}
+
 function doUnlock() {
   if (document.getElementById('lock-pass').value === ADMIN_PASS) {
-    document.getElementById('lock-screen').style.display = 'none';
-    document.getElementById('admin-content').style.display = 'block';
-    fetchData();
+    // === BARU: Simpan status login ke dalam sessionStorage ===
+    sessionStorage.setItem('isAdminLoggedIn', 'true');
+    showAdminContent();
   } else {
     document.getElementById('lock-err').style.display = 'block';
   }
