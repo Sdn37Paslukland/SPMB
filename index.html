@@ -50,7 +50,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--gr1);color:var(--gr9);min
 /* ===== NAVIGATION MENU VERTIKAL ===== */
 .menu-navigation-container{max-width:960px;margin:20px auto 0;padding:0 16px;position:relative;z-index:100}
 .menu-tabs{display:flex;flex-direction:column;gap:12px}
-.tab-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:16px 20px;background:var(--white);border:2px solid var(--gr3);border-radius:var(--rmd);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--gr8);cursor:pointer;transition:all 0.2s ease;box-shadow:var(--shsm)}
+.tab-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:16px 20px;background:var(--white);border:2px solid var(--gr3);border-radius:var(--rmd);font-family:inherit;font-size:15px;font-weight:700;color:var(--gr8);cursor:pointer;transition:all 0.2s ease;box-shadow:var(--shsm);white-space:nowrap}
 .tab-btn i{font-size:18px;color:var(--gr6)}
 .tab-btn:hover{background:var(--g0);border-color:var(--g4);color:var(--g9);transform:translateY(-2px)}
 .tab-btn:active{transform:translateY(1px)}
@@ -64,10 +64,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--gr1);color:var(--gr9);min
 
 /* ===== LANDING HOME ===== */
 .welcome-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+
 @media(max-width:768px){
   .welcome-grid{grid-template-columns:1fr}
-  .tab-btn{font-size:14.5px;padding:15px 16px}
+  .menu-tabs{flex-direction:row;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+  .tab-btn{font-size:13.5px;padding:12px 16px;scroll-snap-align:start;flex:0 0 auto;width:auto}
 }
+
 .info-box{background:var(--white);border-radius:var(--rxl);padding:22px;box-shadow:var(--shsm);border:1px solid rgba(0,0,0,0.03)}
 .info-box h3{font-family:'DM Serif Display',serif;font-size:19px;color:var(--g9);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .info-box h3 i{color:var(--g5)}
@@ -115,7 +118,7 @@ label.fl{display:flex;justify-content:space-between;align-items:center;font-size
 label.fl .req{color:var(--r5)}
 label.fl .opt{color:var(--gr5);font-weight:400;font-size:11px}
 label.fl .fcnt{font-size:10.5px;font-weight:700;color:var(--gr5);background:var(--gr2);padding:2px 6px;border-radius:10px}
-input[type=text],input[type=date],select,textarea{width:100%;background:rgba(255,255,255,0.7);border:1.5px solid var(--gr3);border-radius:var(--rmd);padding:11px 14px;font-size:13px;color:var(--gr9);outline:none}
+input[type=text],input[type=date],select,textarea{width:100%;background:rgba(255,255,255,0.7);border:1.5px solid var(--gr3);border-radius:var(--rmd);padding:11px 14px;font-size:13px;color:var(--gr9);outline:none;font-family:inherit}
 input:focus,select:focus,textarea:focus{border-color:var(--g5);background:var(--white);box-shadow:0 0 0 4px rgba(34,168,120,.14)}
 input.input-err-active, select.input-err-active, textarea.input-err-active{border-color:var(--r5) !important;background:var(--r0) !important}
 .inp-pre{position:relative}
@@ -135,7 +138,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
 .hint-err{color:var(--r5)}
 
 /* ===== BUTTONS ===== */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--rmd);font-size:13px;font-weight:700;border:none;cursor:pointer;transition:all .25s ease;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--rmd);font-size:13px;font-weight:700;border:none;cursor:pointer;transition:all .25s ease;white-space:nowrap;font-family:inherit}
 .btn-primary{background:linear-gradient(135deg,var(--g7),var(--g6));color:#fff;box-shadow:0 4px 14px rgba(17,106,75,.28)}
 .btn-primary:hover:not(:disabled){transform:translateY(-1.5px);box-shadow:0 6px 20px rgba(17,106,75,.38)}
 .btn-primary:disabled{background:var(--gr3) !important;color:var(--gr5) !important;cursor:not-allowed;box-shadow:none}
@@ -255,7 +258,7 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
         
         <div style="margin-top: 20px; background: var(--g0); border: 1px solid var(--g3); padding: 12px; border-radius: var(--rmd); font-size: 11.5px; color: var(--g9); line-height: 1.5;">
           <i class="fa-solid fa-headset"></i> <b>Butuh Bantuan?</b><br>
-          Jika mengalami kendala sistem, Anda bisa langsung datang ke gedung sekolah pada jam kerja (08.00 - 12.00 WIB).
+          Jika mengalami kendal sistem, Anda bisa langsung datang ke gedung sekolah pada jam kerja (08.00 - 12.00 WIB).
         </div>
       </div>
     </div>
@@ -318,7 +321,11 @@ input.input-err-active, select.input-err-active, textarea.input-err-active{borde
               <label class="fl"><span>Agama <span class="req">*</span></span></label>
               <select id="siswa-agama" required>
                 <option value="" disabled selected>Pilih Agama</option>
-                <option>Islam</option><option>Kristen</option><option>Katolik</option><option>Hindu</option><option>Buddha</option>
+                <option value="Islam">Islam</option>
+                <option value="Kristen">Kristen</option>
+                <option value="Katolik">Katolik</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Buddha">Buddha</option>
               </select>
             </div>
             <div class="fg">
@@ -618,7 +625,6 @@ function validateUsia() {
   let bulan = usiaBulan % 12;
   hint.style.display = 'flex';
   
-  // Validasi minimal 5 tahun 6 bulan (66 bulan)
   if (usiaBulan >= 66) {
     hint.className = 'field-hint hint-ok'; hint.innerHTML = `✔ Usia anak per 1 Juli 2026: <b>${tahun} Tahun ${bulan} Bulan</b>`; inputEl.classList.remove('input-err-active'); isUsiaValid = true;
   } else {
@@ -653,7 +659,7 @@ function checkTelpValid(val) {
   if (val.length >= 9 && val.length <= 13) {
     hint.className = 'field-hint hint-ok'; hint.innerHTML = `✔ WhatsApp Terbaca Valid`; inputEl.classList.remove('input-err-active'); isTelpValid = true; nextBtn.disabled = false; if(lockIcon) lockIcon.className = 'fa-solid fa-lock-open';
   } else {
-    hint.className = 'field-hint hint-err'; hint.innerHTML = `❌ Nomor harus 10 - 13 digit.`; inputEl.classList.add('input-err-active'); isTelpValid = false; nextBtn.disabled = true; if(lockIcon) lockIcon.className = 'fa-solid fa-lock';
+    hint.className = 'field-hint hint-err'; hint.innerHTML = `❌ Nomor harus 9 - 13 digit.`; inputEl.classList.add('input-err-active'); isTelpValid = false; nextBtn.disabled = true; if(lockIcon) lockIcon.className = 'fa-solid fa-lock';
   }
 }
 
@@ -665,11 +671,10 @@ function getPekerjaanValue(role) {
 
 function goStep(target) {
   if (target > currentStep) {
-    // Validasi Mutlak Tahap 1
     if (currentStep === 1) {
       const isButtonDisabled = document.getElementById('btn-next-1').disabled;
       if (isButtonDisabled || !isNikValid || !isUsiaValid) {
-        toast('Data Siswa belum lengkap / NIK salah / Umur anak kurang dari 5 tahun 6 bulan!', 'err');
+        toast('Data Siswa belum lengkap / NIK salah / Umur anak kurang!', 'err');
         return; 
       }
       if (!document.getElementById('siswa-nama').value.trim()) { toast('Nama siswa wajib diisi!','err'); return; }
@@ -677,7 +682,6 @@ function goStep(target) {
       if (!document.getElementById('siswa-agama').value) { toast('Agama wajib dipilih!','err'); return; }
       if (!document.getElementById('siswa-alamat').value.trim()) { toast('Alamat wajib diisi!','err'); return; }
     }
-    // Validasi Mutlak Tahap 2
     if (currentStep === 2) {
       const isButtonDisabled = document.getElementById('btn-next-2').disabled;
       if (isButtonDisabled || !isTelpValid) {
@@ -685,7 +689,11 @@ function goStep(target) {
         return; 
       }
       if (!document.getElementById('ortu-ayah').value.trim() || !document.getElementById('ortu-ibu').value.trim()) { toast('Nama Orang Tua wajib diisi!','err'); return; }
-      if (!document.getElementById('anak-ke').value || !document.getElementById('jml-saudara').value) { toast('Kolom data anak ke berapa wajib diisi!','err'); return; }
+      
+      const anakKe = parseInt(document.getElementById('anak-ke').value || 0);
+      const jmlSdr = parseInt(document.getElementById('jml-saudara').value || 0);
+      if (!anakKe || !jmlSdr) { toast('Kolom data anak ke berapa wajib diisi!','err'); return; }
+      if (anakKe > jmlSdr) { toast('Logika salah: Input "Anak Ke" tidak boleh lebih besar dari total bersaudara!','err'); return; }
     }
   }
   
@@ -753,9 +761,7 @@ function handleFormSubmit(e) {
     const waText = encodeURIComponent(`Halo Panitia PPDB SDN 37/II,\n\nSaya mendaftar online:\n- No: ${payload.id}\n- Nama: ${payload.nama}\n- NIK: ${payload.nik}\n\nMohon petunjuk berkas fisik.`);
     window.open(`https://api.whatsapp.com/send?phone=${WA_PANITIA}&text=${waText}`, '_blank');
   };
-  document.getElementById('success-modal').classList.add('open');
-  
-    // HAPUS BLOK FETCH LAMA ANDA DAN GANTI DENGAN BLOK KODE DI BAWAH INI:
+
   fetch(SHEET_API, { 
     method: 'POST', 
     mode: 'no-cors', 
@@ -763,16 +769,6 @@ function handleFormSubmit(e) {
     body: JSON.stringify({ data: [payload] }) 
   })
   .then(() => {
-    // Trik khusus Google Script: Karena mode 'no-cors', kita langsung bypass ke halaman sukses
-    document.getElementById('receipt-id').textContent = payload.id;
-    document.getElementById('receipt-name').textContent = payload.nama;
-    document.getElementById('receipt-nik').textContent = payload.nik;
-    document.getElementById('receipt-date').textContent = payload.timestamp;
-    
-    document.getElementById('btn-wa-confirm').onclick = function() {
-      const waText = encodeURIComponent(`Halo Panitia PPDB SDN 37/II,\n\nSaya mendaftar online:\n- No: ${payload.id}\n- Nama: ${payload.nama}\n- NIK: ${payload.nik}\n\nMohon petunjuk berkas fisik.`);
-      window.open(`https://api.whatsapp.com/send?phone=${WA_PANITIA}&text=${waText}`, '_blank');
-    };
     document.getElementById('success-modal').classList.add('open');
   })
   .catch(() => { 
