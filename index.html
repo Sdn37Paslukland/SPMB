@@ -744,7 +744,7 @@ function handleFormSubmit(e) {
     anak_ke: document.getElementById('anak-ke').value, jml_saudara: document.getElementById('jml-saudara').value, status: 'Terdaftar', timestamp: timestamp
   };
 
-  fetch(SHEET_API, { method: 'POST', mode: 'no-cros' headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) })
+  fetch(SHEET_API, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [payload] }) })
   .then(res => { if(!res.ok) throw new Error(); return res.json(); })
   .then(() => {
     document.getElementById('receipt-id').textContent = payload.id;
